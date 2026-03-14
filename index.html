@@ -68,7 +68,7 @@ window.addEventListener("message", (event) => {
  * Запрашивает данные любого студента по ID
  */
 function loadStudentById(studentId) {
-    const targetUrl = `https://s10.run{studentId}&v2=1#/`;
+    const targetUrl = "https://s10.run/student?" + studentId + "&v2=1#/";
     if (window.opener) {
         console.log("Запрос данных студента:", studentId);
         window.opener.postMessage({ type: "FETCH_SPECIFIC_URL", url: targetUrl }, "*");
