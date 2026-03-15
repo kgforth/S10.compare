@@ -38,7 +38,7 @@ window.addEventListener("message", (event) => {
             console.log("URL подтвержден:", url);
             event.source.postMessage({ type: "START_FETCH" }, event.origin);
         } else {
-            document.body.innerHTML = "<h2 style='color:red'>Ошибка: Пожалуйста, перейдите на страницу студента S10.run в раздел Задачи</h2>";
+            document.body.innerHTML = "<h2 style='color:red ; text-align: center ;'>Ошибка: Пожалуйста, перейдите на страницу студента S10.run в раздел Задачи</h2>";
 //            alert("Ошибка: Пожалуйста, перейдите на страницу студента S10.run");
         }
     }
