@@ -84,7 +84,7 @@ window.addEventListener("message", (event) => {
 
 		a=window.lastHtml;
 		
-		alert(a);
+//		alert(a);
 
  if ( a.includes(m1) && a.includes(m2)	) {	  
 				
@@ -96,8 +96,9 @@ window.addEventListener("message", (event) => {
 	 
 } else {
 
-return alert("Запустите букмарклет на фоне раздела задач S10.run");
-
+//return alert("Запустите букмарклет на фоне раздела задач S10.run");
+ document.body.innerHTML = "<h2 style='color:red ; text-align: center ;'>Ошибка: Пожалуйста, перейдите на страницу студента S10.run в раздел Задачи</h2>";
+return ;
 }
 
 
