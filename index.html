@@ -79,6 +79,7 @@ const overlay = document.getElementById('loader-overlay');
 function showLoader() {
     loader.style.display = 'block';
     overlay.style.display = 'block';
+	console.log("ЛОАДЕР ДОЛЖЕН ПОКАЗАТЬСЯ");
 }
 
 function hideLoader() {
@@ -105,6 +106,7 @@ function loadStudentById(studentId) {
 // 1. Сразу сообщаем букмарклету, что мы открылись
 if (window.opener) {
     window.opener.postMessage("PARSER_READY", "*");
+	showLoader(); // ВКЛЮЧАЕМ ЛОАДЕР
 } else {
     document.body.innerHTML = "<h2 style='color:red ; text-align: center ;'>Запустите букмарклет на сайте S10.run!</h2>";
 }
