@@ -116,18 +116,32 @@ window.lastHtml = "";
 window.addEventListener("message", (event) => {
     const data = event.data;
 
-    // Шаг А: Проверка URL от букмарклета (первичная)
-	
-    if (data.type === "CHECK_URL") {
-        const url = data.url;
-        if (/s10\.run/.test(url)) {
-            showLoader();
-            // ВАЖНО: передаем объект с типом И URL, на который нужно сделать fetch
-            event.source.postMessage({ type: "FETCH_SPECIFIC_URL", url: url }, event.origin);
-        } else {
-            document.body.innerHTML = "<h2 style='color:red;'>Ошибка домена</h2>";
+   // 1. Если букмарклет просит загрузить конкретный URL
+    if (data.type === "FETCH_SPECIFIC_URL" || data.type === "CHECK_URL") {
+        showLoader(); // ВКЛЮЧАЕМ ЗДЕСЬ, это универсальная точка входа
+        console.log("Начинаем загрузку...");
+        
+        // Отвечаем букмарклету, чтобы он начал fetch, если это был CHECK_URL
+        if (data.type === "CHECK_URL") {
+            event.source.postMessage({ 
+                type: "FETCH_SPECIFIC_URL", 
+                url: data.url 
+            }, event.origin);
         }
     }
+	
+	// Шаг А: Проверка URL от букмарклета (первичная)
+//	
+//    if (data.type === "CHECK_URL") {
+//        const url = data.url;
+//        if (/s10\.run/.test(url)) {
+//            showLoader();
+//            // ВАЖНО: передаем объект с типом И URL, на который нужно сделать fetch
+//            event.source.postMessage({ type: "FETCH_SPECIFIC_URL", url: url }, event.origin);
+//        } else {
+//            document.body.innerHTML = "<h2 style='color:red;'>Ошибка домена</h2>";
+//        }
+//    }
 	
 
     // Шаг Б: Получение данных (HTML)
