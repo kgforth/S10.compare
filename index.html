@@ -126,6 +126,8 @@ window.addEventListener("message", (event) => {
         if (isValid) {
 		    showLoader(); // ВКЛЮЧАЕМ ЛОАДЕР
             console.log("URL подтвержден:", url);
+            console.log("URL event.origin:", event.origin);
+			
 //            event.source.postMessage({ type: "START_FETCH" }, event.origin);
             event.source.postMessage({ type: "FETCH_SPECIFIC_URL" }, event.origin);
 
