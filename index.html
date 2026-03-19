@@ -305,6 +305,20 @@ main_process();
 });
 
 
+
+//1000008935
+
+function Valid_id() {
+  try {
+    t=d[0].studentInfo.id;
+    return t.trim();
+  } catch {
+    return "";
+  }
+}
+
+
+
 function Valid_Student() {
   try {
     t=d[0].studentInfo.firstName + " " + d[0].studentInfo.lastName;
@@ -1637,10 +1651,6 @@ webix.ui(
 ]}
 ).show();  
 
-//================================
-//loadData(); 
-$$(listId).parse(webix.storage.local.get("my_final_data"));
-//================================
 
 $$('cal1').setValue(new Date());
 //new Date(new Date() - 7 * 24 * 60 * 60 * 1000);
@@ -1794,6 +1804,12 @@ tbl = "[\n" + tbl.slice(0,tbl.length-2) + "\n]" ;
   $$("ddtable").clearAll();
   $$("ddtable").parse(tbl);
 
+//================================
+//loadData(); 
+$$(listId).parse(webix.storage.local.get("my_final_data"));
+//================================
+
+addItemEx("#" + Valid_id() + "#  " + Valid_Student() + "   " + Valid_Trainer());
 
 
 
