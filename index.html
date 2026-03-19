@@ -275,30 +275,63 @@ function restartwebix() {
 
 
    // В Webix все вьюхи лежат в объекте webix.ui.views
-    var views = webix.ui.views;
-    var ids = [];
+//    var views = webix.ui.views;
+//    var ids = [];
 
     // Сначала просто собираем ID, чтобы не ломать цикл при удалении
-    for (var id in views) {
-        if (views.hasOwnProperty(id)) ids.push(id);
-    }
+//    for (var id in views) {
+//        if (views.hasOwnProperty(id)) ids.push(id);
+//    }
 
     // Удаляем объекты В ОБРАТНОМ ПОРЯДКЕ (от дочерних к родителям)
-    for (var i = ids.length - 1; i >= 0; i--) {
-        var v = webix.$$(ids[i]);
-        if (v && v.destructor) {
-            try {
-                v.destructor();
-            } catch(e) {
-                console.warn("Не удалось удалить:", ids[i]);
-            }
-        }
-    }
+//    for (var i = ids.length - 1; i >= 0; i--) {
+//        var v = webix.$$(ids[i]);
+//        if (v && v.destructor) {
+//            try {
+//                v.destructor();
+//            } catch(e) {
+//                console.warn("Не удалось удалить:", ids[i]);
+//            }
+//        }
+//    }
     
     // Проверка через встроенный счетчик Webix
-    var count = 0;
-    for (var id in webix.ui.views) count++;
-    console.log("Осталось живых объектов:", count);
+//    var count = 0;
+//    for (var id in webix.ui.views) count++;
+//    console.log("Осталось живых объектов:", count);
+
+
+    // 1. Сначала явно удаляем график, если он еще жив
+    if (webix.$$("gpace")) {
+        // Очищаем данные и серии перед деструктором
+        webix.$$("gpace").clearAll(); 
+        webix.$$("gpace").destructor();
+    }
+
+    // 2. Добиваем выжившие серии (s20, s30 и т.д.)
+    ["s10", "s20", "s30"].forEach(function(id) {
+        if (webix.$$(id)) webix.$$(id).destructor();
+    });
+
+    // 3. Тотальная зачистка ВСЕХ объектов по списку ID
+    var ids = [];
+    for (var id in webix.ui.views) ids.push(id);
+
+    // Удаляем жестко, игнорируя ошибки
+    ids.forEach(function(id) {
+        try {
+            if (webix.$$(id)) webix.$$(id).destructor();
+        } catch(e) {}
+    });
+
+    // 4. ФИНАЛЬНЫЙ ХАК: если объекты всё еще в индексе, но не имеют DOM-узлов
+    // Просто очищаем глобальный реестр Webix (только для отчаянных случаев)
+    if (Object.keys(webix.ui.views).length > 0) {
+        webix.ui.views = {}; 
+    }
+
+    console.log("Чистка завершена. Объектов:", Object.keys(webix.ui.views).length);
+
 
 
 //loadStudentById(lastId); 
