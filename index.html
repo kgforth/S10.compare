@@ -72,6 +72,117 @@ webix.html.addStyle(`
   .webix_el_button button { transition: background-color 0.2s; height: 38px !important; }
 `);
 
+// ФУНКЦИЯ ИЗВЛЕЧЕНИЯ НОМЕРА
+function extractId() {
+  var text = $$(searchId).getValue();
+  if (!text) return webix.message("Поле пустое");
+
+  // Регулярка: ищет цифры между двумя символами #
+  var match = text.match(/#(\d+)#/);
+  
+  if (match && match[1]) {
+    var resultId = match[1]; // Это наша переменная с номером
+    webix.message({ type: "debug", text: "Извлечен ID: " + resultId });
+    console.log("Найденный ID:", resultId);
+    
+    // Здесь можно вызвать дальнейшую логику с этим resultId
+  } else {
+    webix.message({ type: "error", text: "Формат #номер# не найден" });
+  }
+}
+
+// Слушатель для Ctrl (цвет кнопки)
+webix.event(window, "keydown", function(e){
+  if (e.ctrlKey && $$(trashBtnId)) webix.html.addCss($$(trashBtnId).getNode(), "trash-active");
+});
+webix.event(window, "keyup", function(e){
+  if (!e.ctrlKey && $$(trashBtnId)) webix.html.removeCss($$(trashBtnId).getNode(), "trash-active");
+});
+
+// --- ЛОГИКА ---
+
+function addItem() {
+  var search = $$(searchId);
+  var text = search.getValue();
+  if (!text || text.trim() === "") return;
+
+  var list = $$(listId);
+  var exists = list.find(obj => obj.value.toLowerCase() === text.toLowerCase(), true);
+
+  if (!exists) {
+    list.add({ value: text });
+    saveData();
+    webix.message("Добавлено: " + text);
+  } else {
+    webix.message("Уже в списке");
+  }
+}
+
+function removeItem() {
+  var text = $$(searchId).getValue();
+  var item = $$(listId).find(obj => obj.value == text, true);
+  if (item) {
+    webix.confirm("Удалить '" + text + "'?", r => {
+      if (r) {
+        $$(listId).remove(item.id);
+        $$(searchId).setValue("");
+        saveData();
+      }
+    });
+  } else {
+    webix.message("Элемент не найден");
+  }
+}
+
+function clearAllData() {
+  webix.confirm("Очистить всё?", r => {
+    if (r) {
+      webix.storage.local.remove("my_final_data");
+      $$(listId).clearAll();
+      $$(searchId).setValue("");
+    }
+  });
+}
+
+function saveData() {
+  webix.storage.local.put("my_final_data", $$(listId).serialize());
+}
+
+function loadData() {
+  var data = webix.storage.local.get("my_final_data");
+  if (data) $$(listId).parse(data);
+}
+		
+function addItemEx(inputValue) {
+  // 1. Проверяем, что входная строка не пустая
+  if (!inputValue || inputValue.trim() === "") return;
+
+  var list = $$(listId);
+  var text = inputValue.trim();
+
+  // 2. Проверяем на дубликаты в списке (без учета регистра)
+  var exists = list.find(obj => obj.value.toLowerCase() === text.toLowerCase(), true);
+
+  if (!exists) {
+    // 3. Добавляем в список
+    var newId = list.add({ value: text });
+    
+    // 4. Сохраняем обновленный список в localStorage
+    saveData();
+    
+    // 5. Опционально: сразу выбираем добавленное значение в поле поиска
+    $$(searchId).setValue(text);
+    
+    webix.message("Добавлено извне: " + text);
+    return newId; // возвращаем ID новой записи
+  } else {
+    // Если уже есть, просто выбираем этот элемент
+    $$(searchId).setValue(exists.value);
+    webix.message("Уже есть в списке");
+    return exists.id;
+  }
+}
+
 
 
 var a = "";
@@ -1498,117 +1609,6 @@ btn_del = {
             else removeItem();
           }
         };
-
-// ФУНКЦИЯ ИЗВЛЕЧЕНИЯ НОМЕРА
-function extractId() {
-  var text = $$(searchId).getValue();
-  if (!text) return webix.message("Поле пустое");
-
-  // Регулярка: ищет цифры между двумя символами #
-  var match = text.match(/#(\d+)#/);
-  
-  if (match && match[1]) {
-    var resultId = match[1]; // Это наша переменная с номером
-    webix.message({ type: "debug", text: "Извлечен ID: " + resultId });
-    console.log("Найденный ID:", resultId);
-    
-    // Здесь можно вызвать дальнейшую логику с этим resultId
-  } else {
-    webix.message({ type: "error", text: "Формат #номер# не найден" });
-  }
-}
-
-// Слушатель для Ctrl (цвет кнопки)
-webix.event(window, "keydown", function(e){
-  if (e.ctrlKey && $$(trashBtnId)) webix.html.addCss($$(trashBtnId).getNode(), "trash-active");
-});
-webix.event(window, "keyup", function(e){
-  if (!e.ctrlKey && $$(trashBtnId)) webix.html.removeCss($$(trashBtnId).getNode(), "trash-active");
-});
-
-// --- ЛОГИКА ---
-
-function addItem() {
-  var search = $$(searchId);
-  var text = search.getValue();
-  if (!text || text.trim() === "") return;
-
-  var list = $$(listId);
-  var exists = list.find(obj => obj.value.toLowerCase() === text.toLowerCase(), true);
-
-  if (!exists) {
-    list.add({ value: text });
-    saveData();
-    webix.message("Добавлено: " + text);
-  } else {
-    webix.message("Уже в списке");
-  }
-}
-
-function removeItem() {
-  var text = $$(searchId).getValue();
-  var item = $$(listId).find(obj => obj.value == text, true);
-  if (item) {
-    webix.confirm("Удалить '" + text + "'?", r => {
-      if (r) {
-        $$(listId).remove(item.id);
-        $$(searchId).setValue("");
-        saveData();
-      }
-    });
-  } else {
-    webix.message("Элемент не найден");
-  }
-}
-
-function clearAllData() {
-  webix.confirm("Очистить всё?", r => {
-    if (r) {
-      webix.storage.local.remove("my_final_data");
-      $$(listId).clearAll();
-      $$(searchId).setValue("");
-    }
-  });
-}
-
-function saveData() {
-  webix.storage.local.put("my_final_data", $$(listId).serialize());
-}
-
-function loadData() {
-  var data = webix.storage.local.get("my_final_data");
-  if (data) $$(listId).parse(data);
-}
-		
-function addItemEx(inputValue) {
-  // 1. Проверяем, что входная строка не пустая
-  if (!inputValue || inputValue.trim() === "") return;
-
-  var list = $$(listId);
-  var text = inputValue.trim();
-
-  // 2. Проверяем на дубликаты в списке (без учета регистра)
-  var exists = list.find(obj => obj.value.toLowerCase() === text.toLowerCase(), true);
-
-  if (!exists) {
-    // 3. Добавляем в список
-    var newId = list.add({ value: text });
-    
-    // 4. Сохраняем обновленный список в localStorage
-    saveData();
-    
-    // 5. Опционально: сразу выбираем добавленное значение в поле поиска
-    $$(searchId).setValue(text);
-    
-    webix.message("Добавлено извне: " + text);
-    return newId; // возвращаем ID новой записи
-  } else {
-    // Если уже есть, просто выбираем этот элемент
-    $$(searchId).setValue(exists.value);
-    webix.message("Уже есть в списке");
-    return exists.id;
-  }
-}
 
 
 
