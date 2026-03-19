@@ -209,6 +209,12 @@ function hideLoader() {
     overlay.style.display = 'none';
 }
 
+
+function restartwebix() {
+if ($$("ini")) $$("ini").destructor();
+loadStudentById(extractId()); 
+}
+
 /**
  * ФУНКЦИЯ ДЛЯ ВЫЗОВА ИЗ КОНСОЛИ ИЛИ ИНТЕРФЕЙСА ПАРСЕРА
  * Запрашивает данные любого студента по ID
@@ -1808,9 +1814,7 @@ tbl = "[\n" + tbl.slice(0,tbl.length-2) + "\n]" ;
 $$(listId).parse(webix.storage.local.get("my_final_data"));
 //================================
 
-
 addItemEx("#" + Valid_id() + "#  " + Valid_Student() + "  Тренер: " + Valid_Trainer());
-
 
 
 
