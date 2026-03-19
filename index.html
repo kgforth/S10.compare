@@ -63,6 +63,16 @@
 
 <script type="text/javascript">
 
+
+var oldUi = webix.ui;
+webix.ui = function(config){
+    if (config.id === "gpace" || (config.body && config.body.id === "gpace")) {
+        console.trace("Объект gpace создается здесь:");
+    }
+    return oldUi.apply(this, arguments);
+};
+
+
 var trashBtnId = "trash_btn";
 var searchId = "my_search";
 var listId = "my_suggest_list";
