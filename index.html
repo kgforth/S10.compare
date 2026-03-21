@@ -302,27 +302,27 @@ function restartwebix() {
 
 
 //     1. Сначала явно удаляем график, если он еще жив
-    if (webix.$$("gpace")) {
+//    if (webix.$$("gpace")) {
         // Очищаем данные и серии перед деструктором
-       webix.$$("gpace").clearAll(); 
-        webix.$$("gpace").destructor();
-  }
+//       webix.$$("gpace").clearAll(); 
+//        webix.$$("gpace").destructor();
+//  }
 
     // 2. Добиваем выжившие серии (s20, s30 и т.д.)
-    ["s10", "s20", "s30"].forEach(function(id) {
-       if (webix.$$(id)) webix.$$(id).destructor();
-    });
+//    ["s10", "s20", "s30"].forEach(function(id) {
+//       if (webix.$$(id)) webix.$$(id).destructor();
+//    });
 
     // 3. Тотальная зачистка ВСЕХ объектов по списку ID
-    var ids = [];
-    for (var id in webix.ui.views) ids.push(id);
+//    var ids = [];
+//    for (var id in webix.ui.views) ids.push(id);
 
     // Удаляем жестко, игнорируя ошибки
-   ids.forEach(function(id) {
-        try {
-            if (webix.$$(id)) webix.$$(id).destructor();
-        } catch(e) {}
-    });
+//   ids.forEach(function(id) {
+//        try {
+//            if (webix.$$(id)) webix.$$(id).destructor();
+//        } catch(e) {}
+//    });
 
     // 4. ФИНАЛЬНЫЙ ХАК: если объекты всё еще в индексе, но не имеют DOM-узлов
     // Просто очищаем глобальный реестр Webix (только для отчаянных случаев)
@@ -330,11 +330,12 @@ function restartwebix() {
  //       webix.ui.views = {}; 
 //    }
 
-    console.log("Чистка завершена. Объектов:", Object.keys(webix.ui.views).length);
+//    console.log("Чистка завершена. Объектов:", Object.keys(webix.ui.views).length);
 
 
 
-//loadStudentById(lastId); 
+loadStudentById(lastId); 
+
 }
 // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
@@ -413,6 +414,26 @@ window.addEventListener("message", (event) => {
 
 		a=window.lastHtml;
 
+//		alert(a);
+
+ if ( a.includes(m1) && a.includes(m2)	) {	  
+				
+                b="["+ a.slice(a.indexOf(m1)+m1.length);
+//                c=b.slice(0,b.lastIndexOf(m2)-13)+"]";
+                c=b.slice(0,b.lastIndexOf(m3))+'"trainingsRequests": []}]';
+
+//alert(c.slice(-40));
+	 
+} else {
+
+//return alert("Запустите букмарклет на фоне раздела задач S10.run");
+ document.body.innerHTML = "<h2 style='color:red ; text-align: center ;'>Ошибка: Пожалуйста, перейдите на страницу студента S10.run в раздел Задачи</h2>";
+return ;
+}
+
+
+
+                d=JSON.parse(c);
 		
 		
 // =======================================================================================================================================================
@@ -453,9 +474,9 @@ upd_process();
 function upd_process() {
 // --------------------------------------------------------------------------------------------------------------------------
 
-function ttt2() {
-alert("ttt2");
-}
+
+alert("upd_process");
+
 
 
 }
@@ -497,26 +518,6 @@ function Valid_Student_dd(dd) {
 
 function main_process() {
 
-//		alert(a);
-
- if ( a.includes(m1) && a.includes(m2)	) {	  
-				
-                b="["+ a.slice(a.indexOf(m1)+m1.length);
-//                c=b.slice(0,b.lastIndexOf(m2)-13)+"]";
-                c=b.slice(0,b.lastIndexOf(m3))+'"trainingsRequests": []}]';
-
-//alert(c.slice(-40));
-	 
-} else {
-
-//return alert("Запустите букмарклет на фоне раздела задач S10.run");
- document.body.innerHTML = "<h2 style='color:red ; text-align: center ;'>Ошибка: Пожалуйста, перейдите на страницу студента S10.run в раздел Задачи</h2>";
-return ;
-}
-
-
-
-                d=JSON.parse(c);
 
 //document.getElementById('output').textContent = c.slice(0, 300) + "\n=================================================\n" + c.slice(-400);  
 
