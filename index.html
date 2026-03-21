@@ -514,20 +514,6 @@ function Valid_Student_dd(dd) {
 }
 
 
-
-
-
-
-function main_process() {
-
-
-//document.getElementById('output').textContent = c.slice(0, 300) + "\n=================================================\n" + c.slice(-400);  
-
-//document.getElementById('student').textContent = 'student:'  + '        ' + Valid_Student();
-//document.getElementById('trainer').textContent = 'trainer:'  + '        ' + Valid_Trainer();
-//document.getElementById('ffile').textContent = 'file:'       + '        ' + fff;
-//document.getElementById('inputfile').setAttribute("type", "hidden");
-
 function formatDate(date) {
     // Разделяет "2023-03-15" на ["2023", "03", "15"]
     const parts = date.split('-');
@@ -616,6 +602,20 @@ var tr = ['','легко','нормально','тяжело, но сделал'
     return t;
   }
 }
+
+
+
+
+function main_process() {
+
+
+//document.getElementById('output').textContent = c.slice(0, 300) + "\n=================================================\n" + c.slice(-400);  
+
+//document.getElementById('student').textContent = 'student:'  + '        ' + Valid_Student();
+//document.getElementById('trainer').textContent = 'trainer:'  + '        ' + Valid_Trainer();
+//document.getElementById('ffile').textContent = 'file:'       + '        ' + fff;
+//document.getElementById('inputfile').setAttribute("type", "hidden");
+
 
 n2 = d[0].studentTasksInfo.diaryTasks.length;
 n1 = n2-21;
