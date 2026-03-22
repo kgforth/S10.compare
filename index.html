@@ -1173,6 +1173,93 @@ function updateBarData(ind1, ind2, ind3) {
 }
 
 
+function updateChartData(ind1, ind2, ind3) {
+    var f1 = [];
+    
+    // Формируем данные сразу как массив объектов (не нужно мучаться со строкой и JSON.parse)
+    for(var i = 0; i < 24; i++){
+        var item = { m: slots[i] };
+        item.pace14 = (ind3 !== "") ? Valid_Slot(ind3, i, "") : null;
+        item.pace7  = (ind2 !== "") ? Valid_Slot(ind2, i, "") : null;
+        item.pace0  = (ind1 !== "") ? Valid_Slot(ind1, i, "") : null;
+        f1.push(item);
+    }
+
+    var chart = $$("gslot"); // используйте ID, который вы задали в конфиге
+    if (chart) {
+        // 1. Очищаем старые данные
+        chart.clearAll();
+        // 2. Загружаем новые. Webix заново применит 'scheme' (группировку) к ним.
+        chart.parse(f1);
+    }
+
+
+
+//console.log(f1);
+
+}
+
+function updateChartData2(ind1, ind2, ind3) {
+    var ff2 = [];
+
+ ee = Math.max(Valid_km(ind1,0),Valid_km(ind2,0),Valid_km(ind3,0));
+   
+    // Формируем данные сразу как массив объектов (не нужно мучаться со строкой и JSON.parse)
+    for(var i = 0; i < ee; i++){
+        var item = { km: (i+1) };
+        item.pace15 = (ind3 !== "") ? Valid_Pace(ind3, i, "") * -1 : null;
+        item.pace8  = (ind2 !== "") ? Valid_Pace(ind2, i, "") * -1 : null;
+        item.pace1  = (ind1 !== "") ? Valid_Pace(ind1, i, "") * -1 : null;
+        ff2.push(item);
+    }
+
+//console.log(ff2);
+
+    var chart = $$("gpace"); // используйте ID, который вы задали в конфиге
+    if (chart) {
+        // 1. Очищаем старые данные
+        chart.clearAll();
+        // 2. Загружаем новые. Webix заново применит 'scheme' (группировку) к ним.
+        chart.parse(ff2);
+    }
+
+//console.log(f2);
+}
+
+function updateTable1(ind1, ind2, ind3) {
+
+ $$("ddtable").clearAll();
+
+tbl = "" ;
+//if ( ind1 > 0 ) {
+//tbl = tbl + '{ "День":"' + formatDate(d[0].studentTasksInfo.diaryTasks[ind1].date) + '","Тип":"' + Valid_Ttype(ind1,"") +
+//      '","Сложность":"' + d[0].studentTasksInfo.diaryTasks[ind1].reportParameters.difficulty + '","Погода":"' + d[0].studentTasksInfo.diaryTasks[ind1].tracks[0].json.weather.temp_c +
+//      ' C","Обьем":"' +  d[0].studentTasksInfo.diaryTasks[ind1].kmCompleted + ' km","макс.пульс":"' + Valid_MaxHeart(ind1,"") +
+//	  '","GS":"' + Valid_gs(ind1,"") + 
+//	  '"},\n'
+
+//tbl = tbl + '{ "den":"' + reda + formatDate(d[0].studentTasksInfo.diaryTasks[ind1].date) + '","type":"' + Valid_Ttype(ind1,"") +
+//      '","dific":"' + Valid_trubl(ind1,"") + '","weather":"' + d[0].studentTasksInfo.diaryTasks[ind1].tracks[0].json.weather.temp_c +
+//      ' C","km":"' +  d[0].studentTasksInfo.diaryTasks[ind1].kmCompleted + ' km","mhrt":"' + Valid_MaxHeart(ind1,"") +
+//	  '","dgs":"' + Valid_gs(ind1,"") + 
+//	  '"},\n'
+
+ tbl = tbl + '{ "param":"тип тренировки","s1":"' + Valid_Ttype(ind1,"") + '","s2":"' + Valid_Ttype(ind2,"") + '","s3":"' + Valid_Ttype(ind3,"") + '"},\n';
+ tbl = tbl + '{ "param":"самооценка тренировки","s1":"' + Valid_trubl(ind1,"") + '","s2":"' + Valid_trubl(ind2,"") + '","s3":"' + Valid_trubl(ind3,"") + '"},\n';
+ tbl = tbl + '{ "param":"погода, С","s1":"' + Valid_C(ind1,"") + '","s2":"' + Valid_C(ind2,"") + '","s3":"' + Valid_C(ind3,"") + '"},\n';
+ tbl = tbl + '{ "param":"общая дистанция, км","s1":"' + Valid_kmm(ind1,"") + '","s2":"' + Valid_kmm(ind2,"") + '","s3":"' + Valid_kmm(ind3,"") + '"},\n';
+ tbl = tbl + '{ "param":"максимальный пульс","s1":"' + Valid_MaxHeart(ind1,"") + '","s2":"' + Valid_MaxHeart(ind2,"") + '","s3":"' + Valid_MaxHeart(ind3,"") + '"},\n';
+ tbl = tbl + '{ "param":"параметр GS","s1":"' + Valid_gs(ind1,"") + '","s2":"' + Valid_gs(ind2,"") + '","s3":"' + Valid_gs(ind3,"") + '"},\n';
+
+//}
+
+tbl = "[\n" + tbl.slice(0,tbl.length-2) + "\n]" ;	  
+
+
+ $$("ddtable").parse(tbl);
+
+}
+
 
 function main_process() {
 
@@ -1945,93 +2032,6 @@ tbl = "[\n" + tbl.slice(0,tbl.length-2) + "\n]" ;
 
 //console.log(tbl);
 
-
-function updateChartData(ind1, ind2, ind3) {
-    var f1 = [];
-    
-    // Формируем данные сразу как массив объектов (не нужно мучаться со строкой и JSON.parse)
-    for(var i = 0; i < 24; i++){
-        var item = { m: slots[i] };
-        item.pace14 = (ind3 !== "") ? Valid_Slot(ind3, i, "") : null;
-        item.pace7  = (ind2 !== "") ? Valid_Slot(ind2, i, "") : null;
-        item.pace0  = (ind1 !== "") ? Valid_Slot(ind1, i, "") : null;
-        f1.push(item);
-    }
-
-    var chart = $$("gslot"); // используйте ID, который вы задали в конфиге
-    if (chart) {
-        // 1. Очищаем старые данные
-        chart.clearAll();
-        // 2. Загружаем новые. Webix заново применит 'scheme' (группировку) к ним.
-        chart.parse(f1);
-    }
-
-
-
-//console.log(f1);
-
-}
-
-function updateChartData2(ind1, ind2, ind3) {
-    var ff2 = [];
-
- ee = Math.max(Valid_km(ind1,0),Valid_km(ind2,0),Valid_km(ind3,0));
-   
-    // Формируем данные сразу как массив объектов (не нужно мучаться со строкой и JSON.parse)
-    for(var i = 0; i < ee; i++){
-        var item = { km: (i+1) };
-        item.pace15 = (ind3 !== "") ? Valid_Pace(ind3, i, "") * -1 : null;
-        item.pace8  = (ind2 !== "") ? Valid_Pace(ind2, i, "") * -1 : null;
-        item.pace1  = (ind1 !== "") ? Valid_Pace(ind1, i, "") * -1 : null;
-        ff2.push(item);
-    }
-
-//console.log(ff2);
-
-    var chart = $$("gpace"); // используйте ID, который вы задали в конфиге
-    if (chart) {
-        // 1. Очищаем старые данные
-        chart.clearAll();
-        // 2. Загружаем новые. Webix заново применит 'scheme' (группировку) к ним.
-        chart.parse(ff2);
-    }
-
-//console.log(f2);
-}
-
-function updateTable1(ind1, ind2, ind3) {
-
- $$("ddtable").clearAll();
-
-tbl = "" ;
-//if ( ind1 > 0 ) {
-//tbl = tbl + '{ "День":"' + formatDate(d[0].studentTasksInfo.diaryTasks[ind1].date) + '","Тип":"' + Valid_Ttype(ind1,"") +
-//      '","Сложность":"' + d[0].studentTasksInfo.diaryTasks[ind1].reportParameters.difficulty + '","Погода":"' + d[0].studentTasksInfo.diaryTasks[ind1].tracks[0].json.weather.temp_c +
-//      ' C","Обьем":"' +  d[0].studentTasksInfo.diaryTasks[ind1].kmCompleted + ' km","макс.пульс":"' + Valid_MaxHeart(ind1,"") +
-//	  '","GS":"' + Valid_gs(ind1,"") + 
-//	  '"},\n'
-
-//tbl = tbl + '{ "den":"' + reda + formatDate(d[0].studentTasksInfo.diaryTasks[ind1].date) + '","type":"' + Valid_Ttype(ind1,"") +
-//      '","dific":"' + Valid_trubl(ind1,"") + '","weather":"' + d[0].studentTasksInfo.diaryTasks[ind1].tracks[0].json.weather.temp_c +
-//      ' C","km":"' +  d[0].studentTasksInfo.diaryTasks[ind1].kmCompleted + ' km","mhrt":"' + Valid_MaxHeart(ind1,"") +
-//	  '","dgs":"' + Valid_gs(ind1,"") + 
-//	  '"},\n'
-
- tbl = tbl + '{ "param":"тип тренировки","s1":"' + Valid_Ttype(ind1,"") + '","s2":"' + Valid_Ttype(ind2,"") + '","s3":"' + Valid_Ttype(ind3,"") + '"},\n';
- tbl = tbl + '{ "param":"самооценка тренировки","s1":"' + Valid_trubl(ind1,"") + '","s2":"' + Valid_trubl(ind2,"") + '","s3":"' + Valid_trubl(ind3,"") + '"},\n';
- tbl = tbl + '{ "param":"погода, С","s1":"' + Valid_C(ind1,"") + '","s2":"' + Valid_C(ind2,"") + '","s3":"' + Valid_C(ind3,"") + '"},\n';
- tbl = tbl + '{ "param":"общая дистанция, км","s1":"' + Valid_kmm(ind1,"") + '","s2":"' + Valid_kmm(ind2,"") + '","s3":"' + Valid_kmm(ind3,"") + '"},\n';
- tbl = tbl + '{ "param":"максимальный пульс","s1":"' + Valid_MaxHeart(ind1,"") + '","s2":"' + Valid_MaxHeart(ind2,"") + '","s3":"' + Valid_MaxHeart(ind3,"") + '"},\n';
- tbl = tbl + '{ "param":"параметр GS","s1":"' + Valid_gs(ind1,"") + '","s2":"' + Valid_gs(ind2,"") + '","s3":"' + Valid_gs(ind3,"") + '"},\n';
-
-//}
-
-tbl = "[\n" + tbl.slice(0,tbl.length-2) + "\n]" ;	  
-
-
- $$("ddtable").parse(tbl);
-
-}
 
 
   $$("ddtable").clearAll();
