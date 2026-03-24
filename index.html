@@ -94,7 +94,7 @@ function extractId() {
   if (match && match[1]) {
     var resultId = match[1]; // Это наша переменная с номером
     webix.message({ type: "debug", text: "Извлечен ID: " + resultId });
-    console.log("Найденный ID:", resultId);
+//    console.log("Найденный ID:", resultId);
     
 	lastId = resultId;
 	
@@ -188,7 +188,7 @@ function addItemEx(inputValue) {
     // 5. Опционально: сразу выбираем добавленное значение в поле поиска
     $$(searchId).setValue(text);
     
-    webix.message("Добавлено извне: " + text);
+    webix.message("Добавлено: " + text);
     return newId; // возвращаем ID новой записи
   } else {
     // Если уже есть, просто выбираем этот элемент
@@ -216,7 +216,7 @@ const overlay = document.getElementById('loader-overlay');
 function showLoader() {
     loader.style.display = 'block';
     overlay.style.display = 'block';
-	console.log("ЛОАДЕР ДОЛЖЕН ПОКАЗАТЬСЯ");
+//	console.log("ЛОАДЕР ДОЛЖЕН ПОКАЗАТЬСЯ");
 }
 
 function hideLoader() {
@@ -349,7 +349,7 @@ function loadStudentById(studentId) {
     const targetUrl = "https://s10.run/student?" + studentId + "&v2=1#/";
     if (window.opener) {
 	    showLoader(); // ВКЛЮЧАЕМ ЛОАДЕР
-        console.log("Запрос данных студента:", studentId);
+//        console.log("Запрос данных студента:", studentId);
         window.opener.postMessage({ type: "FETCH_SPECIFIC_URL", url: targetUrl }, "*");
     } else {
         alert("Связь с родительским окном потеряна!");
@@ -375,7 +375,7 @@ window.addEventListener("message", (event) => {
    // 1. Если букмарклет просит загрузить конкретный URL
     if (data.type === "FETCH_SPECIFIC_URL" || data.type === "CHECK_URL") {
         showLoader(); // ВКЛЮЧАЕМ ЗДЕСЬ, это универсальная точка входа
-        console.log("Начинаем загрузку...");
+//        console.log("Начинаем загрузку...");
         
         // Отвечаем букмарклету, чтобы он начал fetch, если это был CHECK_URL
         if (data.type === "CHECK_URL") {
@@ -404,8 +404,8 @@ window.addEventListener("message", (event) => {
     if (data.type === "DATA_PAYLOAD") {
 	    hideLoader(); // ВЫКЛЮЧАЕМ ЛОАДЕР
         window.lastHtml = data.text;
-        console.log("Данные получены для URL:", data.url);
-        console.log("Размер данных:", data.text.length, "символов");
+//        console.log("Данные получены для URL:", data.url);
+//        console.log("Размер данных:", data.text.length, "символов");
         
 //        console.log("====================================");
 //        console.log(window.lastHtml);
@@ -1925,13 +1925,13 @@ dcol = {
 
 btn_sync = { 
           view: "button", type: "icon", icon: "wxi-sync", 
-          tooltip: "Извлечь номер из строки", 
+          tooltip: "загрузить", 
           width: 45, height: 38, css: "webix_primary", 
           click: extractId
         };
 
 fld_search = { 
-          view: "search", id: searchId, placeholder: "Имя #000...#",
+          view: "search", id: searchId, placeholder: "#1000...# Имя Атлета",
           gravity: 3, 
           suggest: { body: { id: listId, data: [] } },
           on: { 
@@ -1950,7 +1950,7 @@ fld_search = {
 btn_del = { 
           view: "button", type: "icon", icon: "wxi-trash", 
           id: trashBtnId, width: 45, height: 38, css: "webix_danger", 
-          tooltip: "Клик — одно. Ctrl+Клик — всё.",
+          tooltip: "Клик — удалить одну запись. Ctrl+Клик — удалить всё.",
           click: function(id, e) {
             if (e.ctrlKey) clearAllData(); 
             else removeItem();
