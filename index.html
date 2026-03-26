@@ -339,7 +339,15 @@ main_process();
 
 } else {
 
+
+
+
 upd_process();
+
+//upd_process(d1);
+//upd_process(d2);
+//upd_process(d3);
+
 
 }
 
@@ -372,23 +380,21 @@ function upd_process() {
 n2 = d[0].studentTasksInfo.diaryTasks.length;
 n1 = n2-21;
 
-c2 = "</br>" ;
+//c2 = "</br>" ;
+//
+//for(var i = n1; i < n2 ; i++){
+//
+//c0 = Valid_Comment(i,"")
+//
+//  c0 = c0.replace(/"/g, "'");
+//  c0 = c0.replace(/(\r\n|\n|\r)/gm, ""); 
+//  c0 = c0.replace(/<[^>]*>/g, '');
+//  c2 = c2 + "<span style='color:blue'>--- " + d[0].studentTasksInfo.diaryTasks[i].date + " [ " + Valid_Ttype(i,"") + " ] " + Valid_Job(i,"") + "</span></br>" + c0 + "</br>\n"
+//}
 
-for(var i = n1; i < n2 ; i++){
-
-c0 = Valid_Comment(i,"")
-
-  c0 = c0.replace(/"/g, "'");
-  c0 = c0.replace(/(\r\n|\n|\r)/gm, ""); 
-  c0 = c0.replace(/<[^>]*>/g, '');
-  c2 = c2 + "<span style='color:blue'>--- " + d[0].studentTasksInfo.diaryTasks[i].date + " [ " + Valid_Ttype(i,"") + " ] " + Valid_Job(i,"") + "</span></br>" + c0 + "</br>\n"
-}
-
-c2 = c2.slice(0,c2.length-2);
-
- // new comment
- 
- $$("cmnt1").setHTML(c2); 
+//c2 = c2.slice(0,c2.length-2);
+// new comment
+// $$("cmnt1").setHTML(c2); 
 
  
 
@@ -1184,19 +1190,19 @@ function main_process() {
 n2 = d[0].studentTasksInfo.diaryTasks.length;
 n1 = n2-21;
 
-c2 = "</br>" ;
+//c2 = "</br>" ;
+//
+//for(var i = n1; i < n2 ; i++){
+//
+//c0 = Valid_Comment(i,"")
+//
+//  c0 = c0.replace(/"/g, "'");
+//  c0 = c0.replace(/(\r\n|\n|\r)/gm, ""); 
+//  c0 = c0.replace(/<[^>]*>/g, '');
+//  c2 = c2 + "<span style='color:blue'>--- " + d[0].studentTasksInfo.diaryTasks[i].date + " [ " + Valid_Ttype(i,"") + " ] " + Valid_Job(i,"") + "</span></br>" + c0 + "</br>\n"
+//}
 
-for(var i = n1; i < n2 ; i++){
-
-c0 = Valid_Comment(i,"")
-
-  c0 = c0.replace(/"/g, "'");
-  c0 = c0.replace(/(\r\n|\n|\r)/gm, ""); 
-  c0 = c0.replace(/<[^>]*>/g, '');
-  c2 = c2 + "<span style='color:blue'>--- " + d[0].studentTasksInfo.diaryTasks[i].date + " [ " + Valid_Ttype(i,"") + " ] " + Valid_Job(i,"") + "</span></br>" + c0 + "</br>\n"
-}
-
-c2 = c2.slice(0,c2.length-2);
+//c2 = c2.slice(0,c2.length-2);
 
 //document.getElementById('output').textContent = c2; 
 
