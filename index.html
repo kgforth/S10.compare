@@ -339,11 +339,24 @@ main_process();
 
 } else {
 
+switch dx {
+  case 0:
+   upd_process(d);
+    break;
+  case 1:
+   upd_process(d1);
+    break;
+  case 2:
+   upd_process(d2);
+    break;
+  case 3:
+   upd_process(d3);
+    break;
+  default:
+   upd_process(d);
+}
 
-
-
-upd_process();
-
+//upd_process();
 //upd_process(d1);
 //upd_process(d2);
 //upd_process(d3);
@@ -371,7 +384,7 @@ upd_process();
 });
 
 
-function upd_process() {
+function upd_process(d) {
 // --------------------------------------------------------------------------------------------------------------------------
 
 
@@ -403,7 +416,7 @@ n1 = n2-21;
 bldate = "";
 
 for(var i = n1; i < n2 ; i++){
-if ( Valid_km(i,0) == 0 ) {
+if ( Valid_km(d,i,0) == 0 ) {
 bldate = bldate + d[0].studentTasksInfo.diaryTasks[i].date + ","
 }
 }
@@ -411,13 +424,13 @@ bldate = bldate + d[0].studentTasksInfo.diaryTasks[i].date + ","
 //console.log(bldate);
 
 
-e1 = Math.max(Valid_km(n1+0,0),Valid_km(n1+7,0),Valid_km(n1+14,0));
-e2 = Math.max(Valid_km(n1+1,0),Valid_km(n1+8,0),Valid_km(n1+15,0));
-e3 = Math.max(Valid_km(n1+2,0),Valid_km(n1+9,0),Valid_km(n1+16,0));
-e4 = Math.max(Valid_km(n1+3,0),Valid_km(n1+10,0),Valid_km(n1+17,0));
-e5 = Math.max(Valid_km(n1+4,0),Valid_km(n1+11,0),Valid_km(n1+18,0));
-e6 = Math.max(Valid_km(n1+5,0),Valid_km(n1+12,0),Valid_km(n1+19,0));
-e7 = Math.max(Valid_km(n1+6,0),Valid_km(n1+13,0),Valid_km(n1+20,0));
+e1 = Math.max(Valid_km(d,n1+0,0),Valid_km(d,n1+7,0),Valid_km(d,n1+14,0));
+e2 = Math.max(Valid_km(d,n1+1,0),Valid_km(d,n1+8,0),Valid_km(d,n1+15,0));
+e3 = Math.max(Valid_km(d,n1+2,0),Valid_km(d,n1+9,0),Valid_km(d,n1+16,0));
+e4 = Math.max(Valid_km(d,n1+3,0),Valid_km(d,n1+10,0),Valid_km(d,n1+17,0));
+e5 = Math.max(Valid_km(d,n1+4,0),Valid_km(d,n1+11,0),Valid_km(d,n1+18,0));
+e6 = Math.max(Valid_km(d,n1+5,0),Valid_km(d,n1+12,0),Valid_km(d,n1+19,0));
+e7 = Math.max(Valid_km(d,n1+6,0),Valid_km(d,n1+13,0),Valid_km(d,n1+20,0));
 
 
 
@@ -461,7 +474,7 @@ updateBarData(ind1, ind2, ind3);
 
 //1000008935
 
-function Valid_id() {
+function Valid_id(d) {
   try {
     return d[0].studentInfo.id;
   } catch {
@@ -471,7 +484,7 @@ function Valid_id() {
 
 
 
-function Valid_Student() {
+function Valid_Student(d) {
   try {
     t=d[0].studentInfo.firstName + " " + d[0].studentInfo.lastName;
     return t.trim();
@@ -509,7 +522,7 @@ function formatDate(date) {
 
 
 
-function Valid_Trainer() {
+function Valid_Trainer(d) {
   try {
     t=d[0].trainerInfo.firstName + " " + d[0].trainerInfo.lastName;
     return t.trim();
@@ -591,7 +604,7 @@ var tr = ['','легко','нормально','тяжело, но сделал'
 
 
 
-function Valid_km(r,t) {
+function Valid_km(d,r,t) {
  try {   
 	if (d[0].studentTasksInfo.diaryTasks[r].kmCompleted == null) {
 	return t;
@@ -1160,7 +1173,7 @@ tbl = "" ;
 //      ' C","km":"' +  d[0].studentTasksInfo.diaryTasks[ind1].kmCompleted + ' km","mhrt":"' + Valid_MaxHeart(ind1,"") +
 //	  '","dgs":"' + Valid_gs(ind1,"") + 
 //	  '"},\n'
- tbl = tbl + '{ "param":"Атлет","s1":"' +  Valid_Atlet(d) + '","s2":"' +  Valid_Atlet(d) + '","s3":"' +  Valid_Atlet(d) + '"},\n';
+ tbl = tbl + '{ "param":"Атлет","s1":"' +  Valid_Atlet(d1) + '","s2":"' +  Valid_Atlet(d2) + '","s3":"' +  Valid_Atlet(d3) + '"},\n';
  tbl = tbl + '{ "param":"тип тренировки","s1":"' + Valid_Ttype(ind1,"") + '","s2":"' + Valid_Ttype(ind2,"") + '","s3":"' + Valid_Ttype(ind3,"") + '"},\n';
  tbl = tbl + '{ "param":"самооценка тренировки","s1":"' + Valid_trubl(ind1,"") + '","s2":"' + Valid_trubl(ind2,"") + '","s3":"' + Valid_trubl(ind3,"") + '"},\n';
  tbl = tbl + '{ "param":"погода, С","s1":"' + Valid_C(ind1,"") + '","s2":"' + Valid_C(ind2,"") + '","s3":"' + Valid_C(ind3,"") + '"},\n';
@@ -1224,7 +1237,7 @@ cmnt1= { id: "cmnt1",
 bldate = "";
 
 for(var i = n1; i < n2 ; i++){
-if ( Valid_km(i,0) == 0 ) {
+if ( Valid_km(d,i,0) == 0 ) {
 bldate = bldate + d[0].studentTasksInfo.diaryTasks[i].date + ","
 }
 }
@@ -1232,13 +1245,13 @@ bldate = bldate + d[0].studentTasksInfo.diaryTasks[i].date + ","
 //console.log(bldate);
 
 
-e1 = Math.max(Valid_km(n1+0,0),Valid_km(n1+7,0),Valid_km(n1+14,0));
-e2 = Math.max(Valid_km(n1+1,0),Valid_km(n1+8,0),Valid_km(n1+15,0));
-e3 = Math.max(Valid_km(n1+2,0),Valid_km(n1+9,0),Valid_km(n1+16,0));
-e4 = Math.max(Valid_km(n1+3,0),Valid_km(n1+10,0),Valid_km(n1+17,0));
-e5 = Math.max(Valid_km(n1+4,0),Valid_km(n1+11,0),Valid_km(n1+18,0));
-e6 = Math.max(Valid_km(n1+5,0),Valid_km(n1+12,0),Valid_km(n1+19,0));
-e7 = Math.max(Valid_km(n1+6,0),Valid_km(n1+13,0),Valid_km(n1+20,0));
+e1 = Math.max(Valid_km(d,n1+0,0),Valid_km(d,n1+7,0),Valid_km(d,n1+14,0));
+e2 = Math.max(Valid_km(d,n1+1,0),Valid_km(d,n1+8,0),Valid_km(d,n1+15,0));
+e3 = Math.max(Valid_km(d,n1+2,0),Valid_km(d,n1+9,0),Valid_km(d,n1+16,0));
+e4 = Math.max(Valid_km(d,n1+3,0),Valid_km(d,n1+10,0),Valid_km(d,n1+17,0));
+e5 = Math.max(Valid_km(d,n1+4,0),Valid_km(d,n1+11,0),Valid_km(d,n1+18,0));
+e6 = Math.max(Valid_km(d,n1+5,0),Valid_km(d,n1+12,0),Valid_km(d,n1+19,0));
+e7 = Math.max(Valid_km(d,n1+6,0),Valid_km(d,n1+13,0),Valid_km(d,n1+20,0));
 
 
 
@@ -1989,7 +2002,7 @@ tbl = "[\n" + tbl.slice(0,tbl.length-2) + "\n]" ;
 $$(listId).parse(webix.storage.local.get("my_final_data"));
 //================================
 
-addItemEx("#" + Valid_id() + "#  " + Valid_Student() + "  Тренер: " + Valid_Trainer());
+addItemEx("#" + Valid_id(d) + "#  " + Valid_Student(d) + "  Тренер: " + Valid_Trainer(d));
 
 
 //--------------------------------------------------------------------------------------------------------------------------------------
