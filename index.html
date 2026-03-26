@@ -86,7 +86,7 @@ webix.html.addStyle(`
 `);
 
 // ФУНКЦИЯ ИЗВЛЕЧЕНИЯ НОМЕРА
-function extractId() {
+function extractId(dx) {
   var text = $$(searchId).getValue();
   if (!text) return webix.message("Поле пустое");
 
@@ -100,7 +100,7 @@ function extractId() {
     
 	lastId = resultId;
 	
-    restartwebix();
+    loadStudentById(lastId,dx);
 	
     // Здесь можно вызвать дальнейшую логику с этим resultId
   } else {
@@ -206,6 +206,9 @@ var a = "";
 var b ;
 var c ;
 var d ;
+var d1 ;
+var d2 ;
+var d3 ;
 var m1 = "mountPage('studentTasks',";
 var m2 = "<!-- Meta Pixel Code -->" ;
 var m3 = '"trainingsRequests":';	
@@ -347,7 +350,7 @@ loadStudentById(lastId);
  * ФУНКЦИЯ ДЛЯ ВЫЗОВА ИЗ КОНСОЛИ ИЛИ ИНТЕРФЕЙСА ПАРСЕРА
  * Запрашивает данные любого студента по ID
  */
-function loadStudentById(studentId) {
+function loadStudentById(studentId,dx) {
     const targetUrl = "https://s10.run/student?" + studentId + "&v2=1#/";
     if (window.opener) {
 	    showLoader(); // ВКЛЮЧАЕМ ЛОАДЕР
@@ -439,6 +442,7 @@ return ;
 
                 d=JSON.parse(c);
 		
+		dx = d;
 		
 // =======================================================================================================================================================
 // =======================================================================================================================================================
@@ -1862,15 +1866,15 @@ dtable = {
       // Если нужно выполнить действие только для конкретного столбца:
       if (id.column === "s1") {
         webix.message("Действие для столбца 's1'");
-		extractId();
+		extractId(d1);
       }
       if (id.column === "s2") {
         webix.message("Действие для столбца 's2'");
-		extractId();
+		extractId(d2);
       }
       if (id.column === "s3") {
         webix.message("Действие для столбца 's3'");
-		extractId();
+		extractId(d3);
       }
     }
   },
@@ -1954,12 +1958,12 @@ dcol = {
 };
 
 
-btn_sync = { 
-          view: "button", type: "icon", icon: "wxi-sync", 
-          tooltip: "загрузить", 
-          width: 45, height: 38, css: "webix_primary", 
-          click: extractId
-        };
+//btn_sync = { 
+//          view: "button", type: "icon", icon: "wxi-sync", 
+//          tooltip: "загрузить", 
+//          width: 45, height: 38, css: "webix_primary", 
+//          click: extractId
+//        };
 
 fld_search = { 
           view: "search", id: searchId, placeholder: "#1000...# Имя Атлета",
