@@ -86,7 +86,7 @@ webix.html.addStyle(`
 `);
 
 // ФУНКЦИЯ ИЗВЛЕЧЕНИЯ НОМЕРА
-function extractId(dx) {
+function extractId() {
   var text = $$(searchId).getValue();
   if (!text) return webix.message("Поле пустое");
 
@@ -100,7 +100,7 @@ function extractId(dx) {
     
 	lastId = resultId;
 	
-    loadStudentById(lastId,dx);
+    loadStudentById(lastId);
 	
     // Здесь можно вызвать дальнейшую логику с этим resultId
   } else {
@@ -209,6 +209,7 @@ var d ;
 var d1 ;
 var d2 ;
 var d3 ;
+var dx ;
 var m1 = "mountPage('studentTasks',";
 var m2 = "<!-- Meta Pixel Code -->" ;
 var m3 = '"trainingsRequests":';	
@@ -229,128 +230,12 @@ function hideLoader() {
     overlay.style.display = 'none';
 }
 
-// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-function restartwebix() {
-//webix.ui.each(function(view){
-//    if (view && view.destructor) view.destructor();
-//});
-
-// Сначала уничтожаем все окна (они живут отдельно от основного лейаута)
-//var views = webix.ui.views;
-//for (var id in views) {
-//    if (views[id] && views[id].destructor) {
-//        views[id].destructor();
-//    }
-//}
-
-// 1. Собираем все ID живых объектов в отдельный массив
-//var allIds = [];
-//for (var id in webix.ui.views) {
-//    allIds.push(id);
-//}
-
-// 2. Удаляем их по одному, проверяя существование
-//allIds.forEach(function(id){
-//    var view = webix.$$(id);
-//    if (view && view.destructor) {
-//        view.destructor();
-//    }
-//});
-
-
-    // 1. Получаем все корневые (верхние) элементы
-//    var roots = webix.ui.getViews(); 
-    
-    // 2. Уничтожаем их (вместе с ними умрут все вложенные элементы)
-//    for (var i = roots.length - 1; i >= 0; i--) {
-//        if (roots[i] && roots[i].destructor) {
-//            roots[i].destructor();
-//        }
-//    }
-
-    // 3. Добиваем "плавающие" окна и попапы, которые могли выжить
-//    var all = [];
-//    for (var id in webix.ui.views) all.push(id);
-    
-//    all.forEach(function(id) {
-//        if (webix.$$(id) && webix.$$(id).destructor) {
-//            webix.$$(id).destructor();
-//        }
-//    });
-
-//    console.log("Осталось объектов:", Object.keys(webix.ui.views).length);
-
-
-   // В Webix все вьюхи лежат в объекте webix.ui.views
-//    var views = webix.ui.views;
-//    var ids = [];
-
-    // Сначала просто собираем ID, чтобы не ломать цикл при удалении
-//    for (var id in views) {
-//        if (views.hasOwnProperty(id)) ids.push(id);
-//    }
-
-    // Удаляем объекты В ОБРАТНОМ ПОРЯДКЕ (от дочерних к родителям)
-//    for (var i = ids.length - 1; i >= 0; i--) {
-//        var v = webix.$$(ids[i]);
-//        if (v && v.destructor) {
-//            try {
-//                v.destructor();
-//            } catch(e) {
-//                console.warn("Не удалось удалить:", ids[i]);
-//            }
-//        }
-//    }
-    
-    // Проверка через встроенный счетчик Webix
-//    var count = 0;
-//    for (var id in webix.ui.views) count++;
-//    console.log("Осталось живых объектов:", count);
-
-
-//     1. Сначала явно удаляем график, если он еще жив
-//    if (webix.$$("gpace")) {
-        // Очищаем данные и серии перед деструктором
-//       webix.$$("gpace").clearAll(); 
-//        webix.$$("gpace").destructor();
-//  }
-
-    // 2. Добиваем выжившие серии (s20, s30 и т.д.)
-//    ["s10", "s20", "s30"].forEach(function(id) {
-//       if (webix.$$(id)) webix.$$(id).destructor();
-//    });
-
-    // 3. Тотальная зачистка ВСЕХ объектов по списку ID
-//    var ids = [];
-//    for (var id in webix.ui.views) ids.push(id);
-
-    // Удаляем жестко, игнорируя ошибки
-//   ids.forEach(function(id) {
-//        try {
-//            if (webix.$$(id)) webix.$$(id).destructor();
-//        } catch(e) {}
-//    });
-
-    // 4. ФИНАЛЬНЫЙ ХАК: если объекты всё еще в индексе, но не имеют DOM-узлов
-    // Просто очищаем глобальный реестр Webix (только для отчаянных случаев)
- //   if (Object.keys(webix.ui.views).length > 0) {
- //       webix.ui.views = {}; 
-//    }
-
-//    console.log("Чистка завершена. Объектов:", Object.keys(webix.ui.views).length);
-
-
-
-loadStudentById(lastId); 
-
-}
-// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 /**
  * ФУНКЦИЯ ДЛЯ ВЫЗОВА ИЗ КОНСОЛИ ИЛИ ИНТЕРФЕЙСА ПАРСЕРА
  * Запрашивает данные любого студента по ID
  */
-function loadStudentById(studentId,dx) {
+function loadStudentById(studentId) {
     const targetUrl = "https://s10.run/student?" + studentId + "&v2=1#/";
     if (window.opener) {
 	    showLoader(); // ВКЛЮЧАЕМ ЛОАДЕР
@@ -442,7 +327,6 @@ return ;
 
                 d=JSON.parse(c);
 		
-		dx = d;
 		
 // =======================================================================================================================================================
 // =======================================================================================================================================================
@@ -1866,15 +1750,18 @@ dtable = {
       // Если нужно выполнить действие только для конкретного столбца:
       if (id.column === "s1") {
         webix.message("Действие для столбца 's1'");
-		extractId(d1);
+		dx=1;
+		extractId();
       }
       if (id.column === "s2") {
         webix.message("Действие для столбца 's2'");
-		extractId(d2);
+		dx=2;
+		extractId();
       }
       if (id.column === "s3") {
         webix.message("Действие для столбца 's3'");
-		extractId(d3);
+		dx=3;
+		extractId();
       }
     }
   },
