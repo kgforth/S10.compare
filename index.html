@@ -1843,6 +1843,22 @@ dtable = {
     { id: "s2", header: "<span style='color:#00ccff'><b>&nbsp;&nbsp;------o------&nbsp;&nbsp;&nbsp;&#10227;</b></span>", width: 168 },
     { id: "s3", header: "<span style='color:#e9df40'><b>&nbsp;&nbsp;------o------&nbsp;&nbsp;&nbsp;&#10227;</b></span>", width: 154 }
   ],
+    on: {
+    onHeaderClick: function(id, e, target) {
+      // id.column — это ID колонки, по которой кликнули
+      //   webix.message("Вы кликнули по заголовку: " + id.column);    
+      // Если нужно выполнить действие только для конкретного столбца:
+      if (id.column === "s1") {
+        webix.message("Действие для столбца 's1'");
+      }
+      if (id.column === "s2") {
+        webix.message("Действие для столбца 's2'");
+      }
+      if (id.column === "s3") {
+        webix.message("Действие для столбца 's3'");
+      }
+    }
+  }
 //  autoheight: true,
   height: 200,
   autowidth: true,
