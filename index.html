@@ -210,6 +210,7 @@ var d1 ;
 var d2 ;
 var d3 ;
 var dx ;
+const bldt = Array(3).fill("");
 var m1 = "mountPage('studentTasks',";
 var m2 = "<!-- Meta Pixel Code -->" ;
 var m3 = '"trainingsRequests":';	
@@ -389,16 +390,30 @@ switch (dx) {
 });
 
 
-function upd_process(d) {
-// --------------------------------------------------------------------------------------------------------------------------
-
-
-//alert("upd_process");
+function upd_bldt(d,dd) {
 
 n2 = d[0].studentTasksInfo.diaryTasks.length;
 n1 = n2-21;
 
+bldt[dd] = "";
 
+for(var i = n1; i < n2 ; i++){
+if ( Valid_km(d,i,0) == 0 ) {
+bldt[dd] = bldt[dd] + d[0].studentTasksInfo.diaryTasks[i].date + ","
+}
+}
+
+
+}
+
+function upd_process(d) {
+// --------------------------------------------------------------------------------------------------------------------------
+
+upd_bldt(d,dx-1);
+
+//alert("upd_process");
+//n2 = d[0].studentTasksInfo.diaryTasks.length;
+//n1 = n2-21;
 
 //c2 = "</br>" ;
 //
@@ -416,15 +431,12 @@ n1 = n2-21;
 // new comment
 // $$("cmnt1").setHTML(c2); 
 
- 
-
-bldate = "";
-
-for(var i = n1; i < n2 ; i++){
-if ( Valid_km(d,i,0) == 0 ) {
-bldate = bldate + d[0].studentTasksInfo.diaryTasks[i].date + ","
-}
-}
+//bldate = "";
+//for(var i = n1; i < n2 ; i++){
+//if ( Valid_km(d,i,0) == 0 ) {
+//bldate = bldate + d[0].studentTasksInfo.diaryTasks[i].date + ","
+//}
+//}
 
 //console.log(bldate);
 
@@ -1743,7 +1755,7 @@ calend1 = {
           height:260,
           icons:true,
 		      blockDates:function(date){
-      if(bldate.includes(date.toLocaleDateString('en-CA')))
+      if(bldt[0].includes(date.toLocaleDateString('en-CA')))
         return true;
   	},
           maxDate: date1,
@@ -1766,7 +1778,7 @@ calend2 = {
           height:260,
           icons:true,
 		      blockDates:function(date){
-      if(bldate.includes(date.toLocaleDateString('en-CA')))
+      if(bldt[1].includes(date.toLocaleDateString('en-CA')))
         return true;
   	},
           maxDate: date1,
@@ -1787,7 +1799,7 @@ calend3 = {
           height:260,
           icons:true,
 		      blockDates:function(date){
-      if(bldate.includes(date.toLocaleDateString('en-CA')))
+      if(bldt[2].includes(date.toLocaleDateString('en-CA')))
         return true;
   	},
           maxDate: date1,
