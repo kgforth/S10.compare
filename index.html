@@ -461,9 +461,11 @@ ind3 = 0;
 ee = 0;
 
 
-$$('cal1').setValue(new Date());
-$$('cal2').setValue(null);
-$$('cal3').setValue(null);
+if (dx == 1) { $$('cal1').setValue(new Date())}
+if (dx == 2) { $$('cal2').setValue(new Date())}
+if (dx == 3) { $$('cal3').setValue(new Date())}
+//$$('cal2').setValue(null);
+//$$('cal3').setValue(null);
 
 setind();
 
@@ -534,7 +536,7 @@ function Valid_Trainer(d) {
   }
 }
 
-function Valid_Comment(r,t) {
+function Valid_Comment(d,r,t) {
   try {
     return d[0].studentTasksInfo.diaryTasks[r].reportParameters.comment;
   } catch {
@@ -543,7 +545,7 @@ function Valid_Comment(r,t) {
 }
 
 
-function Valid_Ttype(r,t) {
+function Valid_Ttype(d,r,t) {
   try {
 
 if ( r === 0 ) return t ; 
@@ -584,7 +586,7 @@ switch (d[0].studentTasksInfo.diaryTasks[r].type) {
   }
 }
 
-function Valid_Job(r,t) {
+function Valid_Job(d,r,t) {
   try {
     return d[0].studentTasksInfo.diaryTasks[r].comment;
   } catch {
@@ -595,7 +597,7 @@ function Valid_Job(r,t) {
 
 
 
-function Valid_trubl(r,t) {
+function Valid_trubl(d,r,t) {
   try {
 
 var tr = ['','легко','нормально','тяжело, но сделал','тяжело и не сделал','травма'];
@@ -622,7 +624,7 @@ else
   }
 }
 
-function Valid_kmm(r,t) {
+function Valid_kmm(d,r,t) {
 	var tt = "";
  try {   
 	if (d[0].studentTasksInfo.diaryTasks[r].kmCompleted == null) {
@@ -643,7 +645,7 @@ tt = tt + d[0].studentTasksInfo.diaryTasks[r].tracks.length;
 
 		
 		
-function Valid_C(r,t) {
+function Valid_C(d,r,t) {
   var tt = "" ;
 
 	try {
@@ -659,9 +661,12 @@ function Valid_C(r,t) {
 
 function setind() {
 
+k2 = d1[0].studentTasksInfo.diaryTasks.length;
+k1 = k2-21;
+
 if ( $$('cal1').getValue() !== null ) {
-for(var i = n1; i < n2 ; i++){
- if ( $$('cal1').getValue().toLocaleDateString('en-CA') == d[0].studentTasksInfo.diaryTasks[i].date ) {
+for(var i = k1; i < k2 ; i++){
+ if ( $$('cal1').getValue().toLocaleDateString('en-CA') == d1[0].studentTasksInfo.diaryTasks[i].date ) {
   ind1 = i;
   }
  }
@@ -669,9 +674,12 @@ for(var i = n1; i < n2 ; i++){
 ind1 = "";
 }
 
+k2 = d2[0].studentTasksInfo.diaryTasks.length;
+k1 = k2-21;
+
 if ( $$('cal2').getValue() !== null ) {
-for(var i = n1; i < n2 ; i++){
- if ( $$('cal2').getValue().toLocaleDateString('en-CA') == d[0].studentTasksInfo.diaryTasks[i].date ) {
+for(var i = k1; i < k2 ; i++){
+ if ( $$('cal2').getValue().toLocaleDateString('en-CA') == d2[0].studentTasksInfo.diaryTasks[i].date ) {
   ind2 = i;
   }
  }
@@ -679,10 +687,12 @@ for(var i = n1; i < n2 ; i++){
 ind2 = "";
 }
 
+k2 = d3[0].studentTasksInfo.diaryTasks.length;
+k1 = k2-21;
 
 if ( $$('cal3').getValue() !== null ) {
-for(var i = n1; i < n2 ; i++){
- if ( $$('cal3').getValue().toLocaleDateString('en-CA') == d[0].studentTasksInfo.diaryTasks[i].date ) {
+for(var i = k1; i < k2 ; i++){
+ if ( $$('cal3').getValue().toLocaleDateString('en-CA') == d3[0].studentTasksInfo.diaryTasks[i].date ) {
   ind3 = i;
   }
  }
@@ -697,7 +707,7 @@ ind3 = "";
 
 
 
-function Valid_Pace(r,s,t) {
+function Valid_Pace(d,r,s,t) {
   try {
 const tmp = [];
 for(var i=0; i < d[0].studentTasksInfo.diaryTasks[r].tracks.length ; i++){
@@ -740,7 +750,7 @@ for(var i=0; i < d[0].studentTasksInfo.diaryTasks[r].tracks.length ; i++){
 let slots = ["2:50","3:00","3:10","3:20","3:30","3:40","3:50","4:00","4:10","4:20","4:30","4:40","4:50","5:00","5:10","5:20","5:30","5:40","5:50","6:00","6:10","6:20","6:30","6:40"];
 
 
-function Valid_Slot(r,s,t) {
+function Valid_Slot(d,r,s,t) {
  
  try {
 
@@ -786,7 +796,7 @@ for(var i=0; i < d[0].studentTasksInfo.diaryTasks[r].tracks.length ; i++){
 // Object.keys(d[0].studentTasksInfo.diaryTasks[5].tracks[0].json.pacebuckets)[0] первый ключ 3:50
 
 
-function Valid_MaxHeart(r,t) {
+function Valid_MaxHeart(d,r,t) {
   try {
 var tmp = 0;
 var tt = 0;
@@ -830,7 +840,7 @@ return t;
 }
 
 
-function Valid_AvgHeart(r,t) {
+function Valid_AvgHeart(d,r,t) {
   try {
 var tmp = 0;
 var tt = 0;
@@ -868,7 +878,7 @@ if ( tt === undefined) {
 
 
 //============================
-function Valid_M200(r,t) {
+function Valid_M200(d,r,t) {
   try {
 var tmp = d[0].studentTasksInfo.diaryTasks[r].tracks[0].json.fastest[200].pace;
 
@@ -887,7 +897,7 @@ for(var i=0; i < d[0].studentTasksInfo.diaryTasks[r].tracks.length ; i++){
   }
 }
 
-function Valid_M1000(r,t) {
+function Valid_M1000(d,r,t) {
   try {
 var tmp = d[0].studentTasksInfo.diaryTasks[r].tracks[0].json.fastest[1000].pace;
 
@@ -906,7 +916,7 @@ for(var i=0; i < d[0].studentTasksInfo.diaryTasks[r].tracks.length ; i++){
   }
 }
 
-function Valid_M5000(r,t) {
+function Valid_M5000(d,r,t) {
   try {
 var tmp = d[0].studentTasksInfo.diaryTasks[r].tracks[0].json.fastest[5000].pace;
 
@@ -925,7 +935,7 @@ for(var i=0; i < d[0].studentTasksInfo.diaryTasks[r].tracks.length ; i++){
   }
 }
 
-function Valid_M10000(r,t) {
+function Valid_M10000(d,r,t) {
   try {
 var tmp = d[0].studentTasksInfo.diaryTasks[r].tracks[0].json.fastest[10000].pace;
 
@@ -945,7 +955,7 @@ for(var i=0; i < d[0].studentTasksInfo.diaryTasks[r].tracks.length ; i++){
   }
 }
 
-function Valid_M21097(r,t) {
+function Valid_M21097(d,r,t) {
   try {
 var tmp = d[0].studentTasksInfo.diaryTasks[r].tracks[0].json.fastest[21097].pace;
 
@@ -969,7 +979,7 @@ for(var i=0; i < d[0].studentTasksInfo.diaryTasks[r].tracks.length ; i++){
 
 //=============================
 
-function Valid_impulse(r,t) {
+function Valid_impulse(d,r,t) {
   try {
 var tmp = 0;
 
@@ -983,7 +993,7 @@ for(var i=0; i < d[0].studentTasksInfo.diaryTasks[r].tracks.length ; i++){
 }
 
 
-function Valid_gs(r,t) {
+function Valid_gs(d,r,t) {
   try {
 var tmp = 100;
 
@@ -997,7 +1007,7 @@ for(var i=0; i < d[0].studentTasksInfo.diaryTasks[r].tracks.length ; i++){
 }
 
 
-function Valid_Gain(r,t) {
+function Valid_Gain(d,r,t) {
   try {
 var tmp = 0;
 
@@ -1011,7 +1021,7 @@ for(var i=0; i < d[0].studentTasksInfo.diaryTasks[r].tracks.length ; i++){
   }
 }
 
-function Valid_Timed(r,t) {
+function Valid_Timed(d,r,t) {
   try {
 var tmp = 0;
 
@@ -1049,7 +1059,7 @@ if (timeStr.length > 6) {
 }
 
 
-function Valid_Timea(r,t) {
+function Valid_Timea(d,r,t) {
   try {
 var tmp = 0;
 
@@ -1087,9 +1097,9 @@ function updateBarData(ind1, ind2, ind3) {
     // Формируем данные сразу как массив объектов (не нужно мучаться со строкой и JSON.parse)
     for(var i = 0; i < 5; i++){
         var item = { dist: distn[i] };
-        item.sales3 = (ind3 !== "") ? eval('Valid_M' + distn[i] + '(ind3, "");') * -1 : "";
-        item.sales2 = (ind2 !== "") ? eval('Valid_M' + distn[i] + '(ind2, "");') * -1 : "";
-        item.sales  = (ind1 !== "") ? eval('Valid_M' + distn[i] + '(ind1, "");') * -1 : "";
+        item.sales3 = (ind3 !== "") ? eval('Valid_M' + distn[i] + '(d3,ind3, "");') * -1 : "";
+        item.sales2 = (ind2 !== "") ? eval('Valid_M' + distn[i] + '(d2,ind2, "");') * -1 : "";
+        item.sales  = (ind1 !== "") ? eval('Valid_M' + distn[i] + '(d1,ind1, "");') * -1 : "";
         f1.push(item);
     }
 
@@ -1112,9 +1122,9 @@ function updateChartData(ind1, ind2, ind3) {
     // Формируем данные сразу как массив объектов (не нужно мучаться со строкой и JSON.parse)
     for(var i = 0; i < 24; i++){
         var item = { m: slots[i] };
-        item.pace14 = (ind3 !== "") ? Valid_Slot(ind3, i, "") : null;
-        item.pace7  = (ind2 !== "") ? Valid_Slot(ind2, i, "") : null;
-        item.pace0  = (ind1 !== "") ? Valid_Slot(ind1, i, "") : null;
+        item.pace14 = (ind3 !== "") ? Valid_Slot(d3,ind3, i, "") : null;
+        item.pace7  = (ind2 !== "") ? Valid_Slot(d2,ind2, i, "") : null;
+        item.pace0  = (ind1 !== "") ? Valid_Slot(d1,ind1, i, "") : null;
         f1.push(item);
     }
 
@@ -1135,14 +1145,14 @@ function updateChartData(ind1, ind2, ind3) {
 function updateChartData2(ind1, ind2, ind3) {
     var ff2 = [];
 
- ee = Math.max(Valid_km(ind1,0),Valid_km(ind2,0),Valid_km(ind3,0));
+ ee = Math.max(Valid_km(d1,ind1,0),Valid_km(d2,ind2,0),Valid_km(d3,ind3,0));
    
     // Формируем данные сразу как массив объектов (не нужно мучаться со строкой и JSON.parse)
     for(var i = 0; i < ee; i++){
         var item = { km: (i+1) };
-        item.pace15 = (ind3 !== "") ? Valid_Pace(ind3, i, "") * -1 : null;
-        item.pace8  = (ind2 !== "") ? Valid_Pace(ind2, i, "") * -1 : null;
-        item.pace1  = (ind1 !== "") ? Valid_Pace(ind1, i, "") * -1 : null;
+        item.pace15 = (ind3 !== "") ? Valid_Pace(d3,ind3, i, "") * -1 : null;
+        item.pace8  = (ind2 !== "") ? Valid_Pace(d2,ind2, i, "") * -1 : null;
+        item.pace1  = (ind1 !== "") ? Valid_Pace(d1,ind1, i, "") * -1 : null;
         ff2.push(item);
     }
 
@@ -1177,12 +1187,12 @@ tbl = "" ;
 //	  '","dgs":"' + Valid_gs(ind1,"") + 
 //	  '"},\n'
  tbl = tbl + '{ "param":"Атлет","s1":"' +  Valid_Atlet(d1) + '","s2":"' +  Valid_Atlet(d2) + '","s3":"' +  Valid_Atlet(d3) + '"},\n';
- tbl = tbl + '{ "param":"тип тренировки","s1":"' + Valid_Ttype(ind1,"") + '","s2":"' + Valid_Ttype(ind2,"") + '","s3":"' + Valid_Ttype(ind3,"") + '"},\n';
- tbl = tbl + '{ "param":"самооценка тренировки","s1":"' + Valid_trubl(ind1,"") + '","s2":"' + Valid_trubl(ind2,"") + '","s3":"' + Valid_trubl(ind3,"") + '"},\n';
- tbl = tbl + '{ "param":"погода, С","s1":"' + Valid_C(ind1,"") + '","s2":"' + Valid_C(ind2,"") + '","s3":"' + Valid_C(ind3,"") + '"},\n';
- tbl = tbl + '{ "param":"общая дистанция, км","s1":"' + Valid_kmm(ind1,"") + '","s2":"' + Valid_kmm(ind2,"") + '","s3":"' + Valid_kmm(ind3,"") + '"},\n';
- tbl = tbl + '{ "param":"максимальный пульс","s1":"' + Valid_MaxHeart(ind1,"") + '","s2":"' + Valid_MaxHeart(ind2,"") + '","s3":"' + Valid_MaxHeart(ind3,"") + '"},\n';
- tbl = tbl + '{ "param":"параметр GS","s1":"' + Valid_gs(ind1,"") + '","s2":"' + Valid_gs(ind2,"") + '","s3":"' + Valid_gs(ind3,"") + '"},\n';
+ tbl = tbl + '{ "param":"тип тренировки","s1":"' + Valid_Ttype(d1,ind1,"") + '","s2":"' + Valid_Ttype(d2,ind2,"") + '","s3":"' + Valid_Ttype(d3,ind3,"") + '"},\n';
+ tbl = tbl + '{ "param":"самооценка тренировки","s1":"' + Valid_trubl(d1,ind1,"") + '","s2":"' + Valid_trubl(d2,ind2,"") + '","s3":"' + Valid_trubl(d3,ind3,"") + '"},\n';
+ tbl = tbl + '{ "param":"погода, С","s1":"' + Valid_C(d1,ind1,"") + '","s2":"' + Valid_C(d2,ind2,"") + '","s3":"' + Valid_C(ind3,"") + '"},\n';
+ tbl = tbl + '{ "param":"общая дистанция, км","s1":"' + Valid_kmm(d1,ind1,"") + '","s2":"' + Valid_kmm(d2,ind2,"") + '","s3":"' + Valid_kmm(d3,ind3,"") + '"},\n';
+ tbl = tbl + '{ "param":"максимальный пульс","s1":"' + Valid_MaxHeart(d1,ind1,"") + '","s2":"' + Valid_MaxHeart(d2,ind2,"") + '","s3":"' + Valid_MaxHeart(d3,ind3,"") + '"},\n';
+ tbl = tbl + '{ "param":"параметр GS","s1":"' + Valid_gs(d1,ind1,"") + '","s2":"' + Valid_gs(d2,ind2,"") + '","s3":"' + Valid_gs(d3,ind3,"") + '"},\n';
 
 //}
 
