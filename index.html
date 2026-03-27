@@ -760,14 +760,25 @@ ind3 = "";
 
 function Valid_Pace(d,r,s,t) {
   try {
-const tmp = [];
-for(var i=0; i < d[0].studentTasksInfo.diaryTasks[r].tracks.length ; i++){
- for(var j=0; j < d[0].studentTasksInfo.diaryTasks[r].tracks[i].json.segments.length ; j++){
- tmp.push(d[0].studentTasksInfo.diaryTasks[r].tracks[i].json.segments[j].pace);
- }
-}
+//const tmp = [];
+//for(var i=0; i < d[0].studentTasksInfo.diaryTasks[r].tracks.length ; i++){
+// for(var j=0; j < d[0].studentTasksInfo.diaryTasks[r].tracks[i].json.segments.length ; j++){
+// tmp.push(d[0].studentTasksInfo.diaryTasks[r].tracks[i].json.segments[j].pace);
+// }
+//}
+//        return tmp[s];
 
-        return tmp[s];
+			const tmp = [];
+			for(var i=0; i < d[0].studentTasksInfo.diaryTasks[r].tracks.length ; i++){
+			for(var j=0; j < d[0].studentTasksInfo.diaryTasks[r].tracks[i].json.splits_metric.length-1 ; j++){
+			tmp.push(d[0].studentTasksInfo.diaryTasks[r].tracks[i].splits_metric.laps[j].average_speed);
+				}
+			}	  
+            
+            num=(1000/tmp[s])/60;			
+			
+            return (Math.round(num * 100) / 100) + 0.01; 
+
 
   } catch {
   
