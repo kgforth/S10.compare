@@ -760,14 +760,8 @@ ind3 = "";
 
 function Valid_Pace(d,r,s,t) {
   try {
-//const tmp = [];
-//for(var i=0; i < d[0].studentTasksInfo.diaryTasks[r].tracks.length ; i++){
-// for(var j=0; j < d[0].studentTasksInfo.diaryTasks[r].tracks[i].json.segments.length ; j++){
-// tmp.push(d[0].studentTasksInfo.diaryTasks[r].tracks[i].json.segments[j].pace);
-// }
-//}
-//        return tmp[s];
 
+if (d[0].studentTasksInfo.diaryTasks[r].tracks[i].json.splits_metric.length !== undefined) {
 			const tmp = [];
 			for(var i=0; i < d[0].studentTasksInfo.diaryTasks[r].tracks.length ; i++){
 			for(var j=0; j < d[0].studentTasksInfo.diaryTasks[r].tracks[i].json.splits_metric.length-1 ; j++){
@@ -778,7 +772,19 @@ function Valid_Pace(d,r,s,t) {
             num=(1000/tmp[s])/60;			
 			
             return (Math.round(num * 100) / 100) + 0.01; 
-
+ }
+ 
+if (d[0].studentTasksInfo.diaryTasks[r].tracks[i].json.segments.length !== undefined) {
+ 
+const tmp = [];
+ for(var i=0; i < d[0].studentTasksInfo.diaryTasks[r].tracks.length ; i++){
+ for(var j=0; j < d[0].studentTasksInfo.diaryTasks[r].tracks[i].json.segments.length ; j++){
+ tmp.push(d[0].studentTasksInfo.diaryTasks[r].tracks[i].json.segments[j].pace);
+ }
+}
+        return tmp[s];
+ 
+} 
 
   } catch {
   
