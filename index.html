@@ -760,8 +760,7 @@ ind3 = "";
 
 function Valid_Pace(d,r,s,t) {
   try {
-
-if (d[0].studentTasksInfo.diaryTasks[r].tracks[i].json.splits_metric.length !== undefined) {
+if (d[0]?.studentTasksInfo?.diaryTasks[r]?.tracks[i]?.json?.splits_metric !== undefined) {
 			const tmp = [];
 			for(var i=0; i < d[0].studentTasksInfo.diaryTasks[r].tracks.length ; i++){
 			for(var j=0; j < d[0].studentTasksInfo.diaryTasks[r].tracks[i].json.splits_metric.length-1 ; j++){
@@ -774,7 +773,7 @@ if (d[0].studentTasksInfo.diaryTasks[r].tracks[i].json.splits_metric.length !== 
             return (Math.round(num * 100) / 100) + 0.01; 
  }
  
-if (d[0].studentTasksInfo.diaryTasks[r].tracks[i].json.segments.length !== undefined) {
+if (d[0]?.studentTasksInfo?.diaryTasks[r]?.tracks[i]?.json?.segments !== undefined) {
  
 const tmp = [];
  for(var i=0; i < d[0].studentTasksInfo.diaryTasks[r].tracks.length ; i++){
@@ -785,6 +784,8 @@ const tmp = [];
         return tmp[s];
  
 } 
+
+return t;
 
   } catch {
   
