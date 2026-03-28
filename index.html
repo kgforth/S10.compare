@@ -769,7 +769,7 @@ function Valid_Pace(d,r,s,t) {
             
             num=(1000/tmp[s])/60;			
 			
-            return (Math.round(num * 100) / 100) + 0.01; 
+            return ((Math.round(num * 100) / 100) + 0.01) * -1; 
 
 
 
@@ -786,7 +786,7 @@ const tmp = [];
  tmp.push(d[0].studentTasksInfo.diaryTasks[r].tracks[i].json.segments[j].pace);
  }
 }
-        return tmp[s];
+        return tmp[s] * -1;
  
 
   } catch {
@@ -807,7 +807,7 @@ const tmp = [];
             num=(1000/tmp[s])/60;			
 			
 //			return num.toFixed(2);
-            return (Math.round(num * 100) / 100) + 0.01; 
+            return ((Math.round(num * 100) / 100) + 0.01) * -1; 
 			
            } catch {
 
@@ -1228,10 +1228,9 @@ function updateChartData2(ind1, ind2, ind3) {
     // Формируем данные сразу как массив объектов (не нужно мучаться со строкой и JSON.parse)
     for(var i = 0; i < ee; i++){
         var item = { km: (i+1) };
-//        item.pace15 = (ind3 !== "") ? Valid_Pace(d3,ind3, i, null) * -1 : null;
-        item.pace15 = (ind3 !== "") ? null : null;
-        item.pace8  = (ind2 !== "") ? Valid_Pace(d2,ind2, i, "") * -1 : null;
-        item.pace1  = (ind1 !== "") ? Valid_Pace(d1,ind1, i, "") * -1 : null;
+        item.pace15 = (ind3 !== "") ? Valid_Pace(d3,ind3, i, null)  : null;
+        item.pace8  = (ind2 !== "") ? Valid_Pace(d2,ind2, i, "")  : null;
+        item.pace1  = (ind1 !== "") ? Valid_Pace(d1,ind1, i, "")  : null;
         ff2.push(item);
     }
 
