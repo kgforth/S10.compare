@@ -1600,7 +1600,7 @@ on: {
 
 		
             var yStart = 30;  // небольшой отступ сверху
-            var yEnd = this.$height - 13; // отступ снизу (чтобы не заходить на подписи оси)
+            var yEnd = this.$height - 15; // отступ снизу (чтобы не заходить на подписи оси)
 
         // 1. Берем чистую ширину контейнера
         var totalWidth = this.$width;
@@ -1608,7 +1608,7 @@ on: {
         // 2. Определяем отступы (padding). 
         // Если в конфиге чарта вы их не меняли, Webix по умолчанию ставит 50.
 //        var pLeft = 50; 
-        var pLeft = 38; 
+        var pLeft = 36; 
         var pRight = 50;
         
         // 3. Вычисляем шаг между точками
@@ -1618,7 +1618,8 @@ on: {
         // 4. Итоговая координата X
 //        var x = pLeft + (index * step);
 
-var x = Math.floor(pLeft + (index * step)) + 0.5;
+//var x = Math.floor(pLeft + (index * step)) + 0.5;
+var x = Math.floor(pLeft + (index * step));
 
         console.log("Index:", index, "Final X:", x);			
 			
