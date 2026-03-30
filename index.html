@@ -1632,7 +1632,8 @@ var x = Math.floor(pLeft + (index * step));
             // Пример отрисовки одной линии для краткости:
             ctx.save();
             ctx.setLineDash([5, 5]); // Пунктир 5px через 5px
-            ctx.strokeStyle = "#FF5722";
+			ctx.lineWidth = 2;
+            ctx.strokeStyle = "#EC3774";
             ctx.beginPath();
             ctx.moveTo(x, yStart);
             ctx.lineTo(x, yEnd);
