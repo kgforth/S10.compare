@@ -1564,6 +1564,9 @@ cols:[
 
 on: {
     onAfterRender: function() {
+
+    // Используем delay, чтобы дождаться полной отрисовки
+    webix.delay(() => {	
         
         // 1. Находим элемент canvas внутри компонента
         var canvas = this.$view.querySelector("canvas");
@@ -1619,7 +1622,11 @@ on: {
             ctx.lineTo(x, yEnd);
             ctx.stroke();
             ctx.restore();
+			
+        console.log("Линия отрисована по расчетной координате X:", x);
+		
         }
+	}, this, [], 100); 
     }
 }  ,  
           data: gg
