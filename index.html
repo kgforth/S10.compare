@@ -1615,8 +1615,8 @@ on: {
             ctx.setLineDash([5, 5]); // Пунктир 5px через 5px
             ctx.strokeStyle = "#FF5722";
             ctx.beginPath();
-            ctx.moveTo(baseX, 0);
-            ctx.lineTo(baseX, this.$height);
+            ctx.moveTo(x, yStart);
+            ctx.lineTo(x, yEnd);
             ctx.stroke();
             ctx.restore();
         }
