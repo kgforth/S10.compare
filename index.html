@@ -1301,6 +1301,8 @@ tbl = "[\n" + tbl.slice(0,tbl.length-2) + "\n]" ;
 
 function updategra1(ind1,ind2,ind3) {
 
+setind();
+
 ind10 = ind1;
 
 console.log("updgra1:\n");
@@ -1313,8 +1315,8 @@ t1 = "" ;
 
 if (ind1 !== "") {
 
-//for(var i = n2-1; i > n1-1 ; i--){
-for(var i = ind10 + 20; i > ind10-1 ; i--){
+for(var i = n2-1; i > n1-1 ; i--){
+//for(var i = ind10 + 20; i > ind10-1 ; i--){
   t1 = t1 + '{ "kmCompleted":"' + d1[0].studentTasksInfo.diaryTasks[i].kmCompleted + '", "id":"' + i + '", "dayd":"' + d1[0].studentTasksInfo.diaryTasks[i].date.slice(-2) + '"},\n'
  }
 t1 = "[\n" + t1.slice(0,t1.length-2) + "\n]" ;
