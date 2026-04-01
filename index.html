@@ -1685,7 +1685,9 @@ on: {
     // Используем delay, чтобы дождаться полной отрисовки
     webix.delay(() => {	
         
-        // 1. Находим элемент canvas внутри компонента
+ if ( $$('cal1').getValue() == null ) { return; }
+ 
+ // 1. Находим элемент canvas внутри компонента
         var canvas = this.$view.querySelector("canvas");
         if (!canvas) return;
 
