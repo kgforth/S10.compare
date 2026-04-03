@@ -1704,29 +1704,36 @@ on: {
 
     // Используем delay, чтобы дождаться полной отрисовки
     webix.delay(() => {	
-        
- if ( $$('cal1').getValue() == null ) { return; }
- 
+
  // 1. Находим элемент canvas внутри компонента
         var canvas = this.$view.querySelector("canvas");
         if (!canvas) return;
 
-        // 2. Получаем 2D контекст
-        var ctx = canvas.getContext("2d");
-
-
-      // ШАГ 1: Очищаем весь холст перед перерисовкой
-      // Это удалит старые линии, которые мы рисовали вручную
-      
+       // 2. Получаем 2D контекст
+        var ctx = canvas.getContext("2d");		
+ 
 //	  ctx.clearRect(0, 0, canvas.width, canvas.height);
-
+// чтобы не затереть маркеры в легенде !!!! смещение по у от линии пунктирной
 	  ctx.clearRect(0, 30, canvas.width, canvas.height);
 
-        // Теперь ищем по подстроке или двум последним символам
+            var yStart = 30;  // небольшой отступ сверху
+            var yEnd = this.$height - 16; // отступ снизу (чтобы не заходить на подписи оси)
 
-//        var targetDay = "20"; 
+        // 1. Берем чистую ширину контейнера
+        var totalWidth = this.$width;
+        
+        // 2. Определяем отступы (padding). 
+        // Если в конфиге чарта вы их не меняли, Webix по умолчанию ставит 50.
+//        var pLeft = 50; 
+        var pLeft = 35; 
+        var pRight = 32;
+        
+        // 3. Вычисляем шаг между точками
+        // (Ширина - отступы) / (21 точка - 1 промежуток)
+        var step = (totalWidth - pLeft - pRight) / (20);
 
-// $$('cal1').getValue().toLocaleDateString('en-CA').slice(-2)
+
+ if ( $$('cal1').getValue() !== null ) {
 
 		var targetDay = $$('cal1').getValue().toLocaleDateString('en-CA').slice(-2); 
  
@@ -1749,23 +1756,6 @@ on: {
             // Важно: передаем индекс точки
 
 //            var baseX = this._getItemX(index); // центральная координата X
-
-		
-            var yStart = 30;  // небольшой отступ сверху
-            var yEnd = this.$height - 16; // отступ снизу (чтобы не заходить на подписи оси)
-
-        // 1. Берем чистую ширину контейнера
-        var totalWidth = this.$width;
-        
-        // 2. Определяем отступы (padding). 
-        // Если в конфиге чарта вы их не меняли, Webix по умолчанию ставит 50.
-//        var pLeft = 50; 
-        var pLeft = 35; 
-        var pRight = 32;
-        
-        // 3. Вычисляем шаг между точками
-        // (Ширина - отступы) / (21 точка - 1 промежуток)
-        var step = (totalWidth - pLeft - pRight) / (20);
         
         // 4. Итоговая координата X
 //        var x = pLeft + (index * step);
@@ -1791,6 +1781,20 @@ var x = Math.floor(pLeft + (index * step));
 //this.render(null, null, true);					
 
         }
+//-------------------
+}
+
+ if ( $$('cal2').getValue() !== null ) {
+
+}
+
+ if ( $$('cal3').getValue() !== null ) {
+
+}
+
+//-------------------
+
+
 	}, this, [], 100); 
     }
 }  ,  
