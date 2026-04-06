@@ -1736,25 +1736,23 @@ cols:[
 
 on: {
 
-//  onLegendClick: function(ev) {
-    // 1. Находим ID элемента легенды, по которому кликнули
-//    var id = this.getLegend().locate(ev);
-    
-//    if (id) {
-      // 2. Находим индекс этой серии в массиве series
-//      var index = this.config.series.findIndex(s => s.id == id || s.value == id);
+  onLegendClick: function() {
+    // 1. Даем Webix 50мс, чтобы он скрыл линию и обновил DOM
+    webix.delay(() => {
       
-      // Если у серий нет ID, Webix использует значение (например, "#Атлет1#")
-      // В вашем случае можно просто сопоставить id с вашим массивом
-//      console.log("Клик по серии с ID:", id);
+      // 2. Вызываем событие onAfterRender принудительно
+      // Первый аргумент - имя события, второй - массив аргументов (обычно пустой для afterRender)
+      this.callEvent("onAfterRender", []);
       
-      // 3. Инвертируем ваш флаг (если используете свой массив)
-      // mySeriesVisibility[index] = !mySeriesVisibility[index];
-//    }
-    
-//    return true; // Чтобы сработал стандартный toggle
-//  }
-//,
+      // Теперь ваш код внутри onAfterRender выполнится снова
+      console.log("onAfterRender вызван повторно после клика на легенде");
+      
+    }, null, null, 50);
+
+    return true; 
+  }
+
+,
 
     onAfterRender: function() {
 
