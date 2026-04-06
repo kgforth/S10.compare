@@ -227,6 +227,9 @@ var ind30;
 
 var f ;
 
+var mySeriesVisibility = [true, true, true];
+
+
 const loader = document.getElementById('loader');
 const overlay = document.getElementById('loader-overlay');
 
@@ -1717,6 +1720,19 @@ cols:[
 
 
 on: {
+
+  onLegendClick: function(index){
+    // Инвертируем наше состояние
+    mySeriesVisibility[index] = !mySeriesVisibility[index];
+    
+    console.log("Серия " + index + " теперь " + (mySeriesVisibility[index] ? "видна" : "скрыта"));
+    
+    // Обязательно возвращаем true, чтобы график перерисовался штатно
+    return true; 
+  }
+
+,
+
     onAfterRender: function() {
 
     // Используем delay, чтобы дождаться полной отрисовки
