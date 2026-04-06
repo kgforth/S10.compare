@@ -403,6 +403,21 @@ switch (dx) {
 });
 
 
+
+function checkVisibility(chartId, seriesIndex) {
+    // Находим конкретный div по его series_id
+    const selector = `[series_id="${seriesIndex}"]`;
+    const item = $$(chartId).$view.querySelector(selector);
+    
+    if (item) {
+        return !item.classList.contains("hidden");
+    }
+    return false;
+}
+
+// Пример: виден ли Атлет1?
+//console.log(checkVisibility("gra1", 0));
+
 function upd_bldt(d,dd) {
 
 n2 = d[0].studentTasksInfo.diaryTasks.length;
@@ -1774,7 +1789,8 @@ on: {
         var step = (totalWidth - pLeft - pRight) / (20);
 
 
- if ( $$('cal1').getValue() !== null ) {
+ if ( $$('cal1').getValue() !== null && checkVisibility("gra1", 0) ) {
+
 
 
 		var targetDay = $$('cal1').getValue().toLocaleDateString('en-CA').slice(-2); 
@@ -1826,7 +1842,7 @@ var x = Math.floor(pLeft + (index * step));
 //-------------------
 }
 
- if ( $$('cal2').getValue() !== null ) {
+ if ( $$('cal2').getValue() !== null && checkVisibility("gra1", 1) ) {
 		var targetDay = $$('cal2').getValue().toLocaleDateString('en-CA').slice(-2); 
         var data = this.data.serialize();
         var index = data.findIndex(obj => obj.dayd === targetDay);
@@ -1850,7 +1866,7 @@ var x = Math.floor(pLeft + (index * step));
 
 }
 
- if ( $$('cal3').getValue() !== null ) {
+ if ( $$('cal3').getValue() !== null && checkVisibility("gra1", 2)  ) {
 
 		var targetDay = $$('cal3').getValue().toLocaleDateString('en-CA').slice(-2); 
         var data = this.data.serialize();
