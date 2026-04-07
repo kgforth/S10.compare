@@ -2514,7 +2514,7 @@ var x = Math.floor(pLeft + (index * step));
 t1 = "" ;
 
 for(var i = n2-1; i > n1-1 ; i--){
-  t1 = t1 + '{ "Атлет1":"' + Valid_M1000(d1,i,null) + '", "Атлет2":"' + Valid_M1000(d2,i,null) + '", "Атлет3":"' + Valid_M1000(d3,i,null) + '", "id":"' + i + '", "dayd":"' + Valid_dayd(d,i,"") + '"},\n'
+  t1 = t1 + '{ "Атлет1":"-' + Valid_M1000(d1,i,null) + '", "Атлет2":-"' + Valid_M1000(d2,i,null) + '", "Атлет3":-"' + Valid_M1000(d3,i,null) + '", "id":"' + i + '", "dayd":"' + Valid_dayd(d,i,"") + '"},\n'
  }
 
 t1 = "[\n" + t1.slice(0,t1.length-2) + "\n]" ;
@@ -2542,8 +2542,8 @@ cols:[
 		xAxis:{
             template:"'#dayd#"
           },
-          yAxis:{
-          },
+//          yAxis:{          },
+          yAxis:{start:-7, step:1, end:-3,template: function(obj) {return Math.abs(obj);}},
   legend:{layout:"x", height:-10, align:"center", valign:"middle",
     values:[
 //      {text:"daily kmCompleted", toggle:true,markerType: "item"}
