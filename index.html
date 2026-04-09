@@ -2946,7 +2946,32 @@ dtable = {
 //    { id: "param", header: "Параметр", width: 250, css: "webix_header_border webix_data_border" },
     { id: "param", header: "Параметр", width: 222 },
     // Остальные столбцы — это ваши серии
-    { id: "s1", css: "cursor_pointer", header: "<span title='загрузить' style='color:#EC3774'><b>&nbsp;&nbsp;------o------&nbsp;&nbsp;&nbsp;&#10227;</b></span>", width: 166 },
+    { id: "s1", css: "cursor_pointer", header: "<span title='загрузить' style='color:#EC3774'><b>&nbsp;&nbsp;------o------&nbsp;&nbsp;&nbsp;&#10227;</b></span>", width: 166 
+	, 
+	      template: function(obj) {
+        // Проверка: строка 5 (индекс 4 в массиве или obj.id === 5)
+        if (obj.id === 5) {
+          const tracks = obj.trackDetails || [2, 5, 3]; // пример длин треков
+          let options = `<option value="0">Все</option>`;
+          
+          tracks.forEach((len, i) => {
+            options += `<option value="${i+1}">Трек ${i+1}: ${len}км</option>`;
+          });
+
+          return `
+            <div class="cell_content">
+              <span>общая дистанция, км: <b>${obj.value}</b>, треков: ${tracks.length}</span>
+              <select class="clean_select">
+                ${options}
+              </select>
+            </div>`;
+        }
+        
+        // Обычное отображение для остальных строк
+        return obj.value;
+      }
+	
+	},
     { id: "s2", css: "cursor_pointer", header: "<span title='загрузить' style='color:#00ccff'><b>&nbsp;&nbsp;------o------&nbsp;&nbsp;&nbsp;&#10227;</b></span>", width: 168 },
     { id: "s3", css: "cursor_pointer", header: "<span title='загрузить' style='color:#14C800'><b>&nbsp;&nbsp;------o------&nbsp;&nbsp;&nbsp;&#10227;</b></span>", width: 154 }
   ],
