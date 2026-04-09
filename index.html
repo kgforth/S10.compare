@@ -734,6 +734,32 @@ tt = tt + d[0].studentTasksInfo.diaryTasks[r].tracks.length;
 }
 
 
+function Valid_kkm(d,r,t) {
+	var tt = "";
+ try {   
+	if (d[0].studentTasksInfo.diaryTasks[r].kmCompleted == null) {
+	return t;
+	}
+else
+  {	
+  //=================================================================================================
+tt = tt + "[ ";  
+  for(var i=0; i < d[0].studentTasksInfo.diaryTasks[r].tracks.length ; i++){
+    tt = tt + d[0].studentTasksInfo.diaryTasks[r].tracks[i].distance + ",";
+}
+    tt = tt.slice(-1) + " ]";
+
+	  return tt;
+  }
+  
+  } catch {
+    return t;
+  }
+}
+
+
+
+
 function Valid_dayd(d,r,t) {
  try {   
 	if (d[0].studentTasksInfo.diaryTasks[r].date == null) {
@@ -2959,7 +2985,10 @@ console.log(obj);
 
   // Проверяем, что это 5-я строка по счету (индекс 4)
   if (index === 4) {
-          const tracks = [2, 5, 3]; // пример длин треков
+//         const tracks = [2, 5, 3]; // пример длин треков
+
+         const tracks = Valid_kkm(d1,ind1,"[2, 5, 3]"); // пример длин треков
+
           let options = `<option value="0">Все</option>`;
           
           tracks.forEach((len, i) => {
