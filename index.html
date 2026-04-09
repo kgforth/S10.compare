@@ -2976,6 +2976,8 @@ dtable = {
 	      template: function(obj) {
 // console.log(obj);
 
+if ( ind1 == "" ) {return obj.s1;}
+
   // Получаем индекс строки (0 — первая, 1 — вторая и т.д.)
   const index = $$("ddtable").getIndexById(obj.id);
 
@@ -3008,6 +3010,9 @@ dtable = {
     { id: "s2", css: "cursor_pointer", header: "<span title='загрузить' style='color:#00ccff'><b>&nbsp;&nbsp;------o------&nbsp;&nbsp;&nbsp;&#10227;</b></span>", width: 168 
     , 
   template: function(obj) {
+
+if ( ind2 == "" ) {return obj.s2;}
+
   const index = $$("ddtable").getIndexById(obj.id);
   if (index === 4) {
          const tracks = Valid_kkm(d2,ind2,[2, 5, 3]); // пример длин треков
@@ -3030,6 +3035,8 @@ dtable = {
     { id: "s3", css: "cursor_pointer", header: "<span title='загрузить' style='color:#14C800'><b>&nbsp;&nbsp;------o------&nbsp;&nbsp;&nbsp;&#10227;</b></span>", width: 154 
 	    , 
   template: function(obj) {
+if ( ind3 == "" ) {return obj.s3;}
+
   const index = $$("ddtable").getIndexById(obj.id);
   if (index === 4) {
          const tracks = Valid_kkm(d3,ind3,[2, 5, 3]); // пример длин треков
@@ -3072,7 +3079,50 @@ dtable = {
 		extractId();
       }
     }
-  },
+,	
+onClick: {
+  "clean_select": function(ev, id, node) {
+    // Находим реальный элемент select, если клик попал на обертку
+    const select = node.tagName === "SELECT" ? node : node.querySelector("select");
+
+  if (id.column === "s1") {
+    if (select) {
+      select.onchange = () => {
+        const val = select.value; // Теперь точно не undefined
+        webix.message(`Выбран трек: ${val} в строке ${id.row}`);
+        
+        // Обновляем данные в таблице, чтобы Webix "запомнил" выбор
+        this.getItem(id.row).selectedTrack = val;
+      };
+    }
+  }
+  if (id.column === "s2") {
+    if (select) {
+      select.onchange = () => {
+        const val = select.value; // Теперь точно не undefined
+        webix.message(`Выбран трек: ${val} в строке ${id.row}`);
+        
+        // Обновляем данные в таблице, чтобы Webix "запомнил" выбор
+        this.getItem(id.row).selectedTrack = val;
+      };
+    }
+  }
+  if (id.column === "s3") {
+    if (select) {
+      select.onchange = () => {
+        const val = select.value; // Теперь точно не undefined
+        webix.message(`Выбран трек: ${val} в строке ${id.row}`);
+        
+        // Обновляем данные в таблице, чтобы Webix "запомнил" выбор
+        this.getItem(id.row).selectedTrack = val;
+      };
+    }
+  }  
+
+  }
+ 
+}, 
+ },
 //  autoheight: true,
   height: 200,
   autowidth: true,
