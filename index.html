@@ -2949,10 +2949,14 @@ dtable = {
     { id: "s1", css: "cursor_pointer", header: "<span title='загрузить' style='color:#EC3774'><b>&nbsp;&nbsp;------o------&nbsp;&nbsp;&nbsp;&#10227;</b></span>", width: 166 
 	, 
 	      template: function(obj) {
-        // Проверка: строка 5 (индекс 4 в массиве или obj.id === 5)
-        if (obj.id === 5) {
-          const tracks = obj.trackDetails || [2, 5, 3]; // пример длин треков
-          let options = `<option value="0">Все</option>`;
+  // Получаем индекс строки (0 — первая, 1 — вторая и т.д.)
+  const index = $$("ddtable").getIndexById(obj.id);
+
+  // Проверяем, что это 5-я строка по счету (индекс 4)
+  if (index === 4) {
+ //         const tracks = obj.trackDetails || [2, 5, 3]; // пример длин треков
+         const tracks = [2, 5, 3]; // пример длин треков
+         let options = `<option value="0">Все</option>`;
           
           tracks.forEach((len, i) => {
             options += `<option value="${i+1}">Трек ${i+1}: ${len}км</option>`;
