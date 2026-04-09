@@ -9,6 +9,25 @@
 <style> .tpblue { color: #00ccff; background: #fff; border: .4em solid; border-color: rgb(256,256,256); margin: 0 0 0 -.4em;}</style>
 <style> .tpyellow { color: #14C800; background: #fff; border: .4em solid; border-color: rgb(256,256,256); margin: 0 0 0 -.4em;}</style>
 <style> .webix_hcell { cursor: pointer; } </style> 
+<style>
+.clean_select {
+    border: none;
+    outline: none;
+    background: transparent;
+    cursor: pointer;
+    color: #1ca1c1;
+    font-weight: bold;
+    font-family: inherit;
+    font-size: 13px;
+    padding: 0 5px;
+  }
+  .cell_content {
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    width: 100%;
+  }
+</style>
 
 </head>
 
@@ -227,6 +246,10 @@ var ind3;
 var ind10;
 var ind20;
 var ind30;
+
+var trind1 = 0;
+var trind2 = 0;
+var trind3 = 0;
 
 var f ;
 
@@ -1412,6 +1435,9 @@ tbl = "" ;
 
 tbl = "[\n" + tbl.slice(0,tbl.length-2) + "\n]" ;	  
 
+console.log("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n");
+console.log(tbl);
+console.log("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n");
 
  $$("ddtable").parse(tbl);
 
@@ -2930,17 +2956,17 @@ dtable = {
       //   webix.message("Вы кликнули по заголовку: " + id.column);    
       // Если нужно выполнить действие только для конкретного столбца:
       if (id.column === "s1") {
-        webix.message("Действие для столбца 's1'");
+//        webix.message("Действие для столбца 's1'");
 		dx=1;
 		extractId();
       }
       if (id.column === "s2") {
-        webix.message("Действие для столбца 's2'");
+//        webix.message("Действие для столбца 's2'");
 		dx=2;
 		extractId();
       }
       if (id.column === "s3") {
-        webix.message("Действие для столбца 's3'");
+//        webix.message("Действие для столбца 's3'");
 		dx=3;
 		extractId();
       }
