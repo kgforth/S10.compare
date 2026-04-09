@@ -735,7 +735,7 @@ tt = tt + d[0].studentTasksInfo.diaryTasks[r].tracks.length;
 
 
 function Valid_kkm(d,r,t) {
-	var tt = "";
+	var tt = [];
  try {   
 	if (d[0].studentTasksInfo.diaryTasks[r].kmCompleted == null) {
 	return t;
@@ -743,12 +743,11 @@ function Valid_kkm(d,r,t) {
 else
   {	
   //=================================================================================================
-tt = tt + "[ ";  
+ 
   for(var i=0; i < d[0].studentTasksInfo.diaryTasks[r].tracks.length ; i++){
-    tt = tt + d[0].studentTasksInfo.diaryTasks[r].tracks[i].distance + ",";
+    tt.push(d[0].studentTasksInfo.diaryTasks[r].tracks[i].distance);
 }
-    tt = tt.slice(-1) + " ]";
-
+    
 	  return tt;
   }
   
@@ -2987,7 +2986,7 @@ console.log(obj);
   if (index === 4) {
 //         const tracks = [2, 5, 3]; // пример длин треков
 
-         const tracks = Valid_kkm(d1,ind1,"[2, 5, 3]"); // пример длин треков
+         const tracks = Valid_kkm(d1,ind1,[2, 5, 3]); // пример длин треков
 
           let options = `<option value="0">Все</option>`;
           
