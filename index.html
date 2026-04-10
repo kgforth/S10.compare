@@ -3216,12 +3216,12 @@ if ( ind1 == "" ) {return obj.s1;}
          selectedIndex = trind1;
 
 //          let options = `<option value="0">Все</option>`;
-            let options = `<option value="0" ${selectedIndex === "0" ? "selected" : ""}>Все</option>`;
+            let options = `<option value="0" ${selectedIndex === "0" ? "selected" : "0"}>Все</option>`;
          
           tracks.forEach((len, i) => {
 //            options += `<option value="${i+1}">${len}км</option>`;
             const isSelected = (String(i) === String(selectedIndex)) ? "selected" : "";
-            options += `<option value="${i}" ${isSelected}>${len}км</option>`;
+            options += `<option value="${i+1}" ${isSelected}>${len}км</option>`;
 
           });
 
