@@ -3195,7 +3195,9 @@ dtable = {
 	, 
 //	      template: function(obj) {
           template: function(obj, common, value, column) {		  
-// console.log(obj);
+
+ console.log(obj);
+
 //console.log(column.id, currentVal);
 
 if ( ind1 == "" ) {return obj.s1;}
@@ -3223,8 +3225,8 @@ if ( ind1 == "" ) {return obj.s1;}
         // Если переменная не задана, принудительно ставим "all"
         if (currentVal === undefined || currentVal === null) currentVal = "all";
 
-          let options = `<option value="0">Все</option>`;
-//            let options = `<option value="all" ${currentVal === "all" ? "selected" : ""}>Все</option>`;
+//          let options = `<option value="0">Все</option>`;
+            let options = `<option value="all" ${currentVal === "all" ? "selected" : ""}>Все</option>`;
          
           tracks.forEach((len, i) => {
 //            options += `<option value="${i+1}">${len}км</option>`;
