@@ -3195,11 +3195,8 @@ dtable = {
 	, 
 	      template: function(obj) {
 //          template: function(obj, common, value, column) {		  
-
- console.log(obj);
-
+// console.log(obj);
 //console.log(column.id, currentVal);
-
 if ( ind1 == "" ) {return obj.s1;}
 
   // Получаем индекс строки (0 — первая, 1 — вторая и т.д.)
@@ -3210,34 +3207,13 @@ if ( ind1 == "" ) {return obj.s1;}
 //         const tracks = [2, 5, 3]; // пример длин треков
 
          const tracks = Valid_kkm(d1,ind1,[2, 5, 3]); // пример длин треков
-
-        // Определяем, какую глобальную переменную использовать для этой колонки
-//       let currentVal;
-//        if (column.id === "s1") selectedIndex = trind1;
-//        else if (column.id === "s2") selectedIndex = trind2;
-//        else if (column.id === "s3") selectedIndex = trind3;
-//         currentVal = trind1;
-//        let currentVal;
-//        if (column.id === "s1") currentVal = trind1;
-//        else if (column.id === "s2") currentVal = trind2;
-//        else if (column.id === "s3") currentVal = trind3;
-
-        // Если переменная не задана, принудительно ставим "all"
-//        if (currentVal === undefined || currentVal === null) currentVal = 0;
-
-//          let options = `<option value="0">Все</option>`;
-            let options = `<option value="0" ${trind1 == 0 ? "selected" : ""}>Все</option>`;
-         
+          let options = `<option value="0" ${trind1 == 0 ? "selected" : ""}>Все</option>`;       
           tracks.forEach((len, i) => {
-//            options += `<option value="${i+1}">${len}км</option>`;
-//            const isSelected = (String(i) === String(currentVal)) ? "selected" : "";
             options += `<option value="${i+1}" ${trind1-1 == i ? "selected" : ""}>${len}км</option>`;
-
           });
-console.log("--------------------------------------------\n");
-console.log(options);
-console.log("--------------------------------------------\n");
-
+//console.log("--------------------------------------------\n");
+//console.log(options);
+//console.log("--------------------------------------------\n");
           return `
             <div class="cell_content">
               <span>${obj.s1}</span>
@@ -3246,34 +3222,23 @@ console.log("--------------------------------------------\n");
               </select>
             </div>`;
         }
-
-//        return `
-//          <div class="cell_content">
-//            <select class="clean_select" onchange="saveSelectState(this, '${obj.id}', '${column.id}')">
-//                ${options}
-//            </select>
-//          </div>`;
-//         }
-        
-        // Обычное отображение для остальных строк
         return obj.s1;
       }
 	
 	},
     { id: "s2", css: "cursor_pointer", header: "<span title='загрузить' style='color:#00ccff'><b>&nbsp;&nbsp;------o------&nbsp;&nbsp;&nbsp;&#10227;</b></span>", width: 168 
     , 
-          template: function(obj, common, value, column) {		  
+	      template: function(obj) {
 if ( ind2 == "" ) {return obj.s2;}
+  // Получаем индекс строки (0 — первая, 1 — вторая и т.д.)
   const index = $$("ddtable").getIndexById(obj.id);
+  // Проверяем, что это 5-я строка по счету (индекс 4)
   if (index === 4) {
+//         const tracks = [2, 5, 3]; // пример длин треков
          const tracks = Valid_kkm(d2,ind2,[2, 5, 3]); // пример длин треков
-        let currentVal;
-         currentVal = trind2;
-        if (currentVal === undefined || currentVal === null) currentVal = "all";
-          let options = `<option value="0">Все</option>`;       
+          let options = `<option value="0" ${trind2 == 0 ? "selected" : ""}>Все</option>`;       
           tracks.forEach((len, i) => {
-            const isSelected = (String(i) === String(currentVal)) ? "selected" : "";
-            options += `<option value="${i}" ${isSelected}>${len}км</option>`;
+            options += `<option value="${i+1}" ${trind2-1 == i ? "selected" : ""}>${len}км</option>`;
           });
           return `
             <div class="cell_content">
@@ -3288,18 +3253,17 @@ if ( ind2 == "" ) {return obj.s2;}
  },
     { id: "s3", css: "cursor_pointer", header: "<span title='загрузить' style='color:#14C800'><b>&nbsp;&nbsp;------o------&nbsp;&nbsp;&nbsp;&#10227;</b></span>", width: 154 
 	    , 
-          template: function(obj, common, value, column) {		  
+	      template: function(obj) {
 if ( ind3 == "" ) {return obj.s3;}
+  // Получаем индекс строки (0 — первая, 1 — вторая и т.д.)
   const index = $$("ddtable").getIndexById(obj.id);
+  // Проверяем, что это 5-я строка по счету (индекс 4)
   if (index === 4) {
+//         const tracks = [2, 5, 3]; // пример длин треков
          const tracks = Valid_kkm(d3,ind3,[2, 5, 3]); // пример длин треков
-        let currentVal;
-         currentVal = trind3;
-        if (currentVal === undefined || currentVal === null) currentVal = "all";
-          let options = `<option value="0">Все</option>`;       
+          let options = `<option value="0" ${trind3 == 0 ? "selected" : ""}>Все</option>`;       
           tracks.forEach((len, i) => {
-            const isSelected = (String(i) === String(currentVal)) ? "selected" : "";
-            options += `<option value="${i}" ${isSelected}>${len}км</option>`;
+            options += `<option value="${i+1}" ${trind3-1 == i ? "selected" : ""}>${len}км</option>`;
           });
           return `
             <div class="cell_content">
