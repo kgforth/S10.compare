@@ -3197,6 +3197,8 @@ dtable = {
           template: function(obj, common, value, column) {		  
 // console.log(obj);
 
+console.log(column.id, currentVal);
+
 if ( ind1 == "" ) {return obj.s1;}
 
   // Получаем индекс строки (0 — первая, 1 — вторая и т.д.)
@@ -3209,19 +3211,26 @@ if ( ind1 == "" ) {return obj.s1;}
          const tracks = Valid_kkm(d1,ind1,[2, 5, 3]); // пример длин треков
 
         // Определяем, какую глобальную переменную использовать для этой колонки
-        let selectedIndex;
+        let currentVal;
 //        if (column.id === "s1") selectedIndex = trind1;
 //        else if (column.id === "s2") selectedIndex = trind2;
 //        else if (column.id === "s3") selectedIndex = trind3;
-         selectedIndex = trind1;
+         currentVal = trind1;
+//        let currentVal;
+//        if (column.id === "s1") currentVal = trind1;
+//        else if (column.id === "s2") currentVal = trind2;
+//        else if (column.id === "s3") currentVal = trind3;
+
+        // Если переменная не задана, принудительно ставим "all"
+        if (currentVal === undefined || currentVal === null) currentVal = "all";
 
           let options = `<option value="0">Все</option>`;
-//            let options = `<option value="0" ${selectedIndex === "0" ? "selected" : "0"}>Все</option>`;
+//            let options = `<option value="all" ${currentVal === "all" ? "selected" : ""}>Все</option>`;
          
           tracks.forEach((len, i) => {
 //            options += `<option value="${i+1}">${len}км</option>`;
-            const isSelected = (String(i) === String(selectedIndex-1)) ? "selected" : "";
-            options += `<option value="${i+1}" ${isSelected}>${len}км</option>`;
+            const isSelected = (String(i) === String(currentVal)) ? "selected" : "";
+            options += `<option value="${i}" ${isSelected}>${len}км</option>`;
 
           });
 
