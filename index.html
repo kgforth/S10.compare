@@ -756,7 +756,62 @@ else
   }
 }
 
+function Valid_km1(d,r,t) {
+ try {   
+	if (d[0].studentTasksInfo.diaryTasks[r].kmCompleted == null) {
+	return t;
+	}
+else
+  {	
+  if (trind1 == 0 ) {
+    return d[0].studentTasksInfo.diaryTasks[r].kmCompleted;
+} else {
+	return Math.round(d[0].studentTasksInfo.diaryTasks[r].tracks[trind1-1].distance);
+}
+  }
+  
+  } catch {
+    return t;
+  }
+}
 
+function Valid_km2(d,r,t) {
+ try {   
+	if (d[0].studentTasksInfo.diaryTasks[r].kmCompleted == null) {
+	return t;
+	}
+else
+  {	
+  if (trind2 == 0 ) {
+    return d[0].studentTasksInfo.diaryTasks[r].kmCompleted;
+} else {
+	return Math.round(d[0].studentTasksInfo.diaryTasks[r].tracks[trind2-1].distance);
+}
+  }
+  
+  } catch {
+    return t;
+  }
+}
+
+function Valid_km3(d,r,t) {
+ try {   
+	if (d[0].studentTasksInfo.diaryTasks[r].kmCompleted == null) {
+	return t;
+	}
+else
+  {	
+  if (trind3 == 0 ) {
+    return d[0].studentTasksInfo.diaryTasks[r].kmCompleted;
+} else {
+	return Math.round(d[0].studentTasksInfo.diaryTasks[r].tracks[trind3-1].distance);
+}
+  }
+  
+  } catch {
+    return t;
+  }
+}
 
 
 function Valid_dayd(d,r,t) {
@@ -980,6 +1035,158 @@ const tmp = [];
   }  
   }
 }
+
+
+
+function Valid_Pace1(d,r,s,t) {
+
+if (trind1 == 0) { return Valid_Pace(d,r,s,t); } 
+
+  try {
+			const tmp = [];
+			for(var j=0; j < d[0].studentTasksInfo.diaryTasks[r].tracks[trind1-1].json.splits_metric.length-1 ; j++){
+			tmp.push(d[0].studentTasksInfo.diaryTasks[r].tracks[trind1-1].json.splits_metric[j].average_speed);
+				}
+            
+            num=(1000/tmp[s])/60;			
+			
+            return ((Math.round(num * 100) / 100) + 0.01) * -1; 
+  } catch {
+  
+      try {
+
+const tmp = [];
+ for(var j=0; j < d[0].studentTasksInfo.diaryTasks[r].tracks[trind1-1].json.segments.length ; j++){
+ tmp.push(d[0].studentTasksInfo.diaryTasks[r].tracks[trind1-1].json.segments[j].pace);
+ }
+        return tmp[s] * -1;
+ 
+
+  } catch {
+
+      try {
+
+			const tmp = [];
+			for(var j=0; j < d[0].studentTasksInfo.diaryTasks[r].tracks[trind1-1].json.laps.length-1 ; j++){
+			tmp.push(d[0].studentTasksInfo.diaryTasks[r].tracks[trind1-1].json.laps[j].average_speed);
+				}
+           
+            num=(1000/tmp[s])/60;			
+			
+//			return num.toFixed(2);
+            return ((Math.round(num * 100) / 100) + 0.01) * -1; 
+			
+           } catch {
+
+	       	return t;
+
+	      }
+    
+	return t;
+  }  
+  }
+}
+
+
+function Valid_Pace2(d,r,s,t) {
+
+if (trind2 == 0) { return Valid_Pace(d,r,s,t); } 
+
+  try {
+			const tmp = [];
+			for(var j=0; j < d[0].studentTasksInfo.diaryTasks[r].tracks[trind2-1].json.splits_metric.length-1 ; j++){
+			tmp.push(d[0].studentTasksInfo.diaryTasks[r].tracks[trind2-1].json.splits_metric[j].average_speed);
+				}
+            
+            num=(1000/tmp[s])/60;			
+			
+            return ((Math.round(num * 100) / 100) + 0.01) * -1; 
+  } catch {
+  
+      try {
+
+const tmp = [];
+ for(var j=0; j < d[0].studentTasksInfo.diaryTasks[r].tracks[trind2-1].json.segments.length ; j++){
+ tmp.push(d[0].studentTasksInfo.diaryTasks[r].tracks[trind2-1].json.segments[j].pace);
+ }
+        return tmp[s] * -1;
+ 
+
+  } catch {
+
+      try {
+
+			const tmp = [];
+			for(var j=0; j < d[0].studentTasksInfo.diaryTasks[r].tracks[trind2-1].json.laps.length-1 ; j++){
+			tmp.push(d[0].studentTasksInfo.diaryTasks[r].tracks[trind2-1].json.laps[j].average_speed);
+				}
+           
+            num=(1000/tmp[s])/60;			
+			
+//			return num.toFixed(2);
+            return ((Math.round(num * 100) / 100) + 0.01) * -1; 
+			
+           } catch {
+
+	       	return t;
+
+	      }
+    
+	return t;
+  }  
+  }
+}
+
+function Valid_Pace3(d,r,s,t) {
+
+if (trind3 == 0) { return Valid_Pace(d,r,s,t); } 
+
+  try {
+			const tmp = [];
+			for(var j=0; j < d[0].studentTasksInfo.diaryTasks[r].tracks[trind3-1].json.splits_metric.length-1 ; j++){
+			tmp.push(d[0].studentTasksInfo.diaryTasks[r].tracks[trind3-1].json.splits_metric[j].average_speed);
+				}
+            
+            num=(1000/tmp[s])/60;			
+			
+            return ((Math.round(num * 100) / 100) + 0.01) * -1; 
+  } catch {
+  
+      try {
+
+const tmp = [];
+ for(var j=0; j < d[0].studentTasksInfo.diaryTasks[r].tracks[trind3-1].json.segments.length ; j++){
+ tmp.push(d[0].studentTasksInfo.diaryTasks[r].tracks[trind3-1].json.segments[j].pace);
+ }
+        return tmp[s] * -1;
+ 
+
+  } catch {
+
+      try {
+
+			const tmp = [];
+			for(var j=0; j < d[0].studentTasksInfo.diaryTasks[r].tracks[trind3-1].json.laps.length-1 ; j++){
+			tmp.push(d[0].studentTasksInfo.diaryTasks[r].tracks[trind3-1].json.laps[j].average_speed);
+				}
+           
+            num=(1000/tmp[s])/60;			
+			
+//			return num.toFixed(2);
+            return ((Math.round(num * 100) / 100) + 0.01) * -1; 
+			
+           } catch {
+
+	       	return t;
+
+	      }
+    
+	return t;
+  }  
+  }
+}
+
+
 
 //============================
 
@@ -1404,14 +1611,14 @@ function updateChartData(ind1, ind2, ind3) {
 function updateChartData2(ind1, ind2, ind3) {
     var ff2 = [];
 
- ee = Math.max(Valid_km(d1,ind1,0),Valid_km(d2,ind2,0),Valid_km(d3,ind3,0));
+ ee = Math.max(Valid_km1(d1,ind1,0),Valid_km2(d2,ind2,0),Valid_km3(d3,ind3,0));
    
     // Формируем данные сразу как массив объектов (не нужно мучаться со строкой и JSON.parse)
     for(var i = 0; i < ee; i++){
         var item = { km: (i+1) };
-        item.pace15 = (ind3 !== "") ? Valid_Pace(d3,ind3, i, null)  : null;
-        item.pace8  = (ind2 !== "") ? Valid_Pace(d2,ind2, i, null)  : null;
-        item.pace1  = (ind1 !== "") ? Valid_Pace(d1,ind1, i, null)  : null;
+        item.pace15 = (ind3 !== "") ? Valid_Pace3(d3,ind3, i, null)  : null;
+        item.pace8  = (ind2 !== "") ? Valid_Pace2(d2,ind2, i, null)  : null;
+        item.pace1  = (ind1 !== "") ? Valid_Pace1(d1,ind1, i, null)  : null;
         ff2.push(item);
     }
 
@@ -3092,6 +3299,7 @@ onClick: {
         const val = select.value; // Теперь точно не undefined
         webix.message(`Выбран трек: ${val}`);
      trind1 = val;   
+	 updateChartData2(ind1, ind2, ind3);
         // Обновляем данные в таблице, чтобы Webix "запомнил" выбор
         this.getItem(id.row).selectedTrack = val;
       };
@@ -3103,7 +3311,8 @@ onClick: {
         const val = select.value; // Теперь точно не undefined
         webix.message(`Выбран трек: ${val}`);
      trind2 = val;          
-        // Обновляем данные в таблице, чтобы Webix "запомнил" выбор
+     updateChartData2(ind1, ind2, ind3);
+	 // Обновляем данные в таблице, чтобы Webix "запомнил" выбор
         this.getItem(id.row).selectedTrack = val;
       };
     }
@@ -3114,6 +3323,7 @@ onClick: {
         const val = select.value; // Теперь точно не undefined
         webix.message(`Выбран трек: ${val}`);
      trind3 = val;           
+     updateChartData2(ind1, ind2, ind3);
         // Обновляем данные в таблице, чтобы Webix "запомнил" выбор
         this.getItem(id.row).selectedTrack = val;
       };
