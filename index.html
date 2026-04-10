@@ -3220,7 +3220,7 @@ if ( ind1 == "" ) {return obj.s1;}
          
           tracks.forEach((len, i) => {
 //            options += `<option value="${i+1}">${len}км</option>`;
-            const isSelected = (String(i) === String(selectedIndex)) ? "selected" : "";
+            const isSelected = (String(i) === String(selectedIndex-1)) ? "selected" : "";
             options += `<option value="${i+1}" ${isSelected}>${len}км</option>`;
 
           });
