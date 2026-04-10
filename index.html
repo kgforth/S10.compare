@@ -3210,28 +3210,37 @@ if ( ind1 == "" ) {return obj.s1;}
 
         // Определяем, какую глобальную переменную использовать для этой колонки
         let selectedIndex;
-        if (column.id === "s1") selectedIndex = trind1;
-        else if (column.id === "s2") selectedIndex = trind2;
-        else if (column.id === "s3") selectedIndex = trind3;
-		
+//        if (column.id === "s1") selectedIndex = trind1;
+//        else if (column.id === "s2") selectedIndex = trind2;
+//        else if (column.id === "s3") selectedIndex = trind3;
+         selectedIndex = trind1;
+
 //          let options = `<option value="0">Все</option>`;
             let options = `<option value="0" ${selectedIndex === "0" ? "selected" : ""}>Все</option>`;
          
           tracks.forEach((len, i) => {
 //            options += `<option value="${i+1}">${len}км</option>`;
             const isSelected = (String(i) === String(selectedIndex)) ? "selected" : "";
-            options += `<option value="${i+1}" ${isSelected}>${len}км</option>`;
+            options += `<option value="${i}" ${isSelected}>${len}км</option>`;
 
           });
 
-          return `
-            <div class="cell_content">
-              <span>${obj.s1}</span>
-              <select class="clean_select">
+//          return `
+//            <div class="cell_content">
+//              <span>${obj.s1}</span>
+//              <select class="clean_select">
+//                ${options}
+//              </select>
+//            </div>`;
+//        }
+
+        return `
+          <div class="cell_content">
+            <select class="clean_select" onchange="saveSelectState(this, '${obj.id}', '${column.id}')">
                 ${options}
-              </select>
-            </div>`;
-        }
+            </select>
+          </div>`;
+
         
         // Обычное отображение для остальных строк
         return obj.s1;
