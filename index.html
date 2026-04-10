@@ -3215,8 +3215,8 @@ if ( ind1 == "" ) {return obj.s1;}
 //        else if (column.id === "s3") selectedIndex = trind3;
          selectedIndex = trind1;
 
-//          let options = `<option value="0">Все</option>`;
-            let options = `<option value="0" ${selectedIndex === "0" ? "selected" : "0"}>Все</option>`;
+          let options = `<option value="0">Все</option>`;
+//            let options = `<option value="0" ${selectedIndex === "0" ? "selected" : "0"}>Все</option>`;
          
           tracks.forEach((len, i) => {
 //            options += `<option value="${i+1}">${len}км</option>`;
@@ -3225,22 +3225,22 @@ if ( ind1 == "" ) {return obj.s1;}
 
           });
 
-//          return `
-//            <div class="cell_content">
-//              <span>${obj.s1}</span>
-//              <select class="clean_select">
-//                ${options}
-//              </select>
-//            </div>`;
-//        }
-
-        return `
-          <div class="cell_content">
-            <select class="clean_select" onchange="saveSelectState(this, '${obj.id}', '${column.id}')">
+          return `
+            <div class="cell_content">
+              <span>${obj.s1}</span>
+              <select class="clean_select">
                 ${options}
-            </select>
-          </div>`;
-         }
+              </select>
+            </div>`;
+        }
+
+//        return `
+//          <div class="cell_content">
+//            <select class="clean_select" onchange="saveSelectState(this, '${obj.id}', '${column.id}')">
+//                ${options}
+//            </select>
+//          </div>`;
+//         }
         
         // Обычное отображение для остальных строк
         return obj.s1;
