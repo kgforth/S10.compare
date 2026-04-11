@@ -1245,15 +1245,15 @@ ind = 0;
 
 //console.log('r=' +r+',s='+s);
 
- for(var j=0; j < Object.values(d[0].studentTasksInfo.diaryTasks[r].tracks[trind1].json.pacebuckets).length ; j++){
+ for(var j=0; j < Object.values(d[0].studentTasksInfo.diaryTasks[r].tracks[trind1-1].json.pacebuckets).length ; j++){
 
-    ind = slots.indexOf(Object.keys(d[0].studentTasksInfo.diaryTasks[r].tracks[trind1].json.pacebuckets)[j]);
+    ind = slots.indexOf(Object.keys(d[0].studentTasksInfo.diaryTasks[r].tracks[trind1-1].json.pacebuckets)[j]);
 
 //alert(ind);
 
 	if ( ind > -1 ) {
 	
-	z24[ind] = z24[ind] + Object.values(d[0].studentTasksInfo.diaryTasks[r].tracks[trind1].json.pacebuckets)[j];
+	z24[ind] = z24[ind] + Object.values(d[0].studentTasksInfo.diaryTasks[r].tracks[trind1-1].json.pacebuckets)[j];
 
 	
 	}
@@ -1285,15 +1285,15 @@ ind = 0;
 
 //console.log('r=' +r+',s='+s);
 
- for(var j=0; j < Object.values(d[0].studentTasksInfo.diaryTasks[r].tracks[trind2].json.pacebuckets).length ; j++){
+ for(var j=0; j < Object.values(d[0].studentTasksInfo.diaryTasks[r].tracks[trind2-1].json.pacebuckets).length ; j++){
 
-    ind = slots.indexOf(Object.keys(d[0].studentTasksInfo.diaryTasks[r].tracks[trind2].json.pacebuckets)[j]);
+    ind = slots.indexOf(Object.keys(d[0].studentTasksInfo.diaryTasks[r].tracks[trind2-1].json.pacebuckets)[j]);
 
 //alert(ind);
 
 	if ( ind > -1 ) {
 	
-	z24[ind] = z24[ind] + Object.values(d[0].studentTasksInfo.diaryTasks[r].tracks[trind2].json.pacebuckets)[j];
+	z24[ind] = z24[ind] + Object.values(d[0].studentTasksInfo.diaryTasks[r].tracks[trind2-1].json.pacebuckets)[j];
 
 	
 	}
@@ -1323,15 +1323,15 @@ ind = 0;
 
 //console.log('r=' +r+',s='+s);
 
- for(var j=0; j < Object.values(d[0].studentTasksInfo.diaryTasks[r].tracks[trind3].json.pacebuckets).length ; j++){
+ for(var j=0; j < Object.values(d[0].studentTasksInfo.diaryTasks[r].tracks[trind3-1].json.pacebuckets).length ; j++){
 
-    ind = slots.indexOf(Object.keys(d[0].studentTasksInfo.diaryTasks[r].tracks[trind3].json.pacebuckets)[j]);
+    ind = slots.indexOf(Object.keys(d[0].studentTasksInfo.diaryTasks[r].tracks[trind3-1].json.pacebuckets)[j]);
 
 //alert(ind);
 
 	if ( ind > -1 ) {
 	
-	z24[ind] = z24[ind] + Object.values(d[0].studentTasksInfo.diaryTasks[r].tracks[trind3].json.pacebuckets)[j];
+	z24[ind] = z24[ind] + Object.values(d[0].studentTasksInfo.diaryTasks[r].tracks[trind3-1].json.pacebuckets)[j];
 
 	
 	}
