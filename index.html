@@ -1233,6 +1233,123 @@ for(var i=0; i < d[0].studentTasksInfo.diaryTasks[r].tracks.length ; i++){
 }
 
 
+function Valid_Slot1(d,r,s,t) {
+ 
+ 
+ if (trind1 == 0 ) { return Valid_Slot(d,r,s,t); }
+ 
+ try {
+
+const z24 = Array(24).fill(0);
+ind = 0;
+
+//console.log('r=' +r+',s='+s);
+
+ for(var j=0; j < Object.values(d[0].studentTasksInfo.diaryTasks[r].tracks[trind1].json.pacebuckets).length ; j++){
+
+    ind = slots.indexOf(Object.keys(d[0].studentTasksInfo.diaryTasks[r].tracks[trind1].json.pacebuckets)[j]);
+
+//alert(ind);
+
+	if ( ind > -1 ) {
+	
+	z24[ind] = z24[ind] + Object.values(d[0].studentTasksInfo.diaryTasks[r].tracks[trind1].json.pacebuckets)[j];
+
+	
+	}
+
+ }
+
+
+//console.log('z24=' +z24[s]+'\n');
+
+
+        return Math.round((z24[s]/1000) * 10) / 10;
+
+  } catch {
+    
+	return t;
+  }
+}
+
+
+function Valid_Slot2(d,r,s,t) {
+
+ if (trind2 == 0 ) { return Valid_Slot(d,r,s,t); }
+
+ 
+ try {
+
+const z24 = Array(24).fill(0);
+ind = 0;
+
+//console.log('r=' +r+',s='+s);
+
+ for(var j=0; j < Object.values(d[0].studentTasksInfo.diaryTasks[r].tracks[trind2].json.pacebuckets).length ; j++){
+
+    ind = slots.indexOf(Object.keys(d[0].studentTasksInfo.diaryTasks[r].tracks[trind2].json.pacebuckets)[j]);
+
+//alert(ind);
+
+	if ( ind > -1 ) {
+	
+	z24[ind] = z24[ind] + Object.values(d[0].studentTasksInfo.diaryTasks[r].tracks[trind2].json.pacebuckets)[j];
+
+	
+	}
+
+ }
+
+
+//console.log('z24=' +z24[s]+'\n');
+
+
+        return Math.round((z24[s]/1000) * 10) / 10;
+
+  } catch {
+    
+	return t;
+  }
+}
+
+function Valid_Slot3(d,r,s,t) {
+
+ if (trind3 == 0 ) { return Valid_Slot(d,r,s,t); }
+ 
+ try {
+
+const z24 = Array(24).fill(0);
+ind = 0;
+
+//console.log('r=' +r+',s='+s);
+
+ for(var j=0; j < Object.values(d[0].studentTasksInfo.diaryTasks[r].tracks[trind3].json.pacebuckets).length ; j++){
+
+    ind = slots.indexOf(Object.keys(d[0].studentTasksInfo.diaryTasks[r].tracks[trind3].json.pacebuckets)[j]);
+
+//alert(ind);
+
+	if ( ind > -1 ) {
+	
+	z24[ind] = z24[ind] + Object.values(d[0].studentTasksInfo.diaryTasks[r].tracks[trind3].json.pacebuckets)[j];
+
+	
+	}
+
+ }
+
+
+//console.log('z24=' +z24[s]+'\n');
+
+
+        return Math.round((z24[s]/1000) * 10) / 10;
+
+  } catch {
+    
+	return t;
+  }
+}
+
 
 // d[0].studentTasksInfo.diaryTasks[5].tracks[0].json.pacebuckets - обьект (в фигурных скобках ключ : значение) 1й трек дня 5
 // Object.values(d[0].studentTasksInfo.diaryTasks[5].tracks[0].json.pacebuckets).length - 26 число значений
@@ -1588,9 +1705,9 @@ function updateChartData(ind1, ind2, ind3) {
     // Формируем данные сразу как массив объектов (не нужно мучаться со строкой и JSON.parse)
     for(var i = 0; i < 24; i++){
         var item = { m: slots[i] };
-        item.pace14 = (ind3 !== "") ? Valid_Slot(d3,ind3, i, null) : null;
-        item.pace7  = (ind2 !== "") ? Valid_Slot(d2,ind2, i, null) : null;
-        item.pace0  = (ind1 !== "") ? Valid_Slot(d1,ind1, i, null) : null;
+        item.pace14 = (ind3 !== "") ? Valid_Slot3(d3,ind3, i, null) : null;
+        item.pace7  = (ind2 !== "") ? Valid_Slot2(d2,ind2, i, null) : null;
+        item.pace0  = (ind1 !== "") ? Valid_Slot1(d1,ind1, i, null) : null;
         f1.push(item);
     }
 
