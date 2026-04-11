@@ -3432,6 +3432,7 @@ onClick: {
         const val = select.value; // Теперь точно не undefined
         webix.message(`Выбран трек: ${val}`);
      trind1 = val;   
+	 updateChartData(ind1, ind2, ind3);
 	 updateChartData2(ind1, ind2, ind3);
         // Обновляем данные в таблице, чтобы Webix "запомнил" выбор
         this.getItem(id.row).selectedTrack = val;
@@ -3444,6 +3445,7 @@ onClick: {
         const val = select.value; // Теперь точно не undefined
         webix.message(`Выбран трек: ${val}`);
      trind2 = val;          
+	 updateChartData(ind1, ind2, ind3);
      updateChartData2(ind1, ind2, ind3);
 	 // Обновляем данные в таблице, чтобы Webix "запомнил" выбор
         this.getItem(id.row).selectedTrack = val;
@@ -3456,6 +3458,7 @@ onClick: {
         const val = select.value; // Теперь точно не undefined
         webix.message(`Выбран трек: ${val}`);
      trind3 = val;           
+	 updateChartData(ind1, ind2, ind3);
      updateChartData2(ind1, ind2, ind3);
         // Обновляем данные в таблице, чтобы Webix "запомнил" выбор
         this.getItem(id.row).selectedTrack = val;
