@@ -1691,13 +1691,13 @@ if ( trind3 == 0 ) { return Valid_M10000(d,r,t); }
 
 function Valid_M21097(d,r,t) {
   try {
-var tmp = d[0].studentTasksInfo.diaryTasks[r].tracks[0].json.fastest[21097].pace;
+var tmp = d[0]?.studentTasksInfo?.diaryTasks[r]?.tracks[0]?.json?.fastest[21097]?.pace || Infinity ;
 
 if ( d[0].studentTasksInfo.diaryTasks[r].kmCompleted >= 21.097 ) {
 
 for(var i=0; i < d[0].studentTasksInfo.diaryTasks[r].tracks.length ; i++){
 // tmp = Math.min(tmp,d[0].studentTasksInfo.diaryTasks[r].tracks[i].json.fastest[21097].pace);
- tmp0 = d[0]?.studentTasksInfo?.diaryTasks[r]?.tracks[i]?.json?.fastest[21097]?.pace || 99999 ; 
+ tmp0 = d[0]?.studentTasksInfo?.diaryTasks[r]?.tracks[i]?.json?.fastest[21097]?.pace || Infinity ; 
  tmp = Math.min(tmp, tmp0);
  }
         return tmp;
