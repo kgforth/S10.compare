@@ -3502,7 +3502,7 @@ dtable = {
 //          template: function(obj, common, value, column) {		  
 // console.log(obj);
 //console.log(column.id, currentVal);
-if ( ind1 == "" ) {return obj.s1;}
+if ( ind1 === "" ) {return obj.s1;}
 
   // Получаем индекс строки (0 — первая, 1 — вторая и т.д.)
   const index = $$("ddtable").getIndexById(obj.id);
@@ -3535,7 +3535,7 @@ if ( ind1 == "" ) {return obj.s1;}
     , 
 	      template: function(obj) {
 
-if ( ind2 == "" ) {return obj.s2;}
+if ( ind2 === "" ) {return obj.s2;}
   // Получаем индекс строки (0 — первая, 1 — вторая и т.д.)
   const index = $$("ddtable").getIndexById(obj.id);
   // Проверяем, что это 5-я строка по счету (индекс 4)
@@ -3562,7 +3562,7 @@ if ( ind2 == "" ) {return obj.s2;}
 	{ id: "s3", css: "cursor_pointer", header: "<span title='загрузить' style='color:#008A45'><b>&nbsp;&nbsp;------o------&nbsp;&nbsp;&nbsp;&#10063;</b></span>", width: 154 
 	    , 
 	      template: function(obj) {
-if ( ind3 == "" ) {return obj.s3;}
+if ( ind3 === "" ) {return obj.s3;}
   // Получаем индекс строки (0 — первая, 1 — вторая и т.д.)
   const index = $$("ddtable").getIndexById(obj.id);
   // Проверяем, что это 5-я строка по счету (индекс 4)
