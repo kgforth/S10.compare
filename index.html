@@ -1447,13 +1447,14 @@ if ( tt === undefined) {
 //============================
 function Valid_M200(d,r,t) {
   try {
-var tmp = d[0].studentTasksInfo.diaryTasks[r].tracks[0].json.fastest[200].pace;
+// var tmp = d[0].studentTasksInfo.diaryTasks[r].tracks[0].json.fastest[200].pace;
+var tmp = d[0]?.studentTasksInfo?.diaryTasks[r]?.tracks[0]?.json?.fastest[200]?.pace || Infinity ;
 
 if ( d[0].studentTasksInfo.diaryTasks[r].kmCompleted >= 0.200 ) {
 
 for(var i=0; i < d[0].studentTasksInfo.diaryTasks[r].tracks.length ; i++){
- tmp0 = d[0].studentTasksInfo.diaryTasks[r].tracks[i].json.fastest[200].pace;
- tmp = Math.min(...[tmp, tmp0].map(v => isNaN(parseFloat(v)) ? Infinity : parseFloat(v)));
+ tmp0 = d[0]?.studentTasksInfo?.diaryTasks[r]?.tracks[i]?.json?.fastest[200]?.pace || Infinity ;
+ tmp = Math.min(tmp, tmp0);
  }
     return tmp;
 } else {
@@ -1503,14 +1504,15 @@ if ( trind3 == 0 ) { return Valid_M200(d,r,t); }
 
 function Valid_M1000(d,r,t) {
   try {
-var tmp = d[0].studentTasksInfo.diaryTasks[r].tracks[0].json.fastest[1000].pace;
+//var tmp = d[0].studentTasksInfo.diaryTasks[r].tracks[0].json.fastest[1000].pace;
+var tmp = d[0]?.studentTasksInfo?.diaryTasks[r]?.tracks[0]?.json?.fastest[1000]?.pace || Infinity ;
 
 if ( d[0].studentTasksInfo.diaryTasks[r].kmCompleted >= 1.000 ) {
 
 for(var i=0; i < d[0].studentTasksInfo.diaryTasks[r].tracks.length ; i++){
  //tmp = Math.min(tmp,d[0].studentTasksInfo.diaryTasks[r].tracks[i].json.fastest[1000].pace);
- tmp0 = d[0].studentTasksInfo.diaryTasks[r].tracks[i].json.fastest[1000].pace;
- tmp = Math.min(...[tmp, tmp0].map(v => isNaN(parseFloat(v)) ? Infinity : parseFloat(v)));
+ tmp0 = d[0]?.studentTasksInfo?.diaryTasks[r]?.tracks[i]?.json?.fastest[1000]?.pace || Infinity ;
+ tmp = Math.min(tmp, tmp0);
  }
         return tmp;
 } else {
@@ -1580,14 +1582,15 @@ for(var i=0; i < d[0].studentTasksInfo.diaryTasks[r].tracks.length ; i++){
 
 function Valid_M5000(d,r,t) {
   try {
-var tmp = d[0].studentTasksInfo.diaryTasks[r].tracks[0].json.fastest[5000].pace;
+//var tmp = d[0].studentTasksInfo.diaryTasks[r].tracks[0].json.fastest[5000].pace;
+var tmp = d[0]?.studentTasksInfo?.diaryTasks[r]?.tracks[0]?.json?.fastest[5000]?.pace || Infinity ;
 
 if ( d[0].studentTasksInfo.diaryTasks[r].kmCompleted >= 5.000 ) {
 
 for(var i=0; i < d[0].studentTasksInfo.diaryTasks[r].tracks.length ; i++){
  //tmp = Math.min(tmp,d[0].studentTasksInfo.diaryTasks[r].tracks[i].json.fastest[5000].pace);
- tmp0 = d[0].studentTasksInfo.diaryTasks[r].tracks[i].json.fastest[5000].pace;
- tmp = Math.min(...[tmp, tmp0].map(v => isNaN(parseFloat(v)) ? Infinity : parseFloat(v)));
+ tmp0 = d[0]?.studentTasksInfo?.diaryTasks[r]?.tracks[i]?.json?.fastest[5000]?.pace || Infinity ;
+ tmp = Math.min(tmp, tmp0);
  }
         return tmp;
 } else {
@@ -1635,14 +1638,14 @@ if ( trind3 == 0 ) { return Valid_M5000(d,r,t); }
 
 function Valid_M10000(d,r,t) {
   try {
-var tmp = d[0].studentTasksInfo.diaryTasks[r].tracks[0].json.fastest[10000].pace;
+var tmp = d[0]?.studentTasksInfo?.diaryTasks[r]?.tracks[0]?.json?.fastest[10000]?.pace || Infinity ;
 
 if ( d[0].studentTasksInfo.diaryTasks[r].kmCompleted >= 10.000 ) {
 
 for(var i=0; i < d[0].studentTasksInfo.diaryTasks[r].tracks.length ; i++){
  //tmp = Math.min(tmp,d[0].studentTasksInfo.diaryTasks[r].tracks[i].json.fastest[10000].pace);
- tmp0 = d[0].studentTasksInfo.diaryTasks[r].tracks[i].json.fastest[1000].pace;
- tmp = Math.min(...[tmp, tmp0].map(v => isNaN(parseFloat(v)) ? Infinity : parseFloat(v)));
+ tmp0 = d[0]?.studentTasksInfo?.diaryTasks[r]?.tracks[i]?.json?.fastest[10000]?.pace || Infinity ;
+ tmp = Math.min(tmp, tmp0);
  }
         return tmp;
 } else {
