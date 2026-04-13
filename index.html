@@ -107,20 +107,22 @@
 }
 </style>
 <style>
-/* Наш кастомный стиль для шапки окна */
-.my_win_header .webix_view.webix_toolbar {
-    background-color: #3498db; !important; /* Цвет Webix Primary (или #008A45 для зеленого)#1ca1c1;*/
-    border-bottom: 1px solid #1686a1; !important;
+
+/* Обращаемся к тулбару внутри нашего окна */
+.my_win_header .webix_win_head .webix_toolbar {
+    background-color: #3498db !important; /* Добавляем !important для гарантии */
+    border-bottom: 1px solid #2980b9 !important;
 }
 
+
 /* Цвет текста и иконки внутри шапки */
-.my_win_header .webix_el_label, 
-.my_win_header .webix_icon {
+.my_win_header .webix_win_head .webix_el_label, 
+.my_win_header .webix_win_head .webix_icon {
     color: #ffffff !important;
 }
 
 /* Эффект при наведении на иконку закрытия */
-.my_win_header .webix_icon:hover {
+.my_win_header .webix_win_head .webix_icon:hover {
     color: #e0e0e0 !important;
 }
 </style>
