@@ -460,25 +460,29 @@ return ;
 if (lastId == 0) {
 
 d1=d;
-
+updatecom1(d1);
 main_process();
 
 } else {
 
 switch (dx) {
   case 0:
+updatecom1(d);
    upd_process(d);
     break;
   case 1:
   d1=d;
+   updatecom1(d1);
    upd_process(d1);
     break;
   case 2:
   d2=d;
+   updatecom2(d2);
    upd_process(d2);
     break;
   case 3:
   d3=d;
+   updatecom3(d3);
    upd_process(d3);
     break;
   default:
@@ -744,6 +748,7 @@ com1 = c2;
 //$$("com_1").define("label", Valid_Atlet(d) + "  Задачи и отчеты");
 //$$("com1").getBody().setHTML(c2);
 
+$$("com_1").setValue(Valid_Atlet(d) + " =отчеты=");
 $$("body1").setValues({ html: com1 });
 
 }
@@ -769,7 +774,7 @@ c2 = c2.slice(0,c2.length-2);
 // new comment
 // $$("cmnt1").setHTML(c2); 
 com2 = c2;
-$$("com_2").setValue(Valid_Atlet(d) + "  Задачи и отчеты");
+$$("com_2").setValue(Valid_Atlet(d) + " =отчеты=");
 $$("com2").getBody().setHTML(c2);
 
 
@@ -796,7 +801,7 @@ c2 = c2.slice(0,c2.length-2);
 // new comment
 // $$("cmnt1").setHTML(c2); 
 com3 = c2;
-$$("com_3").setValue(Valid_Atlet(d) + "  Задачи и отчеты");
+$$("com_3").setValue(Valid_Atlet(d) + " =отчеты=");
 $$("com3").getBody().setHTML(c2);
 
 }
