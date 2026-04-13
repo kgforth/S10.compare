@@ -2223,7 +2223,7 @@ com11 = webix.ui({
     cols: [
       { view: "label", id: "com_1", label: "Информация" },
       {}, 
-      { view: "icon", icon: "wxi-close", click: () => $$("com1").hide() }
+      { view: "icon", id: "com1_ico" , icon: "wxi-close", click: () => $$("com1").hide() }
     ]
   },
   body: {
@@ -2241,8 +2241,15 @@ com11 = webix.ui({
       let toolbar = $$("comm1").$view;
       toolbar.style.backgroundColor = "#3498db";
       
-      let label = $$("com_1").$view;
-      label.style.color = "#ffffff";
+    // 2. Красим текст заголовка (ищем внутренний div с текстом)
+    let label = $$("com_1").$view.querySelector(".webix_el_box");
+    if (label) label.style.color = "#ffffff";	
+    label.style.fontWeight = "bold";	
+
+    // 3. Красим иконку закрытия (если у нее есть id: "my_close_icon")
+    let closeIcon = $$("com1_ico").$view.querySelector(".webix_icon");
+    if (closeIcon) closeIcon.style.color = "#ffffff";	
+	
     }
   }
 });
