@@ -129,7 +129,7 @@
 .my_win_custom .webix_win_head .webix_el_button:hover .webix_icon,
 .my_win_custom .webix_win_head .webix_el_icon:hover .webix_icon {
     background-color: rgba(255, 255, 255, 0.2) !important; /* Полупрозрачный фон вместо белого */
-    border-radius: 5%;
+    border-radius: 50%;
 }
 
 </style>
@@ -2236,7 +2236,8 @@ com11 = webix.ui({
     cols: [
       { view: "label", id: "com_1", label: "Информация" },
       {}, 
-      { view: "icon", id: "com1_ico" , icon: "wxi-close", click: () => $$("com1").hide() }
+//      { view: "icon", id: "com1_ico" , icon: "wxi-close", click: () => $$("com1").hide() }
+      { view: "icon", icon: "wxi-close",  click: () => $$("com1").hide() } 
     ]
   },
   body: {
