@@ -331,6 +331,10 @@ var trind1 = 0;
 var trind2 = 0;
 var trind3 = 0;
 
+var com1 = "";
+var com2 = "";
+var com3 = "";
+
 var f ;
 
 var mySeriesVisibility = [true, true, true];
@@ -712,6 +716,82 @@ function Valid_Comment(d,r,t) {
   } catch {
     return t;
   }
+}
+
+
+function updatecom1(d) {
+
+n2 = d[0].studentTasksInfo.diaryTasks.length;
+n1 = n2-21;
+
+c2 = "</br>" ;
+
+for(var i = n1; i < n2 ; i++){
+
+c0 = Valid_Comment(d,i,"")
+
+  c0 = c0.replace(/"/g, "'");
+  c0 = c0.replace(/(\r\n|\n|\r)/gm, ""); 
+  c0 = c0.replace(/<[^>]*>/g, '');
+  c2 = c2 + "<span style='color:blue'>--- " + d[0].studentTasksInfo.diaryTasks[i].date + " [ " + Valid_Ttype(d,i,"") + " ] " + Valid_Job(d,i,"") + "</span></br>" + c0 + "</br>\n"
+}
+
+c2 = c2.slice(0,c2.length-2);
+// new comment
+// $$("cmnt1").setHTML(c2); 
+com1 = c2;
+$$("com_1").setValue(Valid_Atlet(d) + "  Задачи и отчеты");
+
+}
+
+function updatecom2(d) {
+
+n2 = d[0].studentTasksInfo.diaryTasks.length;
+n1 = n2-21;
+
+c2 = "</br>" ;
+
+for(var i = n1; i < n2 ; i++){
+
+c0 = Valid_Comment(d,i,"")
+
+  c0 = c0.replace(/"/g, "'");
+  c0 = c0.replace(/(\r\n|\n|\r)/gm, ""); 
+  c0 = c0.replace(/<[^>]*>/g, '');
+  c2 = c2 + "<span style='color:blue'>--- " + d[0].studentTasksInfo.diaryTasks[i].date + " [ " + Valid_Ttype(d,i,"") + " ] " + Valid_Job(d,i,"") + "</span></br>" + c0 + "</br>\n"
+}
+
+c2 = c2.slice(0,c2.length-2);
+// new comment
+// $$("cmnt1").setHTML(c2); 
+com2 = c2;
+$$("com_2").setValue(Valid_Atlet(d) + "  Задачи и отчеты");
+
+}
+
+function updatecom3(d) {
+
+n2 = d[0].studentTasksInfo.diaryTasks.length;
+n1 = n2-21;
+
+c2 = "</br>" ;
+
+for(var i = n1; i < n2 ; i++){
+
+c0 = Valid_Comment(d,i,"")
+
+  c0 = c0.replace(/"/g, "'");
+  c0 = c0.replace(/(\r\n|\n|\r)/gm, ""); 
+  c0 = c0.replace(/<[^>]*>/g, '');
+  c2 = c2 + "<span style='color:blue'>--- " + d[0].studentTasksInfo.diaryTasks[i].date + " [ " + Valid_Ttype(d,i,"") + " ] " + Valid_Job(d,i,"") + "</span></br>" + c0 + "</br>\n"
+}
+
+c2 = c2.slice(0,c2.length-2);
+// new comment
+// $$("cmnt1").setHTML(c2); 
+com3 = c2;
+$$("com_3").setValue(Valid_Atlet(d) + "  Задачи и отчеты");
+
 }
 
 
@@ -2066,6 +2146,7 @@ function update_a1() {
 dx=1; 
 trind1=0; 
 extractId();
+updatecom1(d1);
 
 }
 
@@ -2074,6 +2155,7 @@ function update_a2() {
 dx=2; 
 trind2=0; 
 extractId();
+updatecom2(d2);
 
 }
 
@@ -2082,6 +2164,7 @@ function update_a3() {
 dx=3; 
 trind3=0; 
 extractId();
+updatecom3(d3);
 
 }
 
@@ -3604,7 +3687,7 @@ dtable = {
     { id: "param", header: "Параметр", width: 222 },
     // Остальные столбцы — это ваши серии
 //    { id: "s1", css: "cursor_pointer", header: "<span title='загрузить' style='color:#EC3774'><b>&nbsp;&nbsp;------o------&nbsp;&nbsp;&nbsp;&#10227;</b></span>", width: 166 
-	{ id: "s1", header: "<span class='custom-btn1' onclick='alert(1);' tabindex='0' role='button'>&#10063;</span><span style='color:#EC3774'><b>&nbsp;&nbsp;------o------&nbsp;&nbsp;</b></span><span class='custom-btn1' onclick='update_a1();' tabindex='0' role='button'>&#10227;</span>", width: 166 
+	{ id: "s1", header: "<span class='custom-btn1' onclick='$$(`com1`).show();' tabindex='0' role='button'>&#10063;</span><span style='color:#EC3774'><b>&nbsp;&nbsp;------o------&nbsp;&nbsp;</b></span><span class='custom-btn1' onclick='update_a1();' tabindex='0' role='button'>&#10227;</span>", width: 166 
 
 	, 
 	      template: function(obj) {
@@ -3641,7 +3724,7 @@ if ( ind1 === "" ) {return obj.s1;}
 	
 	},
 //    { id: "s2", css: "cursor_pointer", header: "<span title='загрузить' style='color:#00ccff'><b>&nbsp;&nbsp;------o------&nbsp;&nbsp;&nbsp;&#10227;</b></span>", width: 168 
-	{ id: "s2", header: "<span class='custom-btn2' onclick='alert(2);' tabindex='0' role='button'>&#10063;</span><span style='color:#00ccff'><b>&nbsp;&nbsp;------o------&nbsp;&nbsp;</b></span><span class='custom-btn2' onclick='update_a2();' tabindex='0' role='button'>&#10227;</span>", width: 168 
+	{ id: "s2", header: "<span class='custom-btn2' onclick='$$(`com2`).show();' tabindex='0' role='button'>&#10063;</span><span style='color:#00ccff'><b>&nbsp;&nbsp;------o------&nbsp;&nbsp;</b></span><span class='custom-btn2' onclick='update_a2();' tabindex='0' role='button'>&#10227;</span>", width: 168 
 
     , 
 	      template: function(obj) {
@@ -3674,7 +3757,7 @@ if ( ind2 === "" ) {return obj.s2;}
 
 //<span class="custom-btn" tabindex="0" role="button">Кнопка</span>
 
-	{ id: "s3", header: "<span class='custom-btn3' onclick='alert(3);' tabindex='0' role='button'>&#10063;</span><span style='color:#008A45'><b>&nbsp;&nbsp;------o------&nbsp;&nbsp;</b></span><span class='custom-btn3' onclick='update_a3();' tabindex='0' role='button'>&#10227;</span>", width: 154 
+	{ id: "s3", header: "<span class='custom-btn3' onclick='$$(`com3`).show();' tabindex='0' role='button'>&#10063;</span><span style='color:#008A45'><b>&nbsp;&nbsp;------o------&nbsp;&nbsp;</b></span><span class='custom-btn3' onclick='update_a3();' tabindex='0' role='button'>&#10227;</span>", width: 154 
 // dx=3; trind3=0; extractId();
 	    , 
 	      template: function(obj) {
@@ -3925,6 +4008,90 @@ webix.ui(
 { view:"resizer" }
 ]}
 ).show();  
+
+
+webix.ui({
+  view: "window",
+  id: "com1",
+   // ГЛАВНЫЕ НАСТРОЙКИ ДЛЯ РАСТЯГИВАНИЯ:
+  resize: true,         // Позволяет тянуть за края и правый нижний угол
+  move: true,           // Позволяет таскать за заголовок
+  width: 500,           // Начальная ширина
+  height: 700,          // Начальная высота
+  minWidth: 250,        // Минимальная ширина при растяжке
+  minHeight: 150,       // Минимальная высота при растяжке
+  position: "center",
+  head: {
+    view: "toolbar",
+    cols: [
+      { view: "label", id: "com_1", label: "Информация" },
+      {}, 
+      { view: "icon", icon: "wxi-close", click: () => $$("com1").close() }
+    ]
+  },
+  body: {
+    template: com1,      // Ваша переменная с HTML
+    scroll: "y"          // ВКЛЮЧАЕМ СКРОЛЛ
+  }
+});
+
+//$$("com1").show(); 
+
+webix.ui({
+  view: "window",
+  id: "com2",
+   // ГЛАВНЫЕ НАСТРОЙКИ ДЛЯ РАСТЯГИВАНИЯ:
+  resize: true,         // Позволяет тянуть за края и правый нижний угол
+  move: true,           // Позволяет таскать за заголовок
+  width: 500,           // Начальная ширина
+  height: 700,          // Начальная высота
+  minWidth: 250,        // Минимальная ширина при растяжке
+  minHeight: 150,       // Минимальная высота при растяжке
+  position: "center",
+  head: {
+    view: "toolbar",
+    cols: [
+      { view: "label", id: "com_2", label: "Информация" },
+      {}, 
+      { view: "icon", icon: "wxi-close", click: () => $$("com2").close() }
+    ]
+  },
+  body: {
+    template: com2,      // Ваша переменная с HTML
+    scroll: "y"          // ВКЛЮЧАЕМ СКРОЛЛ
+  }
+});
+
+//$$("com2").show(); 
+
+webix.ui({
+  view: "window",
+  id: "com3",
+   // ГЛАВНЫЕ НАСТРОЙКИ ДЛЯ РАСТЯГИВАНИЯ:
+  resize: true,         // Позволяет тянуть за края и правый нижний угол
+  move: true,           // Позволяет таскать за заголовок
+  width: 500,           // Начальная ширина
+  height: 700,          // Начальная высота
+  minWidth: 250,        // Минимальная ширина при растяжке
+  minHeight: 150,       // Минимальная высота при растяжке
+  position: "center",
+  head: {
+    view: "toolbar",
+    cols: [
+      { view: "label", id: "com_3", label: "Информация" },
+      {}, 
+      { view: "icon", icon: "wxi-close", click: () => $$("com3").close() }
+    ]
+  },
+  body: {
+    template: com3,      // Ваша переменная с HTML
+    scroll: "y"          // ВКЛЮЧАЕМ СКРОЛЛ
+  }
+});
+
+//$$("com1").show(); 
+
+
 
 //        "rows":[ {"cols": [ btn_sync,fld_search,btn_del ]},
 
