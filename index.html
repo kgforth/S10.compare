@@ -767,7 +767,10 @@ com1 = c2;
 //$$("com_1").define("label", Valid_Atlet(d) + "  Задачи и отчеты");
 //$$("com1").getBody().setHTML(c2);
 
-$$("com_1").setValue("<span style='color:blue'>=отчеты= </span>" + Valid_Atlet(d));
+//$$("com_1").setValue("<span style='color:blue'>=отчеты= </span>" + Valid_Atlet(d));
+
+$$("com_1").setValue("=отчеты= " + Valid_Atlet(d));
+
 $$("body1").setValues({ html: com1 });
 
 }
