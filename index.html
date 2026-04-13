@@ -2233,13 +2233,13 @@ com11 = webix.ui({
   position: "center",
   head: {
     view: "toolbar",
-	// id: "comm1",
- //   paddingX: 10,
+	 id: "comm1",
+    paddingX: 10,
     cols: [
-      { view: "label", id: "com_1", label: "Информация" },
+      { view: "label",   сss: "my_win_custom", id: "com_1", label: "Информация" },
       {}, 
-//      { view: "icon", id: "com1_ico" , icon: "wxi-close", click: () => $$("com1").hide() }
-      { view: "icon", icon: "wxi-close",  click: () => $$("com1").hide() } 
+      { view: "icon", id: "com1_ico" , icon: "wxi-close", click: () => $$("com1").hide() }
+//      { view: "icon", icon: "wxi-close",  click: () => $$("com1").hide() } 
     ]
   },
   body: {
