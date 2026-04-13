@@ -2299,13 +2299,7 @@ com12 = webix.ui({
     cols: [
       { view: "label", id: "com_2", label: "Информация" },
       {}, 
-      { view: "icon", icon: "wxi-close", 
-	    on: {
-    onRender: function() {
-      this.getInputNode().style.color = "white";
-    }
-  },	  
-	  click: () => $$("com2").hide() },
+      { view: "icon", icon: "wxi-close",  click: () => $$("com2").hide() },
 
 	  
     ]
