@@ -2170,6 +2170,90 @@ updatecom3(d3);
 }
 
 
+
+com1 = webix.ui({
+  view: "window",
+  id: "com1",
+   // ГЛАВНЫЕ НАСТРОЙКИ ДЛЯ РАСТЯГИВАНИЯ:
+  resize: true,         // Позволяет тянуть за края и правый нижний угол
+  move: true,           // Позволяет таскать за заголовок
+  width: 500,           // Начальная ширина
+  height: 700,          // Начальная высота
+  minWidth: 250,        // Минимальная ширина при растяжке
+  minHeight: 150,       // Минимальная высота при растяжке
+  position: "center",
+  head: {
+    view: "toolbar",
+    cols: [
+      { view: "label", id: "com_1", label: "Информация" },
+      {}, 
+      { view: "icon", icon: "wxi-close", click: () => $$("com1").hide() }
+    ]
+  },
+  body: {
+    template: com1,      // Ваша переменная с HTML
+    scroll: "y"          // ВКЛЮЧАЕМ СКРОЛЛ
+  }
+});
+
+//$$("com1").show(); 
+
+com2 = webix.ui({
+  view: "window",
+  id: "com2",
+   // ГЛАВНЫЕ НАСТРОЙКИ ДЛЯ РАСТЯГИВАНИЯ:
+  resize: true,         // Позволяет тянуть за края и правый нижний угол
+  move: true,           // Позволяет таскать за заголовок
+  width: 500,           // Начальная ширина
+  height: 700,          // Начальная высота
+  minWidth: 250,        // Минимальная ширина при растяжке
+  minHeight: 150,       // Минимальная высота при растяжке
+  position: "center",
+  head: {
+    view: "toolbar",
+    cols: [
+      { view: "label", id: "com_2", label: "Информация" },
+      {}, 
+      { view: "icon", icon: "wxi-close", click: () => $$("com2").hide() }
+    ]
+  },
+  body: {
+    template: com2,      // Ваша переменная с HTML
+    scroll: "y"          // ВКЛЮЧАЕМ СКРОЛЛ
+  }
+});
+
+//$$("com2").show(); 
+
+com3 = webix.ui({
+  view: "window",
+  id: "com3",
+   // ГЛАВНЫЕ НАСТРОЙКИ ДЛЯ РАСТЯГИВАНИЯ:
+  resize: true,         // Позволяет тянуть за края и правый нижний угол
+  move: true,           // Позволяет таскать за заголовок
+  width: 500,           // Начальная ширина
+  height: 700,          // Начальная высота
+  minWidth: 250,        // Минимальная ширина при растяжке
+  minHeight: 150,       // Минимальная высота при растяжке
+  position: "center",
+  head: {
+    view: "toolbar",
+    cols: [
+      { view: "label", id: "com_3", label: "Информация" },
+      {}, 
+      { view: "icon", icon: "wxi-close", click: () => $$("com3").hide() }
+    ]
+  },
+  body: {
+    template: com3,      // Ваша переменная с HTML
+    scroll: "y"          // ВКЛЮЧАЕМ СКРОЛЛ
+  }
+});
+
+//$$("com1").show(); 
+
+
+
 function updategra1(ind1,ind2,ind3) {
 
 setind10();
@@ -3688,7 +3772,7 @@ dtable = {
     { id: "param", header: "Параметр", width: 222 },
     // Остальные столбцы — это ваши серии
 //    { id: "s1", css: "cursor_pointer", header: "<span title='загрузить' style='color:#EC3774'><b>&nbsp;&nbsp;------o------&nbsp;&nbsp;&nbsp;&#10227;</b></span>", width: 166 
-	{ id: "s1", header: "<span class='custom-btn1' onclick='$$("com1").show();' tabindex='0' role='button'>&#10063;</span><span style='color:#EC3774'><b>&nbsp;&nbsp;------o------&nbsp;&nbsp;</b></span><span class='custom-btn1' onclick='update_a1();' tabindex='0' role='button'>&#10227;</span>", width: 166 
+	{ id: "s1", header: "<span class='custom-btn1' onclick='$$(`com1`).show();' tabindex='0' role='button'>&#10063;</span><span style='color:#EC3774'><b>&nbsp;&nbsp;------o------&nbsp;&nbsp;</b></span><span class='custom-btn1' onclick='update_a1();' tabindex='0' role='button'>&#10227;</span>", width: 166 
 
 	, 
 	      template: function(obj) {
@@ -3725,7 +3809,7 @@ if ( ind1 === "" ) {return obj.s1;}
 	
 	},
 //    { id: "s2", css: "cursor_pointer", header: "<span title='загрузить' style='color:#00ccff'><b>&nbsp;&nbsp;------o------&nbsp;&nbsp;&nbsp;&#10227;</b></span>", width: 168 
-	{ id: "s2", header: "<span class='custom-btn2' onclick='$$("com2").show();' tabindex='0' role='button'>&#10063;</span><span style='color:#00ccff'><b>&nbsp;&nbsp;------o------&nbsp;&nbsp;</b></span><span class='custom-btn2' onclick='update_a2();' tabindex='0' role='button'>&#10227;</span>", width: 168 
+	{ id: "s2", header: "<span class='custom-btn2' onclick='$$(`com2`).show();' tabindex='0' role='button'>&#10063;</span><span style='color:#00ccff'><b>&nbsp;&nbsp;------o------&nbsp;&nbsp;</b></span><span class='custom-btn2' onclick='update_a2();' tabindex='0' role='button'>&#10227;</span>", width: 168 
 
     , 
 	      template: function(obj) {
@@ -3758,7 +3842,7 @@ if ( ind2 === "" ) {return obj.s2;}
 
 //<span class="custom-btn" tabindex="0" role="button">Кнопка</span>
 
-	{ id: "s3", header: "<span class='custom-btn3' onclick='$$("com3").show();' tabindex='0' role='button'>&#10063;</span><span style='color:#008A45'><b>&nbsp;&nbsp;------o------&nbsp;&nbsp;</b></span><span class='custom-btn3' onclick='update_a3();' tabindex='0' role='button'>&#10227;</span>", width: 154 
+	{ id: "s3", header: "<span class='custom-btn3' onclick='$$(`com3`).show();' tabindex='0' role='button'>&#10063;</span><span style='color:#008A45'><b>&nbsp;&nbsp;------o------&nbsp;&nbsp;</b></span><span class='custom-btn3' onclick='update_a3();' tabindex='0' role='button'>&#10227;</span>", width: 154 
 // dx=3; trind3=0; extractId();
 	    , 
 	      template: function(obj) {
@@ -4009,88 +4093,6 @@ webix.ui(
 { view:"resizer" }
 ]}
 ).show();  
-
-
-webix.ui({
-  view: "window",
-  id: "com1",
-   // ГЛАВНЫЕ НАСТРОЙКИ ДЛЯ РАСТЯГИВАНИЯ:
-  resize: true,         // Позволяет тянуть за края и правый нижний угол
-  move: true,           // Позволяет таскать за заголовок
-  width: 500,           // Начальная ширина
-  height: 700,          // Начальная высота
-  minWidth: 250,        // Минимальная ширина при растяжке
-  minHeight: 150,       // Минимальная высота при растяжке
-  position: "center",
-  head: {
-    view: "toolbar",
-    cols: [
-      { view: "label", id: "com_1", label: "Информация" },
-      {}, 
-      { view: "icon", icon: "wxi-close", click: () => $$("com1").hide() }
-    ]
-  },
-  body: {
-    template: com1,      // Ваша переменная с HTML
-    scroll: "y"          // ВКЛЮЧАЕМ СКРОЛЛ
-  }
-});
-
-//$$("com1").show(); 
-
-webix.ui({
-  view: "window",
-  id: "com2",
-   // ГЛАВНЫЕ НАСТРОЙКИ ДЛЯ РАСТЯГИВАНИЯ:
-  resize: true,         // Позволяет тянуть за края и правый нижний угол
-  move: true,           // Позволяет таскать за заголовок
-  width: 500,           // Начальная ширина
-  height: 700,          // Начальная высота
-  minWidth: 250,        // Минимальная ширина при растяжке
-  minHeight: 150,       // Минимальная высота при растяжке
-  position: "center",
-  head: {
-    view: "toolbar",
-    cols: [
-      { view: "label", id: "com_2", label: "Информация" },
-      {}, 
-      { view: "icon", icon: "wxi-close", click: () => $$("com2").hide() }
-    ]
-  },
-  body: {
-    template: com2,      // Ваша переменная с HTML
-    scroll: "y"          // ВКЛЮЧАЕМ СКРОЛЛ
-  }
-});
-
-//$$("com2").show(); 
-
-webix.ui({
-  view: "window",
-  id: "com3",
-   // ГЛАВНЫЕ НАСТРОЙКИ ДЛЯ РАСТЯГИВАНИЯ:
-  resize: true,         // Позволяет тянуть за края и правый нижний угол
-  move: true,           // Позволяет таскать за заголовок
-  width: 500,           // Начальная ширина
-  height: 700,          // Начальная высота
-  minWidth: 250,        // Минимальная ширина при растяжке
-  minHeight: 150,       // Минимальная высота при растяжке
-  position: "center",
-  head: {
-    view: "toolbar",
-    cols: [
-      { view: "label", id: "com_3", label: "Информация" },
-      {}, 
-      { view: "icon", icon: "wxi-close", click: () => $$("com3").hide() }
-    ]
-  },
-  body: {
-    template: com3,      // Ваша переменная с HTML
-    scroll: "y"          // ВКЛЮЧАЕМ СКРОЛЛ
-  }
-});
-
-//$$("com1").show(); 
 
 
 
