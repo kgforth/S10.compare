@@ -843,6 +843,22 @@ $$("com3").getBody().setHTML(c2);
 
 }
 
+function cleacom1() {
+$$("com_1").setValue("Информация" );
+$$("com1").getBody().setHTML("undefined");
+}
+
+function cleacom2() {
+$$("com_2").setValue("Информация" );
+$$("com2").getBody().setHTML("undefined");
+}
+
+
+function cleacom3() {
+$$("com_3").setValue("Информация" );
+$$("com3").getBody().setHTML("undefined");
+}
+
 
 function Valid_Ttype(d,r,t) {
   try {
@@ -4285,7 +4301,7 @@ updategra1(ind1,ind2,ind3);
 updategra2(ind1,ind2,ind3);
 updategra3(ind1,ind2,ind3);
 updategra4(ind1,ind2,ind3);
-updatecom1(d1);
+cleacom1()
 
 return;
 }
@@ -4336,7 +4352,7 @@ updategra1(ind1,ind2,ind3);
 updategra2(ind1,ind2,ind3);
 updategra3(ind1,ind2,ind3);
 updategra4(ind1,ind2,ind3);
-
+cleacom2()
 
 return;
 }
@@ -4387,7 +4403,7 @@ updategra1(ind1,ind2,ind3);
 updategra2(ind1,ind2,ind3);
 updategra3(ind1,ind2,ind3);
 updategra4(ind1,ind2,ind3);
-
+cleacom3()
 
 return;
 
