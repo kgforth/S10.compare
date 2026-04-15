@@ -542,6 +542,54 @@ updatecom1(d);
     }
 });
 
+//let activeWins = winIds.filter(id => {
+//    let win = $$(id);
+//    return win && win.isVisible(); // Проверяем, что окно создано и не скрыто
+//});
+
+function alignWindows() {
+    let winIds = ["com1", "com2", "com3"];
+    let activeWins = winIds.filter(id => $$(id) && $$(id).isVisible());
+    let count = activeWins.length;
+    
+    if (!count) return;
+
+    let screenWidth = window.innerWidth;
+    let winHeight = 500; // Твоя высота
+
+    activeWins.forEach((id, index) => {
+        let win = $$(id);
+        let winWidth, posX;
+
+        if (count === 1) {
+            // ПРАВИЛО 1: Одно окно — не более половины ширины, по центру
+            winWidth = Math.min(screenWidth / 2, 800); // Ограничим еще и максимумом на всякий
+            posX = (screenWidth - winWidth) / 2;
+        } 
+        else if (count === 2) {
+            // ПРАВИЛО 2: Два окна — отступы от краев по 30px
+            let margin = 30;
+            let gap = 20; // зазор между окнами
+            winWidth = (screenWidth - (margin * 2) - gap) / 2;
+            posX = margin + (index * (winWidth + gap));
+        } 
+        else if (count === 3) {
+            // ПРАВИЛО 3: Три окна — отступы от краев по 10px
+            let margin = 10;
+            let gap = 10; // зазор между окнами
+            winWidth = (screenWidth - (margin * 2) - (gap * 2)) / 3;
+            posX = margin + (index * (winWidth + gap));
+        }
+
+        // Применяем размеры
+        win.define("width", winWidth);
+        win.define("height", winHeight);
+        win.resize();
+
+        // Ставим в позицию (Y можно оставить фиксированным, например 100)
+        win.setPosition(posX, 100);
+    });
+}
 
 
 function checkVisibility(chartId, seriesIndex) {
@@ -2290,7 +2338,18 @@ com12 = webix.ui({
     template: "#html#",
 //    template: com2,      // Ваша переменная с HTML
     scroll: "y"          // ВКЛЮЧАЕМ СКРОЛЛ
+  },
+  // В конфиге каждого окна
+on: {
+  onHide: function() {
+    // Вызываем перерасчет для оставшихся видимых окон
+    alignWindows();
+  },
+  onShow: function() {
+    // И при открытии тоже вызываем
+    alignWindows();
   }
+}
 });
 
 //$$("com2").show(); 
@@ -2321,7 +2380,18 @@ com11 = webix.ui({
     template: "#html#",
 //    template: com2,      // Ваша переменная с HTML
     scroll: "y"          // ВКЛЮЧАЕМ СКРОЛЛ
+  },
+// В конфиге каждого окна
+on: {
+  onHide: function() {
+    // Вызываем перерасчет для оставшихся видимых окон
+    alignWindows();
+  },
+  onShow: function() {
+    // И при открытии тоже вызываем
+    alignWindows();
   }
+}  
 });
 
 //$$("com1").show(); 
@@ -2352,7 +2422,18 @@ com13 = webix.ui({
     template: "#html#",
 //    template: com3,      // Ваша переменная с HTML
     scroll: "y"          // ВКЛЮЧАЕМ СКРОЛЛ
+  },
+// В конфиге каждого окна
+on: {
+  onHide: function() {
+    // Вызываем перерасчет для оставшихся видимых окон
+    alignWindows();
+  },
+  onShow: function() {
+    // И при открытии тоже вызываем
+    alignWindows();
   }
+}  
 });
 
 //$$("com1").show(); 
