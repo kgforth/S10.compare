@@ -555,7 +555,7 @@ function alignWindows() {
     if (!count) return;
 
     let screenWidth = window.innerWidth;
-    let winHeight = 500; // Твоя высота
+    let winHeight = 750; // Твоя высота
 
     activeWins.forEach((id, index) => {
         let win = $$(id);
@@ -569,14 +569,14 @@ function alignWindows() {
         else if (count === 2) {
             // ПРАВИЛО 2: Два окна — отступы от краев по 30px
             let margin = 30;
-            let gap = 20; // зазор между окнами
+            let gap = 8; // зазор между окнами
             winWidth = (screenWidth - (margin * 2) - gap) / 2;
             posX = margin + (index * (winWidth + gap));
         } 
         else if (count === 3) {
             // ПРАВИЛО 3: Три окна — отступы от краев по 10px
             let margin = 10;
-            let gap = 10; // зазор между окнами
+            let gap = 8; // зазор между окнами
             winWidth = (screenWidth - (margin * 2) - (gap * 2)) / 3;
             posX = margin + (index * (winWidth + gap));
         }
