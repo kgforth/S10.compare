@@ -1614,6 +1614,14 @@ else
   }
 }
 
+
+function Valid_dd(d,r,t) {
+ try {   
+	return d[0].studentTasksInfo.diaryTasks[r].date;
+  } catch {
+    return t;
+  }
+}
 		
 		
 function Valid_C(d,r,t) {
@@ -5119,7 +5127,7 @@ k1 = k2-21;
  
 if ( $$('cal1').getValue() !== null ) {
 for(var i = k1; i < k2 ; i++){
- if ( $$('cal1').getValue().toLocaleDateString('en-CA') == d1[0].studentTasksInfo.diaryTasks[i].date ) {
+ if ( $$('cal1').getValue().toLocaleDateString('en-CA') == Valid_dd(d1,i,"") ) {
   ind1 = i;
   }
  }
@@ -5171,7 +5179,7 @@ k1 = k2-21;
 
 if ( $$('cal2').getValue() !== null ) {
 for(var i = k1; i < k2 ; i++){
- if ( $$('cal2').getValue().toLocaleDateString('en-CA') == d2[0].studentTasksInfo.diaryTasks[i].date ) {
+ if ( $$('cal2').getValue().toLocaleDateString('en-CA') == Valid_dd(d2,i,"") ) {
   ind2 = i;
   }
  }
@@ -5224,7 +5232,7 @@ k1 = k2-21;
  
 if ( $$('cal3').getValue() !== null ) {
 for(var i = k1; i < k2 ; i++){
- if ( $$('cal3').getValue().toLocaleDateString('en-CA') == d3[0].studentTasksInfo.diaryTasks[i].date ) {
+ if ( $$('cal3').getValue().toLocaleDateString('en-CA') == Valid_dd(d3,i,"") ) {
   ind3 = i;
   }
  }
