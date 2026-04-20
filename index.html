@@ -252,14 +252,6 @@
 
 // <style> .webix_hcell { cursor: pointer; } </style> 
 
-//var oldUi = webix.ui;
-//webix.ui = function(config){
-//    if (config.id === "gpace" || (config.body && config.body.id === "gpace")) {
-//        console.trace("Объект gpace создается здесь:");
-//    }
-//    return oldUi.apply(this, arguments);
-//};
-
 
 var trashBtnId = "trash_btn";
 var searchId = "my_search";
@@ -487,45 +479,20 @@ window.addEventListener("message", (event) => {
         }
     }
 	
-	// Шаг А: Проверка URL от букмарклета (первичная)
-//	
-//    if (data.type === "CHECK_URL") {
-//        const url = data.url;
-//        if (/s10\.run/.test(url)) {
-//            showLoader();
-//            // ВАЖНО: передаем объект с типом И URL, на который нужно сделать fetch
-//            event.source.postMessage({ type: "FETCH_SPECIFIC_URL", url: url }, event.origin);
-//        } else {
-//            document.body.innerHTML = "<h2 style='color:red;'>Ошибка домена</h2>";
-//        }
-//    }
-	
 
     // Шаг Б: Получение данных (HTML)
     if (data.type === "DATA_PAYLOAD") {
 	    hideLoader(); // ВЫКЛЮЧАЕМ ЛОАДЕР
         window.lastHtml = data.text;
-//        console.log("Данные получены для URL:", data.url);
-//        console.log("Размер данных:", data.text.length, "символов");
-        
-//        console.log("====================================");
-//        console.log(window.lastHtml);
-//        console.log("====================================");
-        
-        // Здесь можно вызвать твою функцию парсинга, например:
-        // myParseFunction(data.text);
 
 		a=window.lastHtml;
 
-//		alert(a);
 
  if ( a.includes(m1) && a.includes(m2)	) {	  
 				
                 b="["+ a.slice(a.indexOf(m1)+m1.length);
-//                c=b.slice(0,b.lastIndexOf(m2)-13)+"]";
                 c=b.slice(0,b.lastIndexOf(m3))+'"trainingsRequests": []}]';
 
-//alert(c.slice(-40));
 	 
 } else {
 
@@ -538,9 +505,6 @@ return ;
 
                 d=JSON.parse(c);
 		
-		
-// =======================================================================================================================================================
-// =======================================================================================================================================================
 // =======================================================================================================================================================
 // =======================================================================================================================================================
 
@@ -580,16 +544,8 @@ updatecom1(d);
    upd_process(d);
 }
 
-//upd_process();
-//upd_process(d1);
-//upd_process(d2);
-//upd_process(d3);
-
-
 }
 
-// =======================================================================================================================================================
-// =======================================================================================================================================================
 // =======================================================================================================================================================
 // =======================================================================================================================================================
 
@@ -607,10 +563,6 @@ updatecom1(d);
     }
 });
 
-//let activeWins = winIds.filter(id => {
-//    let win = $$(id);
-//    return win && win.isVisible(); // Проверяем, что окно создано и не скрыто
-//});
 
 function alignWindows() {
     let winIds = ["com1", "com2", "com3"];
@@ -739,36 +691,6 @@ function upd_process(d) {
 
 upd_bldt(d,dx-1);
 
-//alert("upd_process");
-//n2 = d[0].studentTasksInfo.diaryTasks.length;
-//n1 = n2-21;
-
-//c2 = "</br>" ;
-//
-//for(var i = n1; i < n2 ; i++){
-//
-//c0 = Valid_Comment(i,"")
-//
-//  c0 = c0.replace(/"/g, "'");
-//  c0 = c0.replace(/(\r\n|\n|\r)/gm, ""); 
-//  c0 = c0.replace(/<[^>]*>/g, '');
-//  c2 = c2 + "<span style='color:blue'>--- " + d[0].studentTasksInfo.diaryTasks[i].date + " [ " + Valid_Ttype(i,"") + " ] " + Valid_Job(i,"") + "</span></br>" + c0 + "</br>\n"
-//}
-
-//c2 = c2.slice(0,c2.length-2);
-// new comment
-// $$("cmnt1").setHTML(c2); 
-
-//bldate = "";
-//for(var i = n1; i < n2 ; i++){
-//if ( Valid_km(d,i,0) == 0 ) {
-//bldate = bldate + d[0].studentTasksInfo.diaryTasks[i].date + ","
-//}
-//}
-
-//console.log(bldate);
-
-
 e1 = Math.max(Valid_km(d,n1+0,0),Valid_km(d,n1+7,0),Valid_km(d,n1+14,0));
 e2 = Math.max(Valid_km(d,n1+1,0),Valid_km(d,n1+8,0),Valid_km(d,n1+15,0));
 e3 = Math.max(Valid_km(d,n1+2,0),Valid_km(d,n1+9,0),Valid_km(d,n1+16,0));
@@ -776,24 +698,6 @@ e4 = Math.max(Valid_km(d,n1+3,0),Valid_km(d,n1+10,0),Valid_km(d,n1+17,0));
 e5 = Math.max(Valid_km(d,n1+4,0),Valid_km(d,n1+11,0),Valid_km(d,n1+18,0));
 e6 = Math.max(Valid_km(d,n1+5,0),Valid_km(d,n1+12,0),Valid_km(d,n1+19,0));
 e7 = Math.max(Valid_km(d,n1+6,0),Valid_km(d,n1+13,0),Valid_km(d,n1+20,0));
-
-
-
-//function Valid_Pace(r,s,t) {
-//  try {
-//const tmp = [];
-//for(var i=0; i < d[0].studentTasksInfo.diaryTasks[r].tracks.length ; i++){
-// for(var j=0; j < d[0].studentTasksInfo.diaryTasks[r].tracks[i].json.segments.length ; j++){
-// tmp.push(d[0].studentTasksInfo.diaryTasks[r].tracks[i].json.segments[j].pace);
-// }
-//}
-//        return tmp[s];
-//
-//  } catch {
-//    return t;
-//  }
-//}
-//============================
 
 
 ind1 = "";
@@ -806,17 +710,12 @@ ee = 0;
 if (dx == 1) { $$('cal1').setValue(new Date())}
 if (dx == 2) { $$('cal2').setValue(new Date())}
 if (dx == 3) { $$('cal3').setValue(new Date())}
-//$$('cal2').setValue(null);
-//$$('cal3').setValue(null);
 
 setind();
 
 ind10 = ind1;
 ind20 = ind2;
 ind30 = ind3;
-
-//console.log("set indx:\n");
-//console.log(ind10,ind20,ind30);
 
 updateTable1(ind1, ind2, ind3);
 updateChartData(ind1, ind2, ind3);
@@ -829,8 +728,6 @@ updategra4(ind1,ind2,ind3);
 
 
 }
-
-//1000008935
 
 function Valid_id(d) {
   try {
@@ -869,17 +766,6 @@ function Valid_Atlet(d) {
     return "";
   }
 }
-
-//function Valid_trubl(d,r,t) {
-//  try {
-//
-//var tr = ['','легко','нормально','тяжело, но сделал','тяжело и не сделал','травма'];
-//    return tr[d[0].studentTasksInfo.diaryTasks[r].reportParameters.difficulty];
-//  } catch {
-//    return t;
-//  }
-//}
-
 
 
 function formatDate(date) {
@@ -1272,20 +1158,10 @@ c0 = Valid_Comment(d,i,"")
 }
 
 c2 = c2.slice(0,c2.length-2);
-// new comment
-// $$("cmnt1").setHTML(c2); 
+
 com1 = c2;
-//$$("com_1").setValue(Valid_Atlet(d) + "  Задачи и отчеты");
-//$$("com_1").define("label", Valid_Atlet(d) + "  Задачи и отчеты");
-//$$("com1").getBody().setHTML(c2);
-
-//$$("com_1").setValue("<span style='color:blue'>=отчеты= </span>" + Valid_Atlet(d));
-
-//$$("com_1").setValue("=отчеты= " + Valid_Atlet(d));
-//$$("body1").setValues({ html: com1 });
 
 $$("com_1").setValue("<span style='color:white; font-weight:500;'>=отчеты= " + Valid_Atlet(d) + "</span>" );
-//$$("body1").setValues({ html: com1 });
 $$("com1").getBody().setHTML(c2);
   } catch {
     return;
@@ -1310,10 +1186,7 @@ c0 = Valid_Comment(d,i,"")
 }
 
 c2 = c2.slice(0,c2.length-2);
-// new comment
-// $$("cmnt1").setHTML(c2); 
 com2 = c2;
-//$$("com_2").setValue("=отчеты= " + Valid_Atlet(d));
 $$("com_2").setValue("<span style='color:white; font-weight:500;'>=отчеты= " + Valid_Atlet(d) + "</span>" );
 $$("com2").getBody().setHTML(c2);
   } catch {
@@ -1339,11 +1212,7 @@ c0 = Valid_Comment(d,i,"")
 }
 
 c2 = c2.slice(0,c2.length-2);
-// new comment
-// $$("cmnt1").setHTML(c2); 
 com3 = c2;
-//$$("com_3").setValue("<span style='color:blue'>=отчеты= </span>" + Valid_Atlet(d));
-//$$("com3").getBody().setHTML(c2);
 
 $$("com_3").setValue("<span style='color:white; font-weight:500;'>=отчеты= " + Valid_Atlet(d) + "</span>" );
 $$("com3").getBody().setHTML(c2);
@@ -2018,8 +1887,6 @@ for(var i=0; i < d[0].studentTasksInfo.diaryTasks[r].tracks.length ; i++){
  }
 }
 
-//console.log('z24=' +z24[s]+'\n');
-
 
         return Math.round((z24[s]/1000) * 10) / 10;
 
@@ -2040,13 +1907,11 @@ function Valid_Slot1(d,r,s,t) {
 const z24 = Array(24).fill(0);
 ind = 0;
 
-//console.log('r=' +r+',s='+s);
 
  for(var j=0; j < Object.values(d[0].studentTasksInfo.diaryTasks[r].tracks[trind1-1].json.pacebuckets).length ; j++){
 
     ind = slots.indexOf(Object.keys(d[0].studentTasksInfo.diaryTasks[r].tracks[trind1-1].json.pacebuckets)[j]);
 
-//alert(ind);
 
 	if ( ind > -1 ) {
 	
@@ -2056,9 +1921,6 @@ ind = 0;
 	}
 
  }
-
-
-//console.log('z24=' +z24[s]+'\n');
 
 
         return Math.round((z24[s]/1000) * 10) / 10;
@@ -2080,13 +1942,9 @@ function Valid_Slot2(d,r,s,t) {
 const z24 = Array(24).fill(0);
 ind = 0;
 
-//console.log('r=' +r+',s='+s);
-
  for(var j=0; j < Object.values(d[0].studentTasksInfo.diaryTasks[r].tracks[trind2-1].json.pacebuckets).length ; j++){
 
     ind = slots.indexOf(Object.keys(d[0].studentTasksInfo.diaryTasks[r].tracks[trind2-1].json.pacebuckets)[j]);
-
-//alert(ind);
 
 	if ( ind > -1 ) {
 	
@@ -2096,10 +1954,6 @@ ind = 0;
 	}
 
  }
-
-
-//console.log('z24=' +z24[s]+'\n');
-
 
         return Math.round((z24[s]/1000) * 10) / 10;
 
@@ -2118,13 +1972,9 @@ function Valid_Slot3(d,r,s,t) {
 const z24 = Array(24).fill(0);
 ind = 0;
 
-//console.log('r=' +r+',s='+s);
-
  for(var j=0; j < Object.values(d[0].studentTasksInfo.diaryTasks[r].tracks[trind3-1].json.pacebuckets).length ; j++){
 
     ind = slots.indexOf(Object.keys(d[0].studentTasksInfo.diaryTasks[r].tracks[trind3-1].json.pacebuckets)[j]);
-
-//alert(ind);
 
 	if ( ind > -1 ) {
 	
@@ -2135,10 +1985,6 @@ ind = 0;
 
  }
 
-
-//console.log('z24=' +z24[s]+'\n');
-
-
         return Math.round((z24[s]/1000) * 10) / 10;
 
   } catch {
@@ -2146,13 +1992,6 @@ ind = 0;
 	return t;
   }
 }
-
-
-// d[0].studentTasksInfo.diaryTasks[5].tracks[0].json.pacebuckets - обьект (в фигурных скобках ключ : значение) 1й трек дня 5
-// Object.values(d[0].studentTasksInfo.diaryTasks[5].tracks[0].json.pacebuckets).length - 26 число значений
-// Object.values(d[0].studentTasksInfo.diaryTasks[5].tracks[0].json.pacebuckets) массив значений 
-// Object.values(d[0].studentTasksInfo.diaryTasks[5].tracks[0].json.pacebuckets)[0] первый элемент (значение) 25
-// Object.keys(d[0].studentTasksInfo.diaryTasks[5].tracks[0].json.pacebuckets)[0] первый ключ 3:50
 
 
 function Valid_MaxHeart(d,r,t) {
@@ -2379,13 +2218,11 @@ for(var i=0; i < d[0].studentTasksInfo.diaryTasks[r].tracks.length ; i++){
 
 function Valid_M5000(d,r,t) {
   try {
-//var tmp = d[0].studentTasksInfo.diaryTasks[r].tracks[0].json.fastest[5000].pace;
 var tmp = d[0]?.studentTasksInfo?.diaryTasks[r]?.tracks[0]?.json?.fastest[5000]?.pace || Infinity ;
 
 if ( d[0].studentTasksInfo.diaryTasks[r].kmCompleted >= 5.000 ) {
 
 for(var i=0; i < d[0].studentTasksInfo.diaryTasks[r].tracks.length ; i++){
- //tmp = Math.min(tmp,d[0].studentTasksInfo.diaryTasks[r].tracks[i].json.fastest[5000].pace);
  tmp0 = d[0]?.studentTasksInfo?.diaryTasks[r]?.tracks[i]?.json?.fastest[5000]?.pace || Infinity ;
  tmp = Math.min(tmp, tmp0);
  }
@@ -2440,7 +2277,6 @@ var tmp = d[0]?.studentTasksInfo?.diaryTasks[r]?.tracks[0]?.json?.fastest[10000]
 if ( d[0].studentTasksInfo.diaryTasks[r].kmCompleted >= 10.000 ) {
 
 for(var i=0; i < d[0].studentTasksInfo.diaryTasks[r].tracks.length ; i++){
- //tmp = Math.min(tmp,d[0].studentTasksInfo.diaryTasks[r].tracks[i].json.fastest[10000].pace);
  tmp0 = d[0]?.studentTasksInfo?.diaryTasks[r]?.tracks[i]?.json?.fastest[10000]?.pace || Infinity ;
  tmp = Math.min(tmp, tmp0);
  }
@@ -2496,7 +2332,6 @@ var tmp = d[0]?.studentTasksInfo?.diaryTasks[r]?.tracks[0]?.json?.fastest[21097]
 if ( d[0].studentTasksInfo.diaryTasks[r].kmCompleted >= 21.097 ) {
 
 for(var i=0; i < d[0].studentTasksInfo.diaryTasks[r].tracks.length ; i++){
-// tmp = Math.min(tmp,d[0].studentTasksInfo.diaryTasks[r].tracks[i].json.fastest[21097].pace);
  tmp0 = d[0]?.studentTasksInfo?.diaryTasks[r]?.tracks[i]?.json?.fastest[21097]?.pace || Infinity ; 
  tmp = Math.min(tmp, tmp0);
  }
@@ -2724,10 +2559,6 @@ function updateChartData2(ind1, ind2, ind3) {
         ff2.push(item);
     }
 
-//console.log('+++++++++++++++++++++++++++++++++++++\n');
-//console.log(ff2);
-//console.log('+++++++++++++++++++++++++++++++++++++\n');
-
 
     var chart = $$("gpace"); // используйте ID, который вы задали в конфиге
     if (chart) {
@@ -2737,7 +2568,6 @@ function updateChartData2(ind1, ind2, ind3) {
         chart.parse(ff2);
     }
 
-//console.log(f2);
 }
 
 function updateTable1(ind1, ind2, ind3) {
@@ -2745,18 +2575,6 @@ function updateTable1(ind1, ind2, ind3) {
  $$("ddtable").clearAll();
 
 tbl = "" ;
-//if ( ind1 > 0 ) {
-//tbl = tbl + '{ "День":"' + formatDate(d[0].studentTasksInfo.diaryTasks[ind1].date) + '","Тип":"' + Valid_Ttype(ind1,"") +
-//      '","Сложность":"' + d[0].studentTasksInfo.diaryTasks[ind1].reportParameters.difficulty + '","Погода":"' + d[0].studentTasksInfo.diaryTasks[ind1].tracks[0].json.weather.temp_c +
-//      ' C","Обьем":"' +  d[0].studentTasksInfo.diaryTasks[ind1].kmCompleted + ' km","макс.пульс":"' + Valid_MaxHeart(ind1,"") +
-//	  '","GS":"' + Valid_gs(ind1,"") + 
-//	  '"},\n'
-
-//tbl = tbl + '{ "den":"' + reda + formatDate(d[0].studentTasksInfo.diaryTasks[ind1].date) + '","type":"' + Valid_Ttype(ind1,"") +
-//      '","dific":"' + Valid_trubl(ind1,"") + '","weather":"' + d[0].studentTasksInfo.diaryTasks[ind1].tracks[0].json.weather.temp_c +
-//      ' C","km":"' +  d[0].studentTasksInfo.diaryTasks[ind1].kmCompleted + ' km","mhrt":"' + Valid_MaxHeart(ind1,"") +
-//	  '","dgs":"' + Valid_gs(ind1,"") + 
-//	  '"},\n'
  tbl = tbl + '{ "param":"Атлет","s1":"' +  Valid_Atlet(d1) + '","s2":"' +  Valid_Atlet(d2) + '","s3":"' +  Valid_Atlet(d3) + '"},\n';
  tbl = tbl + '{ "param":"тип тренировки","s1":"' + Valid_Ttype(d1,ind1,"") + '","s2":"' + Valid_Ttype(d2,ind2,"") + '","s3":"' + Valid_Ttype(d3,ind3,"") + '"},\n';
  tbl = tbl + '{ "param":"самооценка тренировки","s1":"' + Valid_trubl(d1,ind1,"") + '","s2":"' + Valid_trubl(d2,ind2,"") + '","s3":"' + Valid_trubl(d3,ind3,"") + '"},\n';
@@ -2765,13 +2583,9 @@ tbl = "" ;
  tbl = tbl + '{ "param":"максимальный пульс","s1":"' + Valid_MaxHeart(d1,ind1,"") + '","s2":"' + Valid_MaxHeart(d2,ind2,"") + '","s3":"' + Valid_MaxHeart(d3,ind3,"") + '"},\n';
  tbl = tbl + '{ "param":"параметр GS","s1":"' + Valid_gs(d1,ind1,"") + '","s2":"' + Valid_gs(d2,ind2,"") + '","s3":"' + Valid_gs(d3,ind3,"") + '"},\n';
 
-//}
 
 tbl = "[\n" + tbl.slice(0,tbl.length-2) + "\n]" ;	  
 
-//console.log("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n");
-//console.log(tbl);
-//console.log("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n");
 
  $$("ddtable").parse(tbl);
 
@@ -2900,38 +2714,6 @@ hh = hh + "</table>";
 return hh;
 
 }
-
-
-//com11 = webix.ui({
-//  view: "window",
-//  id: "com1",
-//  сss: "my_win_custom", // ПОДКЛЮЧАЕМ НАШ СТИЛЬ
-   // ГЛАВНЫЕ НАСТРОЙКИ ДЛЯ РАСТЯГИВАНИЯ:
-//  resize: true,         // Позволяет тянуть за края и правый нижний угол
-//  move: true,           // Позволяет таскать за заголовок
-//  width: 700,           // Начальная ширина
-//  height: 800,          // Начальная высота
-//  minWidth: 250,        // Минимальная ширина при растяжке
-//  minHeight: 150,       // Минимальная высота при растяжке
-//  position: "center",
-//  head: {
-//    view: "toolbar",
-//	 id: "comm1",
-//    paddingX: 10,
-//    cols: [
-//      { view: "label",   сss: "my_win_custom", id: "com_1", label: "Информация" },
-//      {}, 
-//      { view: "icon", id: "com1_ico" , icon: "wxi-close", click: () => $$("com1").hide() }
-//    ]
-//  },
-//  body: {
-//    id: "body1",
-//    template: "#html#",
-//    scroll: "y"          // ВКЛЮЧАЕМ СКРОЛЛ
-//  }
-//});
-
-//$$("com1").show(); 
 
 com12 = webix.ui({
   view: "window",
@@ -3177,42 +2959,16 @@ function updategra1(ind1,ind2,ind3) {
 
 setind10();
 
-//console.log("updgra1:\n");
-//console.log(ind10,ind20,ind30);
-
-//n2 = d1[0].studentTasksInfo.diaryTasks.length;
-//n1 = n2-21;
-
 t1 = "" ;
 
-//if (ind1 !== "") {
-
-//for(var i = n2-1; i > n1-1 ; i--){
 for(var i = 20; i >= 0 ; i--){
   t1 = t1 + '{ "Атлет1":"' + Valid_km(d1,i+ind10,null) + '", "Атлет2":"' + Valid_km(d2,i+ind20,null) + '", "Атлет3":"' + Valid_km(d3,i+ind30,null) + '", "id":"' + i + '", "dayd":"' + Valid_dayd(d1,i+ind10,"") + '"},\n'
-//  t1 = t1 + '{ "Атлет1":"' + d1[0].studentTasksInfo.diaryTasks[i].kmCompleted + '", "id":"' + i + '", "dayd":"' + d1[0].studentTasksInfo.diaryTasks[i].date.slice(-2) + '"},\n'
  }
 t1 = "[\n" + t1.slice(0,t1.length-2) + "\n]" ;
-
-//} else {
-
-//for(var i = n2-1; i > n1-1 ; i--){
-//for(var i = ind10 + 20; i > ind10-1 ; i--){
-//for(var i = 20; i >= 0 ; i--){
-//  t1 = t1 + '{ "kmCompleted":null, "id":"' + i + '", "dayd":"' + d1[0].studentTasksInfo.diaryTasks[i].date.slice(-2) + '"},\n'
-//  t1 = t1 + '{ "Атлет1":null, "id":"' + (i+ind10) + '", "dayd":"' + new Date(Date.now() - i * 24 * 60 * 60 * 1000).toLocaleDateString('en-CA').slice(-2) + '"},\n'
-// }
-//t1 = "[\n" + t1.slice(0,t1.length-2) + "\n]" ;
-
-//new Date(Date.now() - 2 * 24 * 60 * 60 * 1000).toLocaleDateString('en-CA').slice(-2)
-
-//}
 
  $$("gra1").clearAll();
 
  $$("gra1").parse(t1);
-
-//console.log(t1);
  
 }
 
@@ -3221,42 +2977,16 @@ function updategra2(ind1,ind2,ind3) {
 
 setind10();
 
-//console.log("updgra2:\n");
-//console.log(ind10,ind20,ind30);
-
-//n2 = d1[0].studentTasksInfo.diaryTasks.length;
-//n1 = n2-21;
-
 t1 = "" ;
 
-//if (ind1 !== "") {
-
-//for(var i = n2-1; i > n1-1 ; i--){
 for(var i = 20; i >= 0 ; i--){
   t1 = t1 + '{ "Атлет1":"' + Valid_gs(d1,i+ind10,null) + '", "Атлет2":"' + Valid_gs(d2,i+ind20,null) + '", "Атлет3":"' + Valid_gs(d3,i+ind30,null) + '", "id":"' + i + '", "dayd":"' + Valid_dayd(d1,i+ind10,"") + '"},\n'
-//  t1 = t1 + '{ "Атлет1":"' + d1[0].studentTasksInfo.diaryTasks[i].kmCompleted + '", "id":"' + i + '", "dayd":"' + d1[0].studentTasksInfo.diaryTasks[i].date.slice(-2) + '"},\n'
  }
 t1 = "[\n" + t1.slice(0,t1.length-2) + "\n]" ;
-
-//} else {
-
-//for(var i = n2-1; i > n1-1 ; i--){
-//for(var i = ind10 + 20; i > ind10-1 ; i--){
-//for(var i = 20; i >= 0 ; i--){
-//  t1 = t1 + '{ "kmCompleted":null, "id":"' + i + '", "dayd":"' + d1[0].studentTasksInfo.diaryTasks[i].date.slice(-2) + '"},\n'
-//  t1 = t1 + '{ "Атлет1":null, "id":"' + (i+ind10) + '", "dayd":"' + new Date(Date.now() - i * 24 * 60 * 60 * 1000).toLocaleDateString('en-CA').slice(-2) + '"},\n'
-// }
-//t1 = "[\n" + t1.slice(0,t1.length-2) + "\n]" ;
-
-//new Date(Date.now() - 2 * 24 * 60 * 60 * 1000).toLocaleDateString('en-CA').slice(-2)
-
-//}
 
  $$("gra2").clearAll();
 
  $$("gra2").parse(t1);
-
-//console.log(t1);
  
 }
 
@@ -3264,42 +2994,16 @@ function updategra3(ind1,ind2,ind3) {
 
 setind10();
 
-//console.log("updgra3:\n");
-//console.log(ind10,ind20,ind30);
-
-//n2 = d1[0].studentTasksInfo.diaryTasks.length;
-//n1 = n2-21;
-
 t1 = "" ;
 
-//if (ind1 !== "") {
-
-//for(var i = n2-1; i > n1-1 ; i--){
 for(var i = 20; i >= 0 ; i--){
   t1 = t1 + '{ "Атлет1":"' + Valid_MaxHeart(d1,i+ind10,null) + '", "Атлет2":"' + Valid_MaxHeart(d2,i+ind20,null) + '", "Атлет3":"' + Valid_MaxHeart(d3,i+ind30,null) + '", "id":"' + i + '", "dayd":"' + Valid_dayd(d1,i+ind10,"") + '"},\n'
-//  t1 = t1 + '{ "Атлет1":"' + d1[0].studentTasksInfo.diaryTasks[i].kmCompleted + '", "id":"' + i + '", "dayd":"' + d1[0].studentTasksInfo.diaryTasks[i].date.slice(-2) + '"},\n'
  }
 t1 = "[\n" + t1.slice(0,t1.length-2) + "\n]" ;
-
-//} else {
-
-//for(var i = n2-1; i > n1-1 ; i--){
-//for(var i = ind10 + 20; i > ind10-1 ; i--){
-//for(var i = 20; i >= 0 ; i--){
-//  t1 = t1 + '{ "kmCompleted":null, "id":"' + i + '", "dayd":"' + d1[0].studentTasksInfo.diaryTasks[i].date.slice(-2) + '"},\n'
-//  t1 = t1 + '{ "Атлет1":null, "id":"' + (i+ind10) + '", "dayd":"' + new Date(Date.now() - i * 24 * 60 * 60 * 1000).toLocaleDateString('en-CA').slice(-2) + '"},\n'
-// }
-//t1 = "[\n" + t1.slice(0,t1.length-2) + "\n]" ;
-
-//new Date(Date.now() - 2 * 24 * 60 * 60 * 1000).toLocaleDateString('en-CA').slice(-2)
-
-//}
 
  $$("gra3").clearAll();
 
  $$("gra3").parse(t1);
-
-//console.log(t1);
  
 }
 
@@ -3308,42 +3012,16 @@ function updategra4(ind1,ind2,ind3) {
 
 setind10();
 
-//console.log("updgra4:\n");
-//onsole.log(ind10,ind20,ind30);
-
-//n2 = d1[0].studentTasksInfo.diaryTasks.length;
-//n1 = n2-21;
-
 t1 = "" ;
 
-//if (ind1 !== "") {
-
-//for(var i = n2-1; i > n1-1 ; i--){
 for(var i = 20; i >= 0 ; i--){
   t1 = t1 + '{ "Атлет1":"' + Valid_M1000M(d1,i+ind10,null) + '", "Атлет2":"' + Valid_M1000M(d2,i+ind20,null) + '", "Атлет3":"' + Valid_M1000M(d3,i+ind30,null) + '", "id":"' + i + '", "dayd":"' + Valid_dayd(d1,i+ind10,"") + '"},\n'
-//  t1 = t1 + '{ "Атлет1":"' + d1[0].studentTasksInfo.diaryTasks[i].kmCompleted + '", "id":"' + i + '", "dayd":"' + d1[0].studentTasksInfo.diaryTasks[i].date.slice(-2) + '"},\n'
  }
 t1 = "[\n" + t1.slice(0,t1.length-2) + "\n]" ;
-
-//} else {
-
-//for(var i = n2-1; i > n1-1 ; i--){
-//for(var i = ind10 + 20; i > ind10-1 ; i--){
-//for(var i = 20; i >= 0 ; i--){
-//  t1 = t1 + '{ "kmCompleted":null, "id":"' + i + '", "dayd":"' + d1[0].studentTasksInfo.diaryTasks[i].date.slice(-2) + '"},\n'
-//  t1 = t1 + '{ "Атлет1":null, "id":"' + (i+ind10) + '", "dayd":"' + new Date(Date.now() - i * 24 * 60 * 60 * 1000).toLocaleDateString('en-CA').slice(-2) + '"},\n'
-// }
-//t1 = "[\n" + t1.slice(0,t1.length-2) + "\n]" ;
-
-//new Date(Date.now() - 2 * 24 * 60 * 60 * 1000).toLocaleDateString('en-CA').slice(-2)
-
-//}
 
  $$("gra4").clearAll();
 
  $$("gra4").parse(t1);
-
-//console.log(t1);
  
 }
 
@@ -3353,33 +3031,10 @@ t1 = "[\n" + t1.slice(0,t1.length-2) + "\n]" ;
 function main_process() {
 
 
-//document.getElementById('output').textContent = c.slice(0, 300) + "\n=================================================\n" + c.slice(-400);  
-
-//document.getElementById('student').textContent = 'student:'  + '        ' + Valid_Student();
-//document.getElementById('trainer').textContent = 'trainer:'  + '        ' + Valid_Trainer();
-//document.getElementById('ffile').textContent = 'file:'       + '        ' + fff;
-//document.getElementById('inputfile').setAttribute("type", "hidden");
-
-
 n2 = d[0].studentTasksInfo.diaryTasks.length;
 n1 = n2-21;
 
 c2="";
-//c2 = "</br>" ;
-//
-//for(var i = n1; i < n2 ; i++){
-//
-//c0 = Valid_Comment(i,"")
-//
-//  c0 = c0.replace(/"/g, "'");
-//  c0 = c0.replace(/(\r\n|\n|\r)/gm, ""); 
-//  c0 = c0.replace(/<[^>]*>/g, '');
-//  c2 = c2 + "<span style='color:blue'>--- " + d[0].studentTasksInfo.diaryTasks[i].date + " [ " + Valid_Ttype(i,"") + " ] " + Valid_Job(i,"") + "</span></br>" + c0 + "</br>\n"
-//}
-
-//c2 = c2.slice(0,c2.length-2);
-
-//document.getElementById('output').textContent = c2; 
 
 cmnt1= { id: "cmnt1",
   type:"space",
@@ -3391,19 +3046,7 @@ cmnt1= { id: "cmnt1",
  };
 
 
- 
-
-//bldate = "";
-//for(var i = n1; i < n2 ; i++){
-//if ( Valid_km(d,i,0) == 0 ) {
-//bldate = bldate + d[0].studentTasksInfo.diaryTasks[i].date + ","
-//}
-//}
-
 upd_bldt(d1,0);
-
-//console.log(bldate);
-
 
 e1 = Math.max(Valid_km(d,n1+0,0),Valid_km(d,n1+7,0),Valid_km(d,n1+14,0));
 e2 = Math.max(Valid_km(d,n1+1,0),Valid_km(d,n1+8,0),Valid_km(d,n1+15,0));
@@ -3413,25 +3056,6 @@ e5 = Math.max(Valid_km(d,n1+4,0),Valid_km(d,n1+11,0),Valid_km(d,n1+18,0));
 e6 = Math.max(Valid_km(d,n1+5,0),Valid_km(d,n1+12,0),Valid_km(d,n1+19,0));
 e7 = Math.max(Valid_km(d,n1+6,0),Valid_km(d,n1+13,0),Valid_km(d,n1+20,0));
 
-
-
-//function Valid_Pace(r,s,t) {
-//  try {
-//const tmp = [];
-//for(var i=0; i < d[0].studentTasksInfo.diaryTasks[r].tracks.length ; i++){
-// for(var j=0; j < d[0].studentTasksInfo.diaryTasks[r].tracks[i].json.segments.length ; j++){
-// tmp.push(d[0].studentTasksInfo.diaryTasks[r].tracks[i].json.segments[j].pace);
-// }
-//}
-//        return tmp[s];
-//
-//  } catch {
-//    return t;
-//  }
-//}
-//============================
-
-
 ind1 = "";
 ind2 = "";
 ind3 = "";
@@ -3439,37 +3063,10 @@ ind3 = "";
 ee = 0;
 
 
-//function Set_ind() {
-//  try {
-
-//n2 = d[0].studentTasksInfo.diaryTasks.length;
-//n1 = n2-21;
-
-
-
-//alert(ind1);
-
-//return;
-
-//  } catch {
-//    return;
-//  }
-//}
-
-//Set_ind();
-
-
-
-// -----------------------------------------
-
-
-
 f1 = "" ;
 
 for(var i = 0; i < 24 ; i++){
   
-//  f1 = f1 + '{ "pace14":"' + Valid_Slot(n1+14,i,"") + '", "pace7":"' + Valid_Slot(n1+7,i,"") + '", "pace0":"' + Valid_Slot(n1,i,"") + '", "m":"' + slots[i] + '"},\n'
-
 f1 = f1 + '{ "pace14":"' ;
 if ( ind3 > 0 ) {f1 = f1 + Valid_Slot(ind3,i,"");} 
 f1 = f1 + '", "pace7":"' ;
@@ -3481,7 +3078,6 @@ f1 = f1 + '", "m":"' + slots[i] + '"},\n'
 
 f1 = "[\n" + f1.slice(0,f1.length-2) + "\n]" ;
 
-//console.log(f1);
 
 gg = JSON.parse(f1);
 // 254
@@ -3515,7 +3111,6 @@ cols:[
     {  type:"spline", id:"s11", value:"#pace0#", tooltip:{css:"tpred", template:function(obj) {return obj.pace0;}}, item:{radius:3,borderColor: "#EC3774"}, line:{color:"#EC3774",width:2} },
     {  type:"spline", id:"s12", value:"#pace7#", tooltip:{css:"tpblue",template:function(obj) {return obj.pace7;}}, item:{radius:3,borderColor: "#00ccff"}, line:{color:"#00ccff",width:2} },
     {  type:"spline", id:"s13", value:"#pace14#", tooltip:{css:"tpyellow",template:function(obj) {return obj.pace14;}}, item:{radius:3,borderColor: "#008A45"}, line:{color:"#008A45",width:2} }
-//    {  type:"spline", id:"s13", value:"#pace14#", tooltip:{css:"tpyellow",template:function(obj) {return obj.pace14;}}, item:{radius:3,borderColor: "#e9df40"}, line:{color:"#e9df40",width:2} }
 
   ],		  
           data: gg
@@ -3523,17 +3118,12 @@ cols:[
 
 ]
 };
-// #7FFF00
-///////////////////////
-// #008A45
 
 f2 = "" ;
 ee = 10;
 
 for(var i = 0; i < ee ; i++){
   
-//  f2 = f2 + '{ "pace15":"-' + Valid_Pace(n1+15,i,"") + '", "pace8":"-' + Valid_Pace(n1+8,i,"") + '", "pace1":"-' + Valid_Pace(n1+1,i,"") + '", "km":"' + (i+1) + '"},\n'
-
 f2 = f2 + '{ "pace15":"-' ;
 if ( ind3 > 0 ) {f2 = f2 + Valid_Pace(ind3,i,"");} 
 f2 = f2 + '", "pace8":"-' ;
@@ -3544,8 +3134,6 @@ f2 = f2 + '", "km":"' + (i+1) + '"},\n'
  }
 
 f2 = "[\n" + f2.slice(0,f2.length-2) + "\n]" ;
-
-//console.log(f2);
 
 gg = JSON.parse(f2);
 
@@ -3587,11 +3175,6 @@ cols:[
 };
 
 
-
-//ind1=6
-
-
-
 t1 = "" ;
 
 for(var i = n2-1; i > n1-1 ; i--){
@@ -3604,21 +3187,14 @@ tgra1 = t1;
 
 gg = JSON.parse(t1);
 
-//console.log(gg);
-
-//gra1 = {  width:720,  height:201,  type:"clean",
 gra1 = {  height:201,  type:"clean",
 cols:[
         {
           view:"chart",
 		  id:"gra1",		  
           type:"line",
-//          value:"#kmCompleted#", 
 		  padding:{left:25,bottom: 17  },
           preset:"plot" ,
-//		  label: function(obj){
-//			return "<span style='color:blue'><font size=1>" + parseInt(obj.kmCompleted,10) + "</font></span>";
-//			} ,
 		xAxis:{
             template:"'#dayd#"
           },
@@ -3626,7 +3202,6 @@ cols:[
           },
   legend:{layout:"x", height:-10, align:"center", valign:"middle",
     values:[
-//      {text:"daily kmCompleted", toggle:true,markerType: "item"}
 	  {text:" ", toggle:"Атлет1",markerType: "item"},
       {text:" ", toggle:"Атлет2",markerType: "item"},
       {text:" daily kmCompleted", toggle:"Атлет3",markerType: "item"}
@@ -3643,12 +3218,9 @@ cols:[
   }, 
   
   series:[
- //   {  type:"spline",  value:"#kmCompleted#", item:{radius:3,borderColor: "#EC3774"}, line:{color:"#EC3774",width:2} }
     {  type:"spline",  value:"#Атлет1#", item:{radius:3,borderColor: "#EC3774"}, line:{color:"#EC3774",width:2} },
     {  type:"spline",  value:"#Атлет2#", item:{radius:3,borderColor: "#00ccff"}, line:{color:"#00ccff",width:2} },
     {  type:"spline",  value:"#Атлет3#", item:{radius:3,borderColor: "#008A45"}, line:{color:"#008A45",width:2} }
-
-
   ],
 
 
@@ -3712,37 +3284,14 @@ on: {
 		var targetDay = $$('cal1').getValue().toLocaleDateString('en-CA').slice(-2); 
  
         var data = this.data.serialize();
-        
-        // Ищем объект, у которого поле date заканчивается на "15" 
-        // или просто равно "15"
-//        var index = data.findIndex(obj => {
-            // Приводим к строке на всякий случай и берем последние 2 символа
-//            var dateStr = String(obj.date);
-//            return dateStr.slice(-2) === targetDay;
-//        });
 
-        // Поиск индекса (как мы обсуждали ранее)
-//        var index = data.findIndex(obj => String(obj.date).slice(-2) === targetDay);
       var index = data.findIndex(obj => obj.dayd === targetDay);
 
         if (index !== -1) {
-            // Используем внутренний метод для получения X
-            // Важно: передаем индекс точки
 
-//            var baseX = this._getItemX(index); // центральная координата X
-        
-        // 4. Итоговая координата X
-//        var x = pLeft + (index * step);
-
-//var x = Math.floor(pLeft + (index * step)) + 0.5;
 var x = Math.floor(pLeft + (index * step));
-
-//        console.log("Index:", index, "Final X:", x);			
-			
-              
             // Пример отрисовки одной линии для краткости:
             ctx.save();
- //           ctx.setLineDash([5, 5]); // Пунктир 5px через 5px
             ctx.setLineDash([10, 5]); // Пунктир 5px через 5px
 			ctx.lineWidth = 2;
             ctx.strokeStyle = "#EC3774";
@@ -3751,8 +3300,6 @@ var x = Math.floor(pLeft + (index * step));
             ctx.lineTo(x, yEnd);
             ctx.stroke();
             ctx.restore();
-
-//this.render(null, null, true);					
 
         }
 //-------------------
@@ -3837,21 +3384,14 @@ tgra2 = t1;
 
 gg = JSON.parse(t1);
 
-//console.log(gg);
-
-//gra1 = {  width:720,  height:201,  type:"clean",
 gra2 = {  height:201,  type:"clean",
 cols:[
         {
           view:"chart",
 		  id:"gra2",		  
           type:"line",
-//          value:"#kmCompleted#", 
 		  padding:{left:25,bottom: 17  },
           preset:"plot" ,
-//		  label: function(obj){
-//			return "<span style='color:blue'><font size=1>" + parseInt(obj.kmCompleted,10) + "</font></span>";
-//			} ,
 		xAxis:{
             template:"'#dayd#"
           },
@@ -3859,7 +3399,6 @@ cols:[
           },
   legend:{layout:"x", height:-10, align:"center", valign:"middle",
     values:[
-//      {text:"daily kmCompleted", toggle:true,markerType: "item"}
 	  {text:" ", toggle:"Атлет1",markerType: "item"},
       {text:" ", toggle:"Атлет2",markerType: "item"},
       {text:" daily min GS", toggle:"Атлет3",markerType: "item"}
@@ -3876,7 +3415,6 @@ cols:[
   }, 
   
   series:[
- //   {  type:"spline",  value:"#kmCompleted#", item:{radius:3,borderColor: "#EC3774"}, line:{color:"#EC3774",width:2} }
     {  type:"spline",  value:"#Атлет1#", item:{radius:3,borderColor: "#EC3774"}, line:{color:"#EC3774",width:2} },
     {  type:"spline",  value:"#Атлет2#", item:{radius:3,borderColor: "#00ccff"}, line:{color:"#00ccff",width:2} },
     {  type:"spline",  value:"#Атлет3#", item:{radius:3,borderColor: "#008A45"}, line:{color:"#008A45",width:2} }
@@ -3945,15 +3483,6 @@ on: {
 		var targetDay = $$('cal1').getValue().toLocaleDateString('en-CA').slice(-2); 
  
         var data = this.data.serialize();
-        
-        // Ищем объект, у которого поле date заканчивается на "15" 
-        // или просто равно "15"
-//        var index = data.findIndex(obj => {
-            // Приводим к строке на всякий случай и берем последние 2 символа
-//            var dateStr = String(obj.date);
-//            return dateStr.slice(-2) === targetDay;
-//        });
-
         // Поиск индекса (как мы обсуждали ранее)
 //        var index = data.findIndex(obj => String(obj.date).slice(-2) === targetDay);
       var index = data.findIndex(obj => obj.dayd === targetDay);
@@ -3961,21 +3490,14 @@ on: {
         if (index !== -1) {
             // Используем внутренний метод для получения X
             // Важно: передаем индекс точки
-
-//            var baseX = this._getItemX(index); // центральная координата X
-        
         // 4. Итоговая координата X
 //        var x = pLeft + (index * step);
 
 //var x = Math.floor(pLeft + (index * step)) + 0.5;
 var x = Math.floor(pLeft + (index * step));
-
-//        console.log("Index:", index, "Final X:", x);			
-			
               
             // Пример отрисовки одной линии для краткости:
             ctx.save();
- //           ctx.setLineDash([5, 5]); // Пунктир 5px через 5px
             ctx.setLineDash([10, 5]); // Пунктир 5px через 5px
 			ctx.lineWidth = 2;
             ctx.strokeStyle = "#EC3774";
@@ -3984,8 +3506,6 @@ var x = Math.floor(pLeft + (index * step));
             ctx.lineTo(x, yEnd);
             ctx.stroke();
             ctx.restore();
-
-//this.render(null, null, true);					
 
         }
 //-------------------
@@ -4054,10 +3574,6 @@ var x = Math.floor(pLeft + (index * step));
 
 // -----------------------------------------
 
-// ==============================================================================
-
-// ==============================================================================
-
 t1 = "" ;
 
 for(var i = n2-1; i > n1-1 ; i--){
@@ -4070,21 +3586,14 @@ tgra2 = t1;
 
 gg = JSON.parse(t1);
 
-//console.log(gg);
-
-//gra1 = {  width:720,  height:201,  type:"clean",
 gra3 = {  height:201,  type:"clean",
 cols:[
         {
           view:"chart",
 		  id:"gra3",		  
           type:"line",
-//          value:"#kmCompleted#", 
 		  padding:{left:25,bottom: 17  },
           preset:"plot" ,
-//		  label: function(obj){
-//			return "<span style='color:blue'><font size=1>" + parseInt(obj.kmCompleted,10) + "</font></span>";
-//			} ,
 		xAxis:{
             template:"'#dayd#"
           },
@@ -4092,7 +3601,6 @@ cols:[
           },
   legend:{layout:"x", height:-10, align:"center", valign:"middle",
     values:[
-//      {text:"daily kmCompleted", toggle:true,markerType: "item"}
 	  {text:" ", toggle:"Атлет1",markerType: "item"},
       {text:" ", toggle:"Атлет2",markerType: "item"},
       {text:" daily max Heart", toggle:"Атлет3",markerType: "item"}
@@ -4109,12 +3617,9 @@ cols:[
   }, 
   
   series:[
- //   {  type:"spline",  value:"#kmCompleted#", item:{radius:3,borderColor: "#EC3774"}, line:{color:"#EC3774",width:2} }
     {  type:"spline",  value:"#Атлет1#", item:{radius:3,borderColor: "#EC3774"}, line:{color:"#EC3774",width:2} },
     {  type:"spline",  value:"#Атлет2#", item:{radius:3,borderColor: "#00ccff"}, line:{color:"#00ccff",width:2} },
     {  type:"spline",  value:"#Атлет3#", item:{radius:3,borderColor: "#008A45"}, line:{color:"#008A45",width:2} }
-
-
   ],
 
 
@@ -4149,9 +3654,6 @@ on: {
 
        // 2. Получаем 2D контекст
         var ctx = canvas.getContext("2d");		
- 
-//	  ctx.clearRect(0, 0, canvas.width, canvas.height);
-// чтобы не затереть маркеры в легенде !!!! смещение по у от линии пунктирной
 	  ctx.clearRect(0, 30, canvas.width, canvas.height);
 
             var yStart = 30;  // небольшой отступ сверху
@@ -4178,37 +3680,18 @@ on: {
 		var targetDay = $$('cal1').getValue().toLocaleDateString('en-CA').slice(-2); 
  
         var data = this.data.serialize();
-        
-        // Ищем объект, у которого поле date заканчивается на "15" 
-        // или просто равно "15"
-//        var index = data.findIndex(obj => {
-            // Приводим к строке на всякий случай и берем последние 2 символа
-//            var dateStr = String(obj.date);
-//            return dateStr.slice(-2) === targetDay;
-//        });
 
-        // Поиск индекса (как мы обсуждали ранее)
-//        var index = data.findIndex(obj => String(obj.date).slice(-2) === targetDay);
       var index = data.findIndex(obj => obj.dayd === targetDay);
 
         if (index !== -1) {
-            // Используем внутренний метод для получения X
-            // Важно: передаем индекс точки
-
-//            var baseX = this._getItemX(index); // центральная координата X
         
         // 4. Итоговая координата X
 //        var x = pLeft + (index * step);
 
-//var x = Math.floor(pLeft + (index * step)) + 0.5;
 var x = Math.floor(pLeft + (index * step));
 
-//        console.log("Index:", index, "Final X:", x);			
-			
-              
             // Пример отрисовки одной линии для краткости:
             ctx.save();
- //           ctx.setLineDash([5, 5]); // Пунктир 5px через 5px
             ctx.setLineDash([10, 5]); // Пунктир 5px через 5px
 			ctx.lineWidth = 2;
             ctx.strokeStyle = "#EC3774";
@@ -4218,10 +3701,7 @@ var x = Math.floor(pLeft + (index * step));
             ctx.stroke();
             ctx.restore();
 
-//this.render(null, null, true);					
-
         }
-//-------------------
 }
 
  if ( $$('cal2').getValue() !== null && checkVisibility("gra3", 1) ) {
@@ -4234,7 +3714,6 @@ var x = Math.floor(pLeft + (index * step));
 var x = Math.floor(pLeft + (index * step));
             // Пример отрисовки одной линии для краткости:
             ctx.save();
- //           ctx.setLineDash([5, 5]); // Пунктир 5px через 5px
             ctx.setLineDash([10, 5]); // Пунктир 5px через 5px
 			ctx.lineWidth = 2;
             ctx.strokeStyle = "#00ccff";
@@ -4287,9 +3766,6 @@ var x = Math.floor(pLeft + (index * step));
 
 // -----------------------------------------
 
-
-// ==============================================================================
-
 t1 = "" ;
 
 for(var i = n2-1; i > n1-1 ; i--){
@@ -4302,9 +3778,6 @@ tgra4 = t1;
 
 gg = JSON.parse(t1);
 
-//console.log(gg);
-
-//gra1 = {  width:720,  height:201,  type:"clean",
 gra4 = {  height:201,  type:"clean",
 
 cols:[
@@ -4312,20 +3785,14 @@ cols:[
           view:"chart",
 		  id:"gra4",		  
           type:"line",
-//          value:"#kmCompleted#", 
 		  padding:{left:25,bottom: 17  },
           preset:"plot" ,
-//		  label: function(obj){
-//			return "<span style='color:blue'><font size=1>" + parseInt(obj.kmCompleted,10) + "</font></span>";
-//			} ,
 		xAxis:{
             template:"'#dayd#"
           },
-//          yAxis:{          },
           yAxis:{start:-7, step:1, end:-3,template: function(obj) {return Math.abs(obj);}},
   legend:{layout:"x", height:-10, align:"center", valign:"middle",
     values:[
-//      {text:"daily kmCompleted", toggle:true,markerType: "item"}
 	  {text:" ", toggle:"Атлет1",markerType: "item"},
       {text:" ", toggle:"Атлет2",markerType: "item"},
       {text:" daily fastest 1000m", toggle:"Атлет3",markerType: "item"}
@@ -4342,7 +3809,6 @@ cols:[
   }, 
   
   series:[
- //   {  type:"spline",  value:"#kmCompleted#", item:{radius:3,borderColor: "#EC3774"}, line:{color:"#EC3774",width:2} }
     {  type:"spline",  value:"#Атлет1#", item:{radius:3,borderColor: "#EC3774"}, line:{color:"#EC3774",width:2} },
     {  type:"spline",  value:"#Атлет2#", item:{radius:3,borderColor: "#00ccff"}, line:{color:"#00ccff",width:2} },
     {  type:"spline",  value:"#Атлет3#", item:{radius:3,borderColor: "#008A45"}, line:{color:"#008A45",width:2} }
@@ -4412,36 +3878,17 @@ on: {
  
         var data = this.data.serialize();
         
-        // Ищем объект, у которого поле date заканчивается на "15" 
-        // или просто равно "15"
-//        var index = data.findIndex(obj => {
-            // Приводим к строке на всякий случай и берем последние 2 символа
-//            var dateStr = String(obj.date);
-//            return dateStr.slice(-2) === targetDay;
-//        });
-
-        // Поиск индекса (как мы обсуждали ранее)
-//        var index = data.findIndex(obj => String(obj.date).slice(-2) === targetDay);
       var index = data.findIndex(obj => obj.dayd === targetDay);
 
         if (index !== -1) {
-            // Используем внутренний метод для получения X
-            // Важно: передаем индекс точки
-
-//            var baseX = this._getItemX(index); // центральная координата X
         
         // 4. Итоговая координата X
 //        var x = pLeft + (index * step);
 
-//var x = Math.floor(pLeft + (index * step)) + 0.5;
 var x = Math.floor(pLeft + (index * step));
-
-//       console.log("Index:", index, "Final X:", x);			
-			
               
             // Пример отрисовки одной линии для краткости:
             ctx.save();
- //           ctx.setLineDash([5, 5]); // Пунктир 5px через 5px
             ctx.setLineDash([10, 5]); // Пунктир 5px через 5px
 			ctx.lineWidth = 2;
             ctx.strokeStyle = "#EC3774";
@@ -4451,10 +3898,7 @@ var x = Math.floor(pLeft + (index * step));
             ctx.stroke();
             ctx.restore();
 
-//this.render(null, null, true);					
-
         }
-//-------------------
 }
 
  if ( $$('cal2').getValue() !== null && checkVisibility("gra4", 1) ) {
@@ -4467,7 +3911,6 @@ var x = Math.floor(pLeft + (index * step));
 var x = Math.floor(pLeft + (index * step));
             // Пример отрисовки одной линии для краткости:
             ctx.save();
- //           ctx.setLineDash([5, 5]); // Пунктир 5px через 5px
             ctx.setLineDash([10, 5]); // Пунктир 5px через 5px
 			ctx.lineWidth = 2;
             ctx.strokeStyle = "#00ccff";
@@ -4492,7 +3935,6 @@ var x = Math.floor(pLeft + (index * step));
 var x = Math.floor(pLeft + (index * step));
             // Пример отрисовки одной линии для краткости:
             ctx.save();
- //           ctx.setLineDash([5, 5]); // Пунктир 5px через 5px
             ctx.setLineDash([10, 5]); // Пунктир 5px через 5px
 			ctx.lineWidth = 2;
             ctx.strokeStyle = "#008A45";
@@ -4519,12 +3961,6 @@ var x = Math.floor(pLeft + (index * step));
 };
 
 // -----------------------------------------
-
-// ==============================================================================
-
-
-
-
 
 t1 = "" ;
 
@@ -4595,10 +4031,6 @@ calend1 = {
    view:"datepicker",
       id: "cal1",
       inputWidth:169,
-//      label: "<span style='color:#EC3774'><b>&nbsp;&nbsp;------o------</b></span>",
-//      label: "",
-//      labelWidth:82,  
-
   suggest:{
        view:"suggest", type:"calendar", body:{
           view:"calendar",
@@ -4613,15 +4045,11 @@ calend1 = {
     }}  
 };
 
-//$$('calend1').setValue(new Date());
 
 calend2 = {
    view:"datepicker",
       id: "cal2",
       inputWidth:169,
-//      label: "<span style='color:#00ccff'><b>&nbsp;&nbsp;------o------</b></span>",
-//      label: "",
-//      labelWidth:82,  
   suggest:{
        view:"suggest", type:"calendar", body:{
           view:"calendar",
@@ -4640,9 +4068,6 @@ calend3 = {
    view:"datepicker",
       id: "cal3",
       inputWidth:169,
-//      label: "<span style='color:#e9df40'><b>&nbsp;&nbsp;------o------</b></span>",
-//      label: "",
-//      labelWidth:82,  
   suggest:{
        view:"suggest", type:"calendar", body:{
           view:"calendar",
@@ -4671,8 +4096,6 @@ function saveSelectState(node, rowId, colId) {
     if (colId === "s2") trind2 = val;
     if (colId === "s3") trind3 = val;
     
-    // Опционально: сохраняем в сами данные объекта, чтобы Webix "знал" об изменениях
-    // $$("ddtable").getItem(rowId)[colId + "_selected"] = val;
 }
 
 
@@ -4687,35 +4110,24 @@ dtable = {
   rowHeight: 25,
   columns: [
     // Первый столбец всегда закреплен за названиями параметров
-//    { id: "param", header: "Параметр", width: 250, css: "webix_header_border webix_data_border" },
     { id: "param", header: "Параметр", width: 222 },
     // Остальные столбцы — это ваши серии &#9777
-//    { id: "s1", css: "cursor_pointer", header: "<span title='загрузить' style='color:#EC3774'><b>&nbsp;&nbsp;------o------&nbsp;&nbsp;&nbsp;&#10227;</b></span>", width: 166 
-//	{ id: "s1", header: "<span style='color:#EC3774'><b>&nbsp;&nbsp;--o--&nbsp;&nbsp;</b></span><span class='custom-btn1' onclick='$$(`info1`).show();' tabindex='0' role='button'>&#10872;</span><span class='custom-btn1' onclick='$$(`com1`).show();' tabindex='0' role='button'>&#129534;</span><span class='custom-btn1' onclick='cleall1();' tabindex='0' role='button'>&#10008;</span><span class='custom-btn1' onclick='update_a1();' tabindex='0' role='button'>&#10004;</span>", width: 166 
 	{ id: "s1", header: "<span style='color:#EC3774'><b>&nbsp;--o--&nbsp;&nbsp;</b></span><span class='custom-btn1' onclick='$$(`info1`).show();' tabindex='0' role='button' title='инфо'>&#9777;</span><span class='custom-btn1' onclick='$$(`com1`).show();' tabindex='0' role='button' title='отчеты'>&#129534;</span><span class='custom-btn10' onclick='cleall1();' tabindex='0' role='button' title='удалить'>&#10008;</span><span class='custom-btn11' onclick='update_a1();' tabindex='0' role='button' title='загрузить'>&#10004;</span>", width: 166 
 
 	, 
 	      template: function(obj) {
-//          template: function(obj, common, value, column) {		  
-// console.log(obj);
-//console.log(column.id, currentVal);
 if ( ind1 === "" ) {return obj.s1;}
 
   // Получаем индекс строки (0 — первая, 1 — вторая и т.д.)
   const index = $$("ddtable").getIndexById(obj.id);
-
   // Проверяем, что это 5-я строка по счету (индекс 4)
   if (index === 4) {
-//         const tracks = [2, 5, 3]; // пример длин треков
 
          const tracks = Valid_kkm(d1,ind1,[]); // пример длин треков
           let options = `<option value="0" ${trind1 == 0 ? "selected" : ""}>Все</option>`;       
           tracks.forEach((len, i) => {
             options += `<option value="${i+1}" ${trind1-1 == i ? "selected" : ""}>${len}км</option>`;
           });
-//console.log("--------------------------------------------\n");
-//console.log(options);
-//console.log("--------------------------------------------\n");
           return `
             <div class="cell_content">
               <span>${obj.s1}</span>
@@ -4728,7 +4140,6 @@ if ( ind1 === "" ) {return obj.s1;}
       }
 	
 	},
-//    { id: "s2", css: "cursor_pointer", header: "<span title='загрузить' style='color:#00ccff'><b>&nbsp;&nbsp;------o------&nbsp;&nbsp;&nbsp;&#10227;</b></span>", width: 168 
 	{ id: "s2", header: "<span style='color:#00ccff'><b>&nbsp;--o--&nbsp;&nbsp;</b></span><span class='custom-btn1' onclick='$$(`info2`).show();' tabindex='0' role='button' title='инфо'>&#9777;</span><span class='custom-btn1' onclick='$$(`com2`).show();' tabindex='0' role='button' title='отчеты'>&#129534;</span><span class='custom-btn10' onclick='cleall2();' tabindex='0' role='button' title='удалить'>&#10008;</span><span class='custom-btn11' onclick='update_a2();' tabindex='0' role='button' title='загрузить'>&#10004;</span>", width: 168 
 
     , 
@@ -4757,22 +4168,15 @@ if ( ind2 === "" ) {return obj.s2;}
       }
  },
     
-//	{ id: "s3", css: "cursor_pointer", header: "<span title='загрузить' style='color:#008A45'><b>&nbsp;&nbsp;------o------&nbsp;&nbsp;&nbsp;&#10227;</b></span>", width: 154 
-//	{ id: "s3", css: "cursor_pointer", header: "<span title='загрузить' style='color:#008A45'><b>&nbsp;&nbsp;------o------&nbsp;&nbsp;&nbsp;&#10063;</b></span>", width: 154 
-
-//<span class="custom-btn" tabindex="0" role="button">Кнопка</span>
-
 	{ id: "s3", header: "<span style='color:#008A45'><b>--o--&nbsp;&nbsp;</b></span><span class='custom-btn1' onclick='$$(`info3`).show();' tabindex='0' role='button' title='инфо'>&#9777;</span><span class='custom-btn1' onclick='$$(`com3`).show();' tabindex='0' role='button' title='отчеты'>&#129534;</span><span class='custom-btn10' onclick='cleall3();' tabindex='0' role='button' title='удалить'>&#10008;</span><span class='custom-btn11' onclick='update_a3();' tabindex='0' role='button' title='загрузить'>&#10004;</span>", width: 156 
 
-// dx=3; trind3=0; extractId();
-	    , 
+    , 
 	      template: function(obj) {
 if ( ind3 === "" ) {return obj.s3;}
   // Получаем индекс строки (0 — первая, 1 — вторая и т.д.)
   const index = $$("ddtable").getIndexById(obj.id);
   // Проверяем, что это 5-я строка по счету (индекс 4)
   if (index === 4) {
-//         const tracks = [2, 5, 3]; // пример длин треков
          const tracks = Valid_kkm(d3,ind3,[]); // пример длин треков
           let options = `<option value="0" ${trind3 == 0 ? "selected" : ""}>Все</option>`;       
           tracks.forEach((len, i) => {
@@ -4791,33 +4195,6 @@ if ( ind3 === "" ) {return obj.s3;}
 
 	}
   ],
-//    on: {
-//    onHeaderClick: function(id, e, target) {
-      // id.column — это ID колонки, по которой кликнули
-      //   webix.message("Вы кликнули по заголовку: " + id.column);    
-      // Если нужно выполнить действие только для конкретного столбца:
-//      if (id.column === "s1") {
-//        webix.message("Действие для столбца 's1'");
-//		dx=1;
-//		trind1=0;
-//		extractId();
-//      }
-//      if (id.column === "s2") {
-//        webix.message("Действие для столбца 's2'");
-//		dx=2;
-//		trind2=0;
-//		extractId();
-//      }
-//      if (id.column === "s3") {
-//        webix.message("Действие для столбца 's3'");
-//		dx=3;
-//		trind3=0;
-//		extractId();
-//		dx=3; trind3=0; extractId();
-//      }
-//    }
-//  }	
-//,	
 onClick: {
   "clean_select": function(ev, id, node) {
     // Находим реальный элемент select, если клик попал на обертку
@@ -4906,11 +4283,7 @@ dcol = {
       height: 12,
       radius: 2
     },
-    // ВРУЧНУЮ связываем маркеры с сериями
     values: [
-//      { text: "Серия 1", color: "#EC3774", toggle: "s1" },
-//      { text: "Серия 2", color: "#00ccff", toggle: "s2" },
-//      { text: "fastest", color: "#e9df40", toggle: "s3" }
 
       { text: "", color: "#EC3774", toggle: "s1" },
       { text: "", color: "#00ccff", toggle: "s2" },
@@ -4948,14 +4321,6 @@ dcol = {
   },  
   data:multiple_dataset
 };
-
-
-//btn_sync = { 
-//          view: "button", type: "icon", icon: "wxi-sync", 
-//          tooltip: "загрузить", 
-//          width: 45, height: 38, css: "webix_primary", 
-//          click: extractId
-//        };
 
 fld_search = { 
           view: "search", id: searchId, placeholder: "#1000...# Имя Атлета",
@@ -5017,28 +4382,9 @@ webix.ui(
 
 
 
-//        "rows":[ {"cols": [ btn_sync,fld_search,btn_del ]},
-
-
 $$('cal1').setValue(new Date());
-//new Date(new Date() - 7 * 24 * 60 * 60 * 1000);
-//$$('cal1').setValue(new Date(new Date() - 9 * 24 * 60 * 60 * 1000));
 $$('cal2').setValue(null);
 $$('cal3').setValue(null);
-
-//if ( $$('cal1').getValue() !== null ) {
-//for(var i = n1; i < n2 ; i++){
-//console.log(i + '\n');
-// if ( $$('cal1').getValue().toLocaleDateString('en-CA') == d[0].studentTasksInfo.diaryTasks[i].date ) {
-//  ind1 = i;
-//console.log(i + '===================\n');
-
-//  }
-// }
-//}
-
-//$$('cal1').setValue(null);
-//$$('cal1').getValue().toLocaleDateString('en-CA');
 
 setind0();
 
@@ -5052,19 +4398,6 @@ updateBarData(ind1, ind2, ind3);
 reda = "<span style='color:#EC3774'>" ;
 
 tbl = "" ;
-//if ( ind1 > 0 ) {
-//tbl = tbl + '{ "День":"' + formatDate(d[0].studentTasksInfo.diaryTasks[ind1].date) + '","Тип":"' + Valid_Ttype(ind1,"") +
-//      '","Сложность":"' + d[0].studentTasksInfo.diaryTasks[ind1].reportParameters.difficulty + '","Погода":"' + d[0].studentTasksInfo.diaryTasks[ind1].tracks[0].json.weather.temp_c +
-//      ' C","Обьем":"' +  d[0].studentTasksInfo.diaryTasks[ind1].kmCompleted + ' km","макс.пульс":"' + Valid_MaxHeart(ind1,"") +
-//	  '","GS":"' + Valid_gs(ind1,"") + 
-//	  '"},\n'
-
-//tbl = tbl + '{ "den":"' + reda + formatDate(d[0].studentTasksInfo.diaryTasks[ind1].date) + '</span>","type":"' + Valid_Ttype(ind1,"") +
-//      '","dific":"' + Valid_trubl(ind1,"") + '","weather":"' + d[0].studentTasksInfo.diaryTasks[ind1].tracks[0].json.weather.temp_c +
-//      ' C","km":"' +  d[0].studentTasksInfo.diaryTasks[ind1].kmCompleted + ' km","mhrt":"' + Valid_MaxHeart(ind1,"") +
-//	  '","dgs":"' + Valid_gs(ind1,"") + 
-//	  '"},\n'
- 
 
  tbl = tbl + '{ "param":"Атлет","s1":"' +  Valid_Atlet(d1) + '","s2":"' +  Valid_Atlet(d2) + '","s3":"' +  Valid_Atlet(d3) + '"},\n';
  tbl = tbl + '{ "param":"тип тренировки","s1":"' + Valid_Ttype(d1,ind1,"") + '","s2":"' + Valid_Ttype(d2,ind2,"") + '","s3":"' + Valid_Ttype(d3,ind3,"") + '"},\n';
@@ -5100,7 +4433,6 @@ addItemEx("#" + Valid_id(d) + "#  " + Valid_Student(d) + "  Тренер: " + Va
 
 
   $$("cal1").attachEvent("onChange", function(a,b) {
-//webix.message(`Selected date is ${format(a[0])}. Source: ${b}`)
 
 if ( $$('cal1').getValue() == null ) {
 
