@@ -2751,9 +2751,9 @@ tbl = "" ;
 
 tbl = "[\n" + tbl.slice(0,tbl.length-2) + "\n]" ;	  
 
-console.log("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n");
-console.log(tbl);
-console.log("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n");
+//console.log("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n");
+//console.log(tbl);
+//console.log("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n");
 
  $$("ddtable").parse(tbl);
 
@@ -2761,31 +2761,39 @@ console.log("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 
 function update_a1() {
-
+try {
 dx=1; 
 trind1=0; 
 extractId();
 updatecom1(d1);
 updateinfo1(d1);
+  } catch {
+    return;
+  }
 }
 
 function update_a2() {
-
+try {
 dx=2; 
 trind2=0; 
 extractId();
 updatecom2(d2);
 updateinfo2(d2);
-
+  } catch {
+    return;
+  }
 }
 
 function update_a3() {
-
+try {
 dx=3; 
 trind3=0; 
 extractId();
 updatecom3(d3);
 updateinfo3(d3);
+  } catch {
+    return;
+  }
 }
 
 
