@@ -1255,7 +1255,7 @@ function Valid_Comment(d,r,t) {
 
 
 function updatecom1(d) {
-
+  try {
 n2 = d[0].studentTasksInfo.diaryTasks.length;
 n1 = n2-21;
 
@@ -1287,11 +1287,13 @@ com1 = c2;
 $$("com_1").setValue("<span style='color:white; font-weight:500;'>=отчеты= " + Valid_Atlet(d) + "</span>" );
 //$$("body1").setValues({ html: com1 });
 $$("com1").getBody().setHTML(c2);
-
+  } catch {
+    return t;
+  }
 }
 
 function updatecom2(d) {
-
+  try {
 n2 = d[0].studentTasksInfo.diaryTasks.length;
 n1 = n2-21;
 
@@ -1314,11 +1316,13 @@ com2 = c2;
 //$$("com_2").setValue("=отчеты= " + Valid_Atlet(d));
 $$("com_2").setValue("<span style='color:white; font-weight:500;'>=отчеты= " + Valid_Atlet(d) + "</span>" );
 $$("com2").getBody().setHTML(c2);
-
+  } catch {
+    return t;
+  }
 }
 
 function updatecom3(d) {
-
+  try {
 n2 = d[0].studentTasksInfo.diaryTasks.length;
 n1 = n2-21;
 
@@ -1344,7 +1348,9 @@ com3 = c2;
 $$("com_3").setValue("<span style='color:white; font-weight:500;'>=отчеты= " + Valid_Atlet(d) + "</span>" );
 $$("com3").getBody().setHTML(c2);
 
-
+  } catch {
+    return t;
+  }
 }
 
 function updateinfo1(d) {
