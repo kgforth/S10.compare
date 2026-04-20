@@ -717,7 +717,7 @@ function checkVisibility(chartId, seriesIndex) {
 //console.log(checkVisibility("gra1", 0));
 
 function upd_bldt(d,dd) {
-
+try {
 n2 = d[0].studentTasksInfo.diaryTasks.length;
 n1 = n2-21;
 
@@ -728,7 +728,9 @@ if ( Valid_km(d,i,0) == 0 ) {
 bldt[dd] = bldt[dd] + d[0].studentTasksInfo.diaryTasks[i].date + ","
 }
 }
-
+  } catch {
+    return;
+  }
 
 }
 
